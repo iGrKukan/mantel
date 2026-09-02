@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- "Clear the shelf?" NSAlert warning before moving the whole shelf to the Trash. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d item wordt naar de Prullenmand verplaatst. Dit kan alleen vanuit de Prullenmand ongedaan worden gemaakt.</string>
+			<key>other</key>
+			<string>%d items worden naar de Prullenmand verplaatst. Dit kan alleen vanuit de Prullenmand ongedaan worden gemaakt.</string>
+		</dict>
+	</dict>
+
+	<!-- "Delete files older than N days" auto-cleanup label — the Russian source text uses
+	     the invariant abbreviation "дн." and needs no stringsdict entry, but English "day/days"
+	     does. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Bestanden ouder dan %#@days@ worden naar de Prullenmand verplaatst. Gecontroleerd bij opstarten en eenmaal per uur.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d dag</string>
+			<key>other</key>
+			<string>%d dagen</string>
+		</dict>
+	</dict>
+
+	<!-- "Uploaded to Google Drive ("folder"): N file(s)" toast. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Geüpload naar Google Drive („%@”): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d bestand</string>
+			<key>other</key>
+			<string>%d bestanden</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

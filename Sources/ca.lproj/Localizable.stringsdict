@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- "Clear the shelf?" NSAlert warning before moving the whole shelf to the Trash. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d element es mourà a la Paperera. Només es pot desfer des de la Paperera.</string>
+			<key>other</key>
+			<string>%d elements es mouran a la Paperera. Només es pot desfer des de la Paperera.</string>
+		</dict>
+	</dict>
+
+	<!-- "Delete files older than N days" auto-cleanup label — the Russian source text uses
+	     the invariant abbreviation "дн." and needs no stringsdict entry, but English "day/days"
+	     does. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Els fitxers de més de %#@days@ es mouen a la Paperera. Es comprova en iniciar i un cop per hora.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d dia</string>
+			<key>other</key>
+			<string>%d dies</string>
+		</dict>
+	</dict>
+
+	<!-- "Uploaded to Google Drive ("folder"): N file(s)" toast. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Pujat a Google Drive («%@»): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d fitxer</string>
+			<key>other</key>
+			<string>%d fitxers</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

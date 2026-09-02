@@ -1,0 +1,102 @@
+/* Mantel — Dutch localization */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Plank tonen";
+"menu.openDriveFolder" = "Google Drive-map openen";
+"menu.clearShelf" = "Plank leegmaken";
+"menu.settings" = "Instellingen…";
+"menu.quit" = "Afsluiten";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Bibliotheekmap openen";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Mantel-instellingen";
+
+/* "Watching" section */
+"settings.watching.title" = "Bewaking";
+"settings.watching.desktopLabel" = "Bureaublad";
+"settings.watching.desktopToggle" = "Bureaublad bewaken";
+"settings.watching.screenshotsToggle" = "~/Screenshots bewaken";
+"settings.watching.hotZone" = "Uitklappen bij hover";
+"settings.watching.accessDenied" = "%@ — geen toegang verleend";
+"settings.watching.grantButton" = "Toegang verlenen…";
+"settings.watching.grantMessage" = "Kies de map „%@” zodat Mantel deze kan bewaken.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Bronmappen";
+"settings.folders.hint" = "Elk bestand dat in deze mappen wordt geplaatst, komt op de plank terecht, niet alleen schermafbeeldingen.";
+"settings.folders.empty" = "Geen mappen geselecteerd";
+"settings.folders.add" = "Map toevoegen…";
+"settings.folders.addPrompt" = "Toevoegen";
+"settings.folders.moveToggle" = "Bestanden uit de map verplaatsen (niet kopiëren)";
+"settings.folders.moveHint" = "Uit: het bestand wordt gekopieerd en het origineel blijft op zijn plaats. Aan: het bestand wordt naar de plank verplaatst, net als bij schermafbeeldingen.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Plank";
+"settings.shelf.widthStepper" = "Breedte van de plank: %d px";
+"settings.shelf.autoPrunePicker" = "Bestanden verwijderen die ouder zijn dan";
+"settings.shelf.prune.never" = "Nooit";
+"settings.shelf.prune.oneDay" = "1 dag";
+"settings.shelf.prune.threeDays" = "3 dagen";
+"settings.shelf.prune.sevenDays" = "7 dagen";
+"settings.shelf.prune.fourteenDays" = "14 dagen";
+"settings.shelf.prune.thirtyDays" = "30 dagen";
+"settings.shelf.prune.ninetyDays" = "90 dagen";
+"settings.shelf.pruneLabel.off" = "Automatisch opschonen is uit — de plank bewaart bestanden totdat je ze handmatig verwijdert.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Opstarten";
+"settings.launch.atLogin" = "Openen bij aanmelden";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Naam van standaardsubmap";
+"settings.drive.chooseFolder" = "Map kiezen…";
+"settings.drive.reset" = "Standaardwaarden";
+"settings.drive.outsideWarning" = "Map bevindt zich buiten Google Drive — bestanden worden niet gesynchroniseerd";
+"settings.drive.statusFound" = "Google Drive gevonden: %@. Bestanden gaan naar „%@”.";
+"settings.drive.statusNotFound" = "Google Drive niet gevonden";
+"settings.drive.destinationUndetermined" = "niet ingesteld";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Sleep bestanden hierheen — of maak een schermafbeelding met ⌘⇧3";
+"shelf.help.fileCount" = "Bestanden op de plank";
+"action.showInFinder" = "Toon in Finder";
+"shelf.help.settings" = "Instellingen";
+"shelf.help.copyFile" = "Bestand kopiëren (voor AnyDesk en andere externe bureaubladen)";
+"action.delete" = "Verwijderen";
+"action.clearAll" = "Alles wissen";
+
+"shelf.toast.openButton" = "Open";
+"shelf.player.pressPlayHint" = "Druk op ▶ om af te spelen";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Bestand kopiëren";
+"shelf.context.copyPath" = "Pad kopiëren";
+"shelf.context.uploadToDrive" = "Naar Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Kies een bestemming";
+"shelf.drive.notConnected" = "Google Drive is niet verbonden";
+"shelf.drive.notInstalled" = "Google Drive is niet geïnstalleerd";
+"shelf.drive.uploadHelp" = "Naar Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "een map";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Plank leegmaken?";
+"alert.clearAll.confirmButton" = "Leegmaken";
+"alert.clearAll.cancelButton" = "Annuleren";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "De map „%@” kan niet worden gespiegeld — het is een volledige systeemmap; kies in plaats daarvan een submap.";
+"watcher.warning.bulkFolder" = "Map „%@”: bestaande inhoud (%d bestanden) wordt niet verplaatst — alleen nieuwe bestanden komen op de plank terecht.";
+"watcher.warning.accessNotGranted" = "Map „%@”: geen toegang verleend — sta dit toe in Instellingen.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive niet gevonden: installeer Google Drive voor desktop en meld je aan";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Muziek";

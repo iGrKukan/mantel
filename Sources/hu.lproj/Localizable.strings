@@ -1,0 +1,102 @@
+/* Mantel — magyar lokalizáció */
+
+/* MARK: - Menüsor (AppDelegate) */
+"menu.showShelf" = "Polc megjelenítése";
+"menu.openDriveFolder" = "Google Drive mappa megnyitása";
+"menu.clearShelf" = "Polc törlése";
+"menu.settings" = "Beállítások…";
+"menu.quit" = "Kilépés";
+
+/* A „Könyvtármappa megnyitása” művelet – közös a menüsor és a beállítások ablaka között. */
+"action.openLibrary" = "Könyvtármappa megnyitása";
+
+/* MARK: - Beállítások ablaka (SettingsWindow) */
+"settings.window.title" = "Mantel beállításai";
+
+/* „Figyelés” szakasz */
+"settings.watching.title" = "Figyelés";
+"settings.watching.desktopLabel" = "Asztal";
+"settings.watching.desktopToggle" = "Az Asztal figyelése";
+"settings.watching.screenshotsToggle" = "A ~/Screenshots figyelése";
+"settings.watching.hotZone" = "Kibontás rámutatáskor";
+"settings.watching.accessDenied" = "%@ — nincs hozzáférés";
+"settings.watching.grantButton" = "Hozzáférés megadása…";
+"settings.watching.grantMessage" = "Válaszd ki a(z) „%@” mappát, hogy a Mantel figyelhesse.";
+
+/* „Forrásmappák” szakasz */
+"settings.folders.title" = "Forrásmappák";
+"settings.folders.hint" = "Az ezekbe a mappákba helyezett bármely fájl a polcra kerül, nem csak a képernyőképek.";
+"settings.folders.empty" = "Nincs kiválasztott mappa";
+"settings.folders.add" = "Mappa hozzáadása…";
+"settings.folders.addPrompt" = "Hozzáadás";
+"settings.folders.moveToggle" = "Fájlok kiemelése a mappából (ne másolja)";
+"settings.folders.moveHint" = "Kikapcsolva — a fájl másolatot kap, az eredeti a helyén marad. Bekapcsolva — a fájl a polcra kerül, ugyanúgy, mint a képernyőképek.";
+
+/* „Polc” szakasz */
+"settings.shelf.title" = "Polc";
+"settings.shelf.widthStepper" = "Polc szélessége: %d px";
+"settings.shelf.autoPrunePicker" = "Ennél régebbi fájlok törlése";
+"settings.shelf.prune.never" = "Soha";
+"settings.shelf.prune.oneDay" = "1 nap";
+"settings.shelf.prune.threeDays" = "3 nap";
+"settings.shelf.prune.sevenDays" = "7 nap";
+"settings.shelf.prune.fourteenDays" = "14 nap";
+"settings.shelf.prune.thirtyDays" = "30 nap";
+"settings.shelf.prune.ninetyDays" = "90 nap";
+"settings.shelf.pruneLabel.off" = "Az automatikus tisztítás ki van kapcsolva — a polc addig őrzi a fájlokat, amíg kézzel nem törlöd őket.";
+/* A "settings.shelf.pruneLabel.on" a Localizable.stringsdict fájlban van definiálva (a "nap" többes számú alakja miatt). */
+
+/* „Indítás” szakasz */
+"settings.launch.title" = "Indítás";
+"settings.launch.atLogin" = "Indítás bejelentkezéskor";
+
+/* „Google Drive” szakasz */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Alapértelmezett almappa neve";
+"settings.drive.chooseFolder" = "Mappa kiválasztása…";
+"settings.drive.reset" = "Visszaállítás";
+"settings.drive.outsideWarning" = "A mappa a Google Drive-on kívül van — a fájlok nem lesznek szinkronizálva";
+"settings.drive.statusFound" = "Google Drive megtalálva: %@. A fájlok ide kerülnek: „%@”.";
+"settings.drive.statusNotFound" = "Google Drive nem található";
+"settings.drive.destinationUndetermined" = "nincs beállítva";
+
+/* MARK: - Polc (ShelfView) */
+"shelf.empty.hint" = "Húzd ide a fájlokat — vagy készíts képernyőképet a ⌘⇧3 billentyűkombinációval";
+"shelf.help.fileCount" = "Fájlok a polcon";
+"action.showInFinder" = "Megjelenítés a Finderben";
+"shelf.help.settings" = "Beállítások";
+"shelf.help.copyFile" = "Fájl másolása (AnyDeskhez és más távoli asztalokhoz)";
+"action.delete" = "Törlés";
+"action.clearAll" = "Összes törlése";
+
+"shelf.toast.openButton" = "Megnyitás";
+"shelf.player.pressPlayHint" = "Nyomd meg a ▶ gombot a lejátszáshoz";
+
+/* Kártya helyi menüje */
+"shelf.context.copyFile" = "Fájl másolása";
+"shelf.context.copyPath" = "Elérési út másolása";
+"shelf.context.uploadToDrive" = "Google Drive-ra";
+
+/* „Cél kiválasztása” panel (Google Drive) */
+"shelf.drive.whereToPut" = "Válassz célt";
+"shelf.drive.notConnected" = "A Google Drive nincs csatlakoztatva";
+"shelf.drive.notInstalled" = "A Google Drive nincs telepítve";
+"shelf.drive.uploadHelp" = "Google Drive-ra → %@";
+"shelf.drive.fallbackFolderName" = "egy mappát";
+
+/* MARK: - Figyelmeztetések (NSAlert) */
+"alert.clearAll.title" = "Törlöd a polcot?";
+"alert.clearAll.confirmButton" = "Törlés";
+"alert.clearAll.cancelButton" = "Mégse";
+
+/* MARK: - Mappafigyelési figyelmeztetések (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "A(z) „%@” mappa nem tükrözhető — ez egy teljes rendszermappa; válassz helyette egy almappát.";
+"watcher.warning.bulkFolder" = "„%@” mappa: a meglévő tartalom (%d fájl) nem kerül áthelyezésre — csak az új fájlok kerülnek a polcra.";
+"watcher.warning.accessNotGranted" = "„%@” mappa: nincs hozzáférés — engedélyezd a Beállításokban.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive nem található: telepítsd a Google Drive for desktopot, és jelentkezz be";
+
+/* MARK: - „Most játszott” (ScriptedNowPlaying) */
+/* A „Zene” alkalmazás (Apple Music) neve — a mini lejátszóban a szám címe alatt jelenik meg. */
+"app.musicName" = "Zene";

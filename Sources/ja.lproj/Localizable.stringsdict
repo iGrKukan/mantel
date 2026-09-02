@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- "Clear the shelf?" NSAlert warning before moving the whole shelf to the Trash. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d個の項目がゴミ箱に移動します。元に戻せるのはゴミ箱からのみです。</string>
+		</dict>
+	</dict>
+
+	<!-- "Delete files older than N days" auto-cleanup label — Japanese has no plural categories, so only "other" is used. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@より古いファイルはゴミ箱に移動します。起動時と1時間ごとに確認します。</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d日</string>
+		</dict>
+	</dict>
+
+	<!-- "Uploaded to Google Drive ("folder"): N file(s)" toast. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Google Drive（「%@」）に%#@files@をアップロードしました</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d個のファイル</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

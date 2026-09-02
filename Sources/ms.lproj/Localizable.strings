@@ -1,0 +1,102 @@
+/* Mantel — penyetempatan bahasa Melayu */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Papar Rak";
+"menu.openDriveFolder" = "Buka Folder Google Drive";
+"menu.clearShelf" = "Kosongkan Rak";
+"menu.settings" = "Tetapan…";
+"menu.quit" = "Keluar";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Buka Folder Library";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Tetapan Mantel";
+
+/* "Watching" section */
+"settings.watching.title" = "Pemantauan";
+"settings.watching.desktopLabel" = "Desktop";
+"settings.watching.desktopToggle" = "Pantau Desktop";
+"settings.watching.screenshotsToggle" = "Pantau ~/Screenshots";
+"settings.watching.hotZone" = "Kembangkan apabila tetikus dihalakan";
+"settings.watching.accessDenied" = "%@ — akses tidak diberikan";
+"settings.watching.grantButton" = "Berikan Akses…";
+"settings.watching.grantMessage" = "Pilih folder “%@” supaya Mantel boleh memantaunya.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Folder Sumber";
+"settings.folders.hint" = "Sebarang fail yang diletakkan dalam folder ini akan masuk ke rak, bukan hanya tangkapan skrin.";
+"settings.folders.empty" = "Tiada folder dipilih";
+"settings.folders.add" = "Tambah Folder…";
+"settings.folders.addPrompt" = "Tambah";
+"settings.folders.moveToggle" = "Alihkan fail keluar dari folder (jangan salin)";
+"settings.folders.moveHint" = "Mati — fail akan disalin dan fail asal kekal di tempatnya. Hidup — fail akan dialihkan ke rak, sama seperti cara tangkapan skrin dikendalikan.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Rak";
+"settings.shelf.widthStepper" = "Lebar rak: %d px";
+"settings.shelf.autoPrunePicker" = "Padam fail yang lebih lama daripada";
+"settings.shelf.prune.never" = "Tidak sekali-kali";
+"settings.shelf.prune.oneDay" = "1 hari";
+"settings.shelf.prune.threeDays" = "3 hari";
+"settings.shelf.prune.sevenDays" = "7 hari";
+"settings.shelf.prune.fourteenDays" = "14 hari";
+"settings.shelf.prune.thirtyDays" = "30 hari";
+"settings.shelf.prune.ninetyDays" = "90 hari";
+"settings.shelf.pruneLabel.off" = "Pembersihan automatik dimatikan — rak akan menyimpan fail sehingga anda memadamnya secara manual.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Permulaan";
+"settings.launch.atLogin" = "Lancarkan semasa log masuk";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Nama subfolder lalai";
+"settings.drive.chooseFolder" = "Pilih Folder…";
+"settings.drive.reset" = "Tetapkan Semula";
+"settings.drive.outsideWarning" = "Folder berada di luar Google Drive — fail tidak akan disegerakkan";
+"settings.drive.statusFound" = "Google Drive dijumpai: %@. Fail akan disimpan dalam “%@”.";
+"settings.drive.statusNotFound" = "Google Drive tidak dijumpai";
+"settings.drive.destinationUndetermined" = "belum ditetapkan";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Seret fail ke sini — atau ambil tangkapan skrin dengan ⌘⇧3";
+"shelf.help.fileCount" = "Bilangan fail di rak";
+"action.showInFinder" = "Papar dalam Finder";
+"shelf.help.settings" = "Tetapan";
+"shelf.help.copyFile" = "Salin fail (untuk AnyDesk dan desktop jauh yang lain)";
+"action.delete" = "Padam";
+"action.clearAll" = "Kosongkan Semua";
+
+"shelf.toast.openButton" = "Buka";
+"shelf.player.pressPlayHint" = "Tekan ▶ untuk main";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Salin Fail";
+"shelf.context.copyPath" = "Salin Laluan";
+"shelf.context.uploadToDrive" = "Ke Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Pilih Destinasi";
+"shelf.drive.notConnected" = "Google Drive tidak disambungkan";
+"shelf.drive.notInstalled" = "Google Drive tidak dipasang";
+"shelf.drive.uploadHelp" = "Ke Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "satu folder";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Kosongkan rak?";
+"alert.clearAll.confirmButton" = "Kosongkan";
+"alert.clearAll.cancelButton" = "Batal";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Folder “%@” tidak boleh dicerminkan — ia adalah keseluruhan folder sistem; pilih subfolder sebagai gantinya.";
+"watcher.warning.bulkFolder" = "Folder “%@”: kandungan sedia ada (%d fail) tidak akan dialihkan — hanya fail baharu akan masuk ke rak.";
+"watcher.warning.accessNotGranted" = "Folder “%@”: akses tidak diberikan — benarkan dalam Tetapan.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive tidak dijumpai: pasang Google Drive for desktop dan log masuk";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Muzik";

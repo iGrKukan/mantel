@@ -1,0 +1,102 @@
+/* Mantel — German localization */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Ablage anzeigen";
+"menu.openDriveFolder" = "Google Drive-Ordner öffnen";
+"menu.clearShelf" = "Ablage leeren";
+"menu.settings" = "Einstellungen …";
+"menu.quit" = "Beenden";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Bibliotheksordner öffnen";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Mantel-Einstellungen";
+
+/* "Watching" section */
+"settings.watching.title" = "Überwachung";
+"settings.watching.desktopLabel" = "Schreibtisch";
+"settings.watching.desktopToggle" = "Schreibtisch überwachen";
+"settings.watching.screenshotsToggle" = "~/Screenshots überwachen";
+"settings.watching.hotZone" = "Bei Hover ausklappen";
+"settings.watching.accessDenied" = "%@ — Zugriff nicht erteilt";
+"settings.watching.grantButton" = "Zugriff erlauben …";
+"settings.watching.grantMessage" = "Wähle den Ordner „%@“, damit Mantel ihn überwachen kann.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Quellordner";
+"settings.folders.hint" = "Jede Datei, die in diesen Ordnern landet, kommt auf die Ablage — nicht nur Screenshots.";
+"settings.folders.empty" = "Keine Ordner ausgewählt";
+"settings.folders.add" = "Ordner hinzufügen …";
+"settings.folders.addPrompt" = "Hinzufügen";
+"settings.folders.moveToggle" = "Dateien aus dem Ordner verschieben (nicht kopieren)";
+"settings.folders.moveHint" = "Aus — die Datei wird kopiert, das Original bleibt an Ort und Stelle. Ein — die Datei wird auf die Ablage verschoben, genauso wie bei Screenshots.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Ablage";
+"settings.shelf.widthStepper" = "Ablagenbreite: %d px";
+"settings.shelf.autoPrunePicker" = "Dateien löschen, die älter sind als";
+"settings.shelf.prune.never" = "Nie";
+"settings.shelf.prune.oneDay" = "1 Tag";
+"settings.shelf.prune.threeDays" = "3 Tage";
+"settings.shelf.prune.sevenDays" = "7 Tage";
+"settings.shelf.prune.fourteenDays" = "14 Tage";
+"settings.shelf.prune.thirtyDays" = "30 Tage";
+"settings.shelf.prune.ninetyDays" = "90 Tage";
+"settings.shelf.pruneLabel.off" = "Die automatische Bereinigung ist aus — die Ablage behält Dateien, bis du sie manuell löschst.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Start";
+"settings.launch.atLogin" = "Bei der Anmeldung öffnen";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Name des Standardunterordners";
+"settings.drive.chooseFolder" = "Ordner wählen …";
+"settings.drive.reset" = "Zurücksetzen";
+"settings.drive.outsideWarning" = "Der Ordner liegt außerhalb von Google Drive — Dateien werden nicht synchronisiert";
+"settings.drive.statusFound" = "Google Drive gefunden: %@. Dateien landen in „%@“.";
+"settings.drive.statusNotFound" = "Google Drive nicht gefunden";
+"settings.drive.destinationUndetermined" = "nicht festgelegt";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Ziehe Dateien hierher — oder mache einen Screenshot mit ⌘⇧3";
+"shelf.help.fileCount" = "Dateien auf der Ablage";
+"action.showInFinder" = "Im Finder zeigen";
+"shelf.help.settings" = "Einstellungen";
+"shelf.help.copyFile" = "Datei kopieren (für AnyDesk und andere Remote-Desktops)";
+"action.delete" = "Löschen";
+"action.clearAll" = "Alle löschen";
+
+"shelf.toast.openButton" = "Öffnen";
+"shelf.player.pressPlayHint" = "▶ drücken, um abzuspielen";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Datei kopieren";
+"shelf.context.copyPath" = "Pfad kopieren";
+"shelf.context.uploadToDrive" = "Zu Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Ziel wählen";
+"shelf.drive.notConnected" = "Google Drive ist nicht verbunden";
+"shelf.drive.notInstalled" = "Google Drive ist nicht installiert";
+"shelf.drive.uploadHelp" = "Zu Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "einen Ordner";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Ablage leeren?";
+"alert.clearAll.confirmButton" = "Leeren";
+"alert.clearAll.cancelButton" = "Abbrechen";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Der Ordner „%@“ kann nicht gespiegelt werden — er ist ein ganzer Systemordner; wähle stattdessen einen Unterordner.";
+"watcher.warning.bulkFolder" = "Ordner „%@“: Vorhandener Inhalt (%d Dateien) wird nicht verschoben — nur neue Dateien landen auf der Ablage.";
+"watcher.warning.accessNotGranted" = "Ordner „%@“: Zugriff nicht erteilt — erlaube ihn in den Einstellungen.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive nicht gefunden: Installiere Google Drive for desktop und melde dich an";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Musik";

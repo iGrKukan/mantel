@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- "Clear the shelf?" NSAlert warning before moving the whole shelf to the Trash. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d개 항목이 휴지통으로 이동합니다. 복원은 휴지통에서만 가능합니다.</string>
+		</dict>
+	</dict>
+
+	<!-- "Delete files older than N days" auto-cleanup label — Korean has no plural categories, so only "other" is used. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@보다 오래된 파일은 휴지통으로 이동합니다. 시작할 때와 매시간 확인합니다.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d일</string>
+		</dict>
+	</dict>
+
+	<!-- "Uploaded to Google Drive ("folder"): N file(s)" toast. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Google 드라이브(“%@”)에 %#@files@을 업로드했습니다.</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d개 파일</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

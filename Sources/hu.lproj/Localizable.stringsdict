@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- „Törlöd a polcot?” — NSAlert figyelmeztetés a teljes polc Kukába helyezése előtt. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d elem a Kukába kerül. Visszavonni csak a Kukából lehet.</string>
+			<key>other</key>
+			<string>%d elem a Kukába kerül. Visszavonni csak a Kukából lehet.</string>
+		</dict>
+	</dict>
+
+	<!-- Automatikus tisztítás felirata: „Ennél régebbi fájlok törlése”. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>A %#@days@ régebbi fájlok a Kukába kerülnek. Ellenőrzés indításkor és óránként.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d napnál</string>
+			<key>other</key>
+			<string>%d napnál</string>
+		</dict>
+	</dict>
+
+	<!-- Értesítés: „Feltöltve a Google Drive-ra („mappa”): N fájl”. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Feltöltve a Google Drive-ra („%@”): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d fájl</string>
+			<key>other</key>
+			<string>%d fájl</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

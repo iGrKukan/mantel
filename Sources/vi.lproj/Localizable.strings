@@ -1,0 +1,102 @@
+/* Mantel — bản dịch tiếng Việt */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Hiện Kệ";
+"menu.openDriveFolder" = "Mở Thư Mục Google Drive";
+"menu.clearShelf" = "Xóa Kệ";
+"menu.settings" = "Cài Đặt…";
+"menu.quit" = "Thoát";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Mở Thư Mục Thư Viện";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Cài Đặt Mantel";
+
+/* "Watching" section */
+"settings.watching.title" = "Theo Dõi";
+"settings.watching.desktopLabel" = "Màn Hình Nền";
+"settings.watching.desktopToggle" = "Theo Dõi Màn Hình Nền";
+"settings.watching.screenshotsToggle" = "Theo Dõi ~/Screenshots";
+"settings.watching.hotZone" = "Mở Rộng Khi Di Chuột Qua";
+"settings.watching.accessDenied" = "%@ — chưa được cấp quyền truy cập";
+"settings.watching.grantButton" = "Cấp Quyền Truy Cập…";
+"settings.watching.grantMessage" = "Hãy chọn thư mục “%@” để Mantel có thể theo dõi nó.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Thư Mục Nguồn";
+"settings.folders.hint" = "Bất kỳ tệp nào được đặt trong các thư mục này đều sẽ vào kệ, không chỉ ảnh chụp màn hình.";
+"settings.folders.empty" = "Chưa chọn thư mục nào";
+"settings.folders.add" = "Thêm Thư Mục…";
+"settings.folders.addPrompt" = "Thêm";
+"settings.folders.moveToggle" = "Chuyển tệp ra khỏi thư mục (không sao chép)";
+"settings.folders.moveHint" = "Tắt — tệp sẽ được sao chép, tệp gốc vẫn giữ nguyên vị trí. Bật — tệp sẽ được chuyển vào kệ, giống như cách xử lý ảnh chụp màn hình.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Kệ";
+"settings.shelf.widthStepper" = "Chiều rộng kệ: %d px";
+"settings.shelf.autoPrunePicker" = "Xóa tệp cũ hơn";
+"settings.shelf.prune.never" = "Không bao giờ";
+"settings.shelf.prune.oneDay" = "1 ngày";
+"settings.shelf.prune.threeDays" = "3 ngày";
+"settings.shelf.prune.sevenDays" = "7 ngày";
+"settings.shelf.prune.fourteenDays" = "14 ngày";
+"settings.shelf.prune.thirtyDays" = "30 ngày";
+"settings.shelf.prune.ninetyDays" = "90 ngày";
+"settings.shelf.pruneLabel.off" = "Tự động dọn dẹp đang tắt — kệ sẽ giữ tệp cho đến khi bạn xóa thủ công.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Khởi Động";
+"settings.launch.atLogin" = "Khởi chạy khi đăng nhập";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Tên thư mục con mặc định";
+"settings.drive.chooseFolder" = "Chọn Thư Mục…";
+"settings.drive.reset" = "Đặt Lại";
+"settings.drive.outsideWarning" = "Thư mục nằm ngoài Google Drive — tệp sẽ không được đồng bộ";
+"settings.drive.statusFound" = "Đã tìm thấy Google Drive: %@. Tệp sẽ được chuyển vào “%@”.";
+"settings.drive.statusNotFound" = "Không tìm thấy Google Drive";
+"settings.drive.destinationUndetermined" = "chưa đặt";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Kéo tệp vào đây — hoặc chụp màn hình bằng ⌘⇧3";
+"shelf.help.fileCount" = "Số tệp trên kệ";
+"action.showInFinder" = "Hiện Trong Finder";
+"shelf.help.settings" = "Cài Đặt";
+"shelf.help.copyFile" = "Sao chép tệp (dành cho AnyDesk và các máy tính từ xa khác)";
+"action.delete" = "Xóa";
+"action.clearAll" = "Xóa Tất Cả";
+
+"shelf.toast.openButton" = "Mở";
+"shelf.player.pressPlayHint" = "Nhấn ▶ để phát";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Sao Chép Tệp";
+"shelf.context.copyPath" = "Sao Chép Đường Dẫn";
+"shelf.context.uploadToDrive" = "Đến Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Chọn Nơi Lưu";
+"shelf.drive.notConnected" = "Google Drive chưa được kết nối";
+"shelf.drive.notInstalled" = "Google Drive chưa được cài đặt";
+"shelf.drive.uploadHelp" = "Đến Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "một thư mục";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Xóa kệ?";
+"alert.clearAll.confirmButton" = "Xóa";
+"alert.clearAll.cancelButton" = "Hủy";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Không thể phản chiếu thư mục “%@” — đây là toàn bộ thư mục hệ thống; hãy chọn một thư mục con thay thế.";
+"watcher.warning.bulkFolder" = "Thư mục “%@”: nội dung hiện có (%d tệp) sẽ không được chuyển — chỉ tệp mới mới vào kệ.";
+"watcher.warning.accessNotGranted" = "Thư mục “%@”: chưa được cấp quyền truy cập — hãy cho phép trong Cài Đặt.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Không tìm thấy Google Drive: hãy cài đặt Google Drive for desktop và đăng nhập";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Nhạc";

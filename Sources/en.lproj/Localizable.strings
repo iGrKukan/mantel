@@ -1,0 +1,102 @@
+/* Mantel — English localization */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Show Shelf";
+"menu.openDriveFolder" = "Open Google Drive Folder";
+"menu.clearShelf" = "Clear Shelf";
+"menu.settings" = "Settings…";
+"menu.quit" = "Quit";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Open Library Folder";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Mantel Settings";
+
+/* "Watching" section */
+"settings.watching.title" = "Watching";
+"settings.watching.desktopLabel" = "Desktop";
+"settings.watching.desktopToggle" = "Watch the Desktop";
+"settings.watching.screenshotsToggle" = "Watch ~/Screenshots";
+"settings.watching.hotZone" = "Expand on hover";
+"settings.watching.accessDenied" = "%@ — access not granted";
+"settings.watching.grantButton" = "Grant Access…";
+"settings.watching.grantMessage" = "Choose the “%@” folder so Mantel can watch it.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Source Folders";
+"settings.folders.hint" = "Any file placed in these folders lands on the shelf, not just screenshots.";
+"settings.folders.empty" = "No folders selected";
+"settings.folders.add" = "Add Folder…";
+"settings.folders.addPrompt" = "Add";
+"settings.folders.moveToggle" = "Move files out of the folder (don't copy)";
+"settings.folders.moveHint" = "Off — the file is copied and the original stays in place. On — the file is moved to the shelf, the same way screenshots are handled.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Shelf";
+"settings.shelf.widthStepper" = "Shelf width: %d px";
+"settings.shelf.autoPrunePicker" = "Delete files older than";
+"settings.shelf.prune.never" = "Never";
+"settings.shelf.prune.oneDay" = "1 day";
+"settings.shelf.prune.threeDays" = "3 days";
+"settings.shelf.prune.sevenDays" = "7 days";
+"settings.shelf.prune.fourteenDays" = "14 days";
+"settings.shelf.prune.thirtyDays" = "30 days";
+"settings.shelf.prune.ninetyDays" = "90 days";
+"settings.shelf.pruneLabel.off" = "Auto-cleanup is off — the shelf keeps files until you delete them manually.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Startup";
+"settings.launch.atLogin" = "Launch at login";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Default subfolder name";
+"settings.drive.chooseFolder" = "Choose Folder…";
+"settings.drive.reset" = "Reset";
+"settings.drive.outsideWarning" = "Folder is outside Google Drive — files won't be synced";
+"settings.drive.statusFound" = "Google Drive found: %@. Files go to “%@”.";
+"settings.drive.statusNotFound" = "Google Drive not found";
+"settings.drive.destinationUndetermined" = "not set";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Drag files here — or take a screenshot with ⌘⇧3";
+"shelf.help.fileCount" = "Files on the shelf";
+"action.showInFinder" = "Show in Finder";
+"shelf.help.settings" = "Settings";
+"shelf.help.copyFile" = "Copy file (for AnyDesk and other remote desktops)";
+"action.delete" = "Delete";
+"action.clearAll" = "Clear All";
+
+"shelf.toast.openButton" = "Open";
+"shelf.player.pressPlayHint" = "Press ▶ to play";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Copy File";
+"shelf.context.copyPath" = "Copy Path";
+"shelf.context.uploadToDrive" = "To Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Choose a Destination";
+"shelf.drive.notConnected" = "Google Drive isn't connected";
+"shelf.drive.notInstalled" = "Google Drive isn't installed";
+"shelf.drive.uploadHelp" = "To Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "a folder";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Clear the shelf?";
+"alert.clearAll.confirmButton" = "Clear";
+"alert.clearAll.cancelButton" = "Cancel";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "The “%@” folder can't be mirrored — it's an entire system folder; choose a subfolder instead.";
+"watcher.warning.bulkFolder" = "“%@” folder: existing content (%d files) won't be moved — only new files will land on the shelf.";
+"watcher.warning.accessNotGranted" = "“%@” folder: access not granted — allow it in Settings.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive not found: install Google Drive for desktop and sign in";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Music";

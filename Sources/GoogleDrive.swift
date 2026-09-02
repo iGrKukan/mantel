@@ -99,7 +99,7 @@ enum GoogleDrive {
     private static var notFoundError: NSError {
         NSError(
             domain: "by.maru.mantel.googledrive", code: 1,
-            userInfo: [NSLocalizedDescriptionKey: "Google Диск не найден: установи Google Drive for desktop и войди в аккаунт"])
+            userInfo: [NSLocalizedDescriptionKey: String(localized: "drive.error.notFound")])
     }
 
     private static func performUpload(urls: [URL], to destDir: URL, completion: @escaping (Result<Int, Error>) -> Void) {

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- „Vymazat polici?“ — upozornění NSAlert před přesunutím celé police do Koše. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d položka bude přesunuta do Koše. Zpět lze vzít pouze z Koše.</string>
+			<key>few</key>
+			<string>%d položky budou přesunuty do Koše. Zpět lze vzít pouze z Koše.</string>
+			<key>many</key>
+			<string>%d položky budou přesunuty do Koše. Zpět lze vzít pouze z Koše.</string>
+			<key>other</key>
+			<string>%d položek bude přesunuto do Koše. Zpět lze vzít pouze z Koše.</string>
+		</dict>
+	</dict>
+
+	<!-- Popisek automatického čištění „Odstraňovat soubory starší než N dní“. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Soubory starší než %#@days@ se přesouvají do Koše. Kontrola při spuštění a jednou za hodinu.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d den</string>
+			<key>few</key>
+			<string>%d dny</string>
+			<key>many</key>
+			<string>%d dne</string>
+			<key>other</key>
+			<string>%d dní</string>
+		</dict>
+	</dict>
+
+	<!-- Oznámení „Nahráno na Disk Google („složka“): N soubor(ů)“. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Nahráno na Disk Google („%@“): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d soubor</string>
+			<key>few</key>
+			<string>%d soubory</string>
+			<key>many</key>
+			<string>%d souboru</string>
+			<key>other</key>
+			<string>%d souborů</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

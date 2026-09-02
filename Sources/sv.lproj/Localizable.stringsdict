@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Varningen "Töm hyllan?" innan hela hyllan flyttas till Papperskorgen. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d objekt flyttas till Papperskorgen. Det kan bara ångras därifrån.</string>
+			<key>other</key>
+			<string>%d objekt flyttas till Papperskorgen. Det kan bara ångras därifrån.</string>
+		</dict>
+	</dict>
+
+	<!-- Etiketten för automatisk rensning "Ta bort filer äldre än N dagar". -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Filer äldre än %#@days@ flyttas till Papperskorgen. Kontrolleras vid start och en gång i timmen.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d dag</string>
+			<key>other</key>
+			<string>%d dagar</string>
+		</dict>
+	</dict>
+
+	<!-- Aviseringen "Uppladdat till Google Drive ("mapp"): N fil(er)". -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Uppladdat till Google Drive (”%@”): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d fil</string>
+			<key>other</key>
+			<string>%d filer</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

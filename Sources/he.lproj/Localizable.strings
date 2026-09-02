@@ -1,0 +1,102 @@
+/* Mantel — לוקליזציה בעברית */
+
+/* MARK: - תפריט שורת המערכת (AppDelegate) */
+"menu.showShelf" = "הצג את המדף";
+"menu.openDriveFolder" = "פתח תיקייה ב-Google Drive";
+"menu.clearShelf" = "נקה את המדף";
+"menu.settings" = "הגדרות…";
+"menu.quit" = "יציאה";
+
+/* הפעולה "פתח את תיקיית הספרייה" — משותפת לתפריט שורת המערכת ולחלון ההגדרות. */
+"action.openLibrary" = "פתח את תיקיית הספרייה";
+
+/* MARK: - חלון ההגדרות (SettingsWindow) */
+"settings.window.title" = "הגדרות Mantel";
+
+/* קטע "מעקב" */
+"settings.watching.title" = "מעקב";
+"settings.watching.desktopLabel" = "שולחן העבודה";
+"settings.watching.desktopToggle" = "עקוב אחר שולחן העבודה";
+"settings.watching.screenshotsToggle" = "עקוב אחר ~/Screenshots";
+"settings.watching.hotZone" = "הרחב במעבר העכבר";
+"settings.watching.accessDenied" = "%@ — הגישה לא ניתנה";
+"settings.watching.grantButton" = "הענק גישה…";
+"settings.watching.grantMessage" = "בחר את התיקייה \"%@\" כדי ש-Mantel יוכל לעקוב אחריה.";
+
+/* קטע "תיקיות מקור" */
+"settings.folders.title" = "תיקיות מקור";
+"settings.folders.hint" = "כל קובץ שמונח בתיקיות האלה מגיע למדף, לא רק צילומי מסך.";
+"settings.folders.empty" = "לא נבחרו תיקיות";
+"settings.folders.add" = "הוסף תיקייה…";
+"settings.folders.addPrompt" = "הוסף";
+"settings.folders.moveToggle" = "העבר קבצים מהתיקייה (ולא להעתיק)";
+"settings.folders.moveHint" = "כבוי — הקובץ מועתק והמקור נשאר במקומו. פועל — הקובץ עובר למדף, כמו שקורה עם צילומי מסך.";
+
+/* קטע "מדף" */
+"settings.shelf.title" = "מדף";
+"settings.shelf.widthStepper" = "רוחב המדף: %d px";
+"settings.shelf.autoPrunePicker" = "מחק קבצים ישנים מ-";
+"settings.shelf.prune.never" = "לעולם לא";
+"settings.shelf.prune.oneDay" = "יום אחד";
+"settings.shelf.prune.threeDays" = "3 ימים";
+"settings.shelf.prune.sevenDays" = "7 ימים";
+"settings.shelf.prune.fourteenDays" = "14 יום";
+"settings.shelf.prune.thirtyDays" = "30 יום";
+"settings.shelf.prune.ninetyDays" = "90 יום";
+"settings.shelf.pruneLabel.off" = "ניקוי אוטומטי כבוי — המדף שומר קבצים עד שתמחק אותם ידנית.";
+/* "settings.shelf.pruneLabel.on" מוגדר בקובץ Localizable.stringsdict (דורש נטיית יום/ימים). */
+
+/* קטע "הפעלה" */
+"settings.launch.title" = "הפעלה";
+"settings.launch.atLogin" = "הפעל בעת הכניסה למערכת";
+
+/* קטע "Google Drive" */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "שם ברירת המחדל לתת-תיקייה";
+"settings.drive.chooseFolder" = "בחר תיקייה…";
+"settings.drive.reset" = "אפס";
+"settings.drive.outsideWarning" = "התיקייה נמצאת מחוץ ל-Google Drive — הקבצים לא יסונכרנו";
+"settings.drive.statusFound" = "נמצא Google Drive: %@. הקבצים מגיעים אל \"%@\".";
+"settings.drive.statusNotFound" = "לא נמצא Google Drive";
+"settings.drive.destinationUndetermined" = "לא הוגדר";
+
+/* MARK: - המדף (ShelfView) */
+"shelf.empty.hint" = "גרור לכאן קבצים — או צלם מסך עם ⌘⇧3";
+"shelf.help.fileCount" = "קבצים על המדף";
+"action.showInFinder" = "הצג ב-Finder";
+"shelf.help.settings" = "הגדרות";
+"shelf.help.copyFile" = "העתק קובץ (עבור AnyDesk ושולחנות עבודה מרוחקים אחרים)";
+"action.delete" = "מחק";
+"action.clearAll" = "נקה הכול";
+
+"shelf.toast.openButton" = "פתח";
+"shelf.player.pressPlayHint" = "לחץ ▶ כדי לנגן";
+
+/* תפריט הקשר של הכרטיס */
+"shelf.context.copyFile" = "העתק קובץ";
+"shelf.context.copyPath" = "העתק נתיב";
+"shelf.context.uploadToDrive" = "אל Google Drive";
+
+/* פאנל "בחר יעד" (Google Drive) */
+"shelf.drive.whereToPut" = "בחר יעד";
+"shelf.drive.notConnected" = "Google Drive אינו מחובר";
+"shelf.drive.notInstalled" = "Google Drive אינו מותקן";
+"shelf.drive.uploadHelp" = "אל Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "תיקייה";
+
+/* MARK: - התראות (NSAlert) */
+"alert.clearAll.title" = "לנקות את המדף?";
+"alert.clearAll.confirmButton" = "נקה";
+"alert.clearAll.cancelButton" = "ביטול";
+
+/* MARK: - אזהרות מעקב אחר תיקיות (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "אי אפשר לשקף את התיקייה \"%@\" — זו תיקיית מערכת שלמה; בחר תת-תיקייה במקום.";
+"watcher.warning.bulkFolder" = "תיקייה \"%@\": התוכן הקיים (%d קבצים) לא יועבר — רק קבצים חדשים יגיעו למדף.";
+"watcher.warning.accessNotGranted" = "תיקייה \"%@\": הגישה לא ניתנה — אפשר אותה בהגדרות.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "לא נמצא Google Drive: התקן את Google Drive for desktop והתחבר לחשבון";
+
+/* MARK: - "מתנגן כעת" (ScriptedNowPlaying) */
+/* שם האפליקציה "Music" (Apple Music) — מוצג מתחת לשם השיר בנגן הקטן. */
+"app.musicName" = "מוזיקה";

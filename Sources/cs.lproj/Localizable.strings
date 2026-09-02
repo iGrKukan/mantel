@@ -1,0 +1,102 @@
+/* Mantel — česká lokalizace */
+
+/* MARK: - Panel nabídek (AppDelegate) */
+"menu.showShelf" = "Zobrazit polici";
+"menu.openDriveFolder" = "Otevřít složku na Disku Google";
+"menu.clearShelf" = "Vymazat polici";
+"menu.settings" = "Nastavení…";
+"menu.quit" = "Ukončit";
+
+/* Akce „Otevřít složku knihovny“ – sdílená mezi panelem nabídek a oknem nastavení. */
+"action.openLibrary" = "Otevřít složku knihovny";
+
+/* MARK: - Okno nastavení (SettingsWindow) */
+"settings.window.title" = "Nastavení Mantel";
+
+/* Sekce „Sledování“ */
+"settings.watching.title" = "Sledování";
+"settings.watching.desktopLabel" = "Plocha";
+"settings.watching.desktopToggle" = "Sledovat Plochu";
+"settings.watching.screenshotsToggle" = "Sledovat ~/Screenshots";
+"settings.watching.hotZone" = "Rozbalit při najetí myší";
+"settings.watching.accessDenied" = "%@ — přístup není udělen";
+"settings.watching.grantButton" = "Udělit přístup…";
+"settings.watching.grantMessage" = "Vyberte složku „%@“, aby ji Mantel mohl sledovat.";
+
+/* Sekce „Zdrojové složky“ */
+"settings.folders.title" = "Zdrojové složky";
+"settings.folders.hint" = "Do police se dostane každý soubor umístěný do těchto složek, nejen snímky obrazovky.";
+"settings.folders.empty" = "Nejsou vybrány žádné složky";
+"settings.folders.add" = "Přidat složku…";
+"settings.folders.addPrompt" = "Přidat";
+"settings.folders.moveToggle" = "Přesouvat soubory ze složky (nekopírovat)";
+"settings.folders.moveHint" = "Vypnuto — soubor se zkopíruje a originál zůstane na místě. Zapnuto — soubor se přesune na polici, stejně jako u snímků obrazovky.";
+
+/* Sekce „Police“ */
+"settings.shelf.title" = "Police";
+"settings.shelf.widthStepper" = "Šířka police: %d px";
+"settings.shelf.autoPrunePicker" = "Odstraňovat soubory starší než";
+"settings.shelf.prune.never" = "Nikdy";
+"settings.shelf.prune.oneDay" = "1 den";
+"settings.shelf.prune.threeDays" = "3 dny";
+"settings.shelf.prune.sevenDays" = "7 dní";
+"settings.shelf.prune.fourteenDays" = "14 dní";
+"settings.shelf.prune.thirtyDays" = "30 dní";
+"settings.shelf.prune.ninetyDays" = "90 dní";
+"settings.shelf.pruneLabel.off" = "Automatické čištění je vypnuté — police uchovává soubory, dokud je neodstraníte ručně.";
+/* "settings.shelf.pruneLabel.on" je definován v Localizable.stringsdict (potřebuje skloňování „den/dny/dní“). */
+
+/* Sekce „Po spuštění“ */
+"settings.launch.title" = "Po spuštění";
+"settings.launch.atLogin" = "Spustit při přihlášení";
+
+/* Sekce „Disk Google“ */
+"settings.drive.title" = "Disk Google";
+"settings.drive.subfolderField" = "Výchozí název podsložky";
+"settings.drive.chooseFolder" = "Vybrat složku…";
+"settings.drive.reset" = "Obnovit";
+"settings.drive.outsideWarning" = "Složka je mimo Disk Google — soubory se nebudou synchronizovat";
+"settings.drive.statusFound" = "Disk Google nalezen: %@. Soubory se ukládají do „%@“.";
+"settings.drive.statusNotFound" = "Disk Google nenalezen";
+"settings.drive.destinationUndetermined" = "nenastaveno";
+
+/* MARK: - Police (ShelfView) */
+"shelf.empty.hint" = "Přetáhněte sem soubory — nebo pořiďte snímek pomocí ⌘⇧3";
+"shelf.help.fileCount" = "Souborů na polici";
+"action.showInFinder" = "Zobrazit ve Finderu";
+"shelf.help.settings" = "Nastavení";
+"shelf.help.copyFile" = "Kopírovat soubor (pro AnyDesk a další vzdálené plochy)";
+"action.delete" = "Odstranit";
+"action.clearAll" = "Vymazat vše";
+
+"shelf.toast.openButton" = "Otevřít";
+"shelf.player.pressPlayHint" = "Stiskněte ▶ pro přehrání";
+
+/* Kontextová nabídka karty */
+"shelf.context.copyFile" = "Kopírovat soubor";
+"shelf.context.copyPath" = "Kopírovat cestu";
+"shelf.context.uploadToDrive" = "Na Disk Google";
+
+/* Panel „Vybrat cíl“ (Disk Google) */
+"shelf.drive.whereToPut" = "Vyberte cíl";
+"shelf.drive.notConnected" = "Disk Google není připojen";
+"shelf.drive.notInstalled" = "Disk Google není nainstalován";
+"shelf.drive.uploadHelp" = "Na Disk Google → %@";
+"shelf.drive.fallbackFolderName" = "složku";
+
+/* MARK: - Upozornění (NSAlert) */
+"alert.clearAll.title" = "Vymazat polici?";
+"alert.clearAll.confirmButton" = "Vymazat";
+"alert.clearAll.cancelButton" = "Zrušit";
+
+/* MARK: - Upozornění při sledování složek (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Složku „%@“ nelze zrcadlit — jde o celou systémovou složku; vyberte podsložku.";
+"watcher.warning.bulkFolder" = "Složka „%@“: stávající obsah (%d souborů) se nepřenese — na polici se dostanou jen nové soubory.";
+"watcher.warning.accessNotGranted" = "Složka „%@“: přístup není udělen — povolte ji v Nastavení.";
+
+/* MARK: - Disk Google (GoogleDrive) */
+"drive.error.notFound" = "Disk Google nenalezen: nainstalujte aplikaci Disk Google pro počítače a přihlaste se";
+
+/* MARK: - „Nyní se přehrává“ (ScriptedNowPlaying) */
+/* Název aplikace „Hudba“ (Apple Music) — zobrazuje se pod názvem skladby v mini přehrávači. */
+"app.musicName" = "Hudba";

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Tüm raf Çöp Kutusuna taşınmadan önceki "Raf temizlensin mi?" uyarısı. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d öğe Çöp Kutusuna taşınacak. Bu işlem yalnızca Çöp Kutusundan geri alınabilir.</string>
+		</dict>
+	</dict>
+
+	<!-- "Şundan eski dosyaları sil (N gün)" otomatik temizleme etiketi. Türkçede sayıya göre
+	     çoğul eki değişmediği için yalnızca "other" kategorisi kullanılır. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@ dosyalar Çöp Kutusuna taşınır. Açılışta ve saatte bir kontrol edilir.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d günden eski</string>
+		</dict>
+	</dict>
+
+	<!-- "Google Drive'a ("klasör") yüklendi: N dosya" bildirimi. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Google Drive’a (“%@”) yüklendi: %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>other</key>
+			<string>%d dosya</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

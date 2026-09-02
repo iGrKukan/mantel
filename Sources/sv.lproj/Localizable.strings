@@ -1,0 +1,102 @@
+/* Mantel — svensk lokalisering */
+
+/* MARK: - Menyrad (AppDelegate) */
+"menu.showShelf" = "Visa hyllan";
+"menu.openDriveFolder" = "Öppna mapp på Google Drive";
+"menu.clearShelf" = "Töm hyllan";
+"menu.settings" = "Inställningar…";
+"menu.quit" = "Avsluta";
+
+/* Åtgärden ”Öppna biblioteksmapp” — delas av menyraden och inställningsfönstret. */
+"action.openLibrary" = "Öppna biblioteksmapp";
+
+/* MARK: - Inställningsfönster (SettingsWindow) */
+"settings.window.title" = "Mantel-inställningar";
+
+/* Avsnittet ”Bevakning” */
+"settings.watching.title" = "Bevakning";
+"settings.watching.desktopLabel" = "Skrivbord";
+"settings.watching.desktopToggle" = "Bevaka skrivbordet";
+"settings.watching.screenshotsToggle" = "Bevaka ~/Screenshots";
+"settings.watching.hotZone" = "Expandera vid hovring";
+"settings.watching.accessDenied" = "%@ — åtkomst inte beviljad";
+"settings.watching.grantButton" = "Bevilja åtkomst…";
+"settings.watching.grantMessage" = "Välj mappen ”%@” så att Mantel kan bevaka den.";
+
+/* Avsnittet ”Källmappar” */
+"settings.folders.title" = "Källmappar";
+"settings.folders.hint" = "Alla filer som läggs i dessa mappar hamnar på hyllan, inte bara skärmbilder.";
+"settings.folders.empty" = "Inga mappar valda";
+"settings.folders.add" = "Lägg till mapp…";
+"settings.folders.addPrompt" = "Lägg till";
+"settings.folders.moveToggle" = "Flytta filer ur mappen (inte kopiera)";
+"settings.folders.moveHint" = "Av — filen kopieras och originalet ligger kvar. På — filen flyttas till hyllan, precis som med skärmbilder.";
+
+/* Avsnittet ”Hylla” */
+"settings.shelf.title" = "Hylla";
+"settings.shelf.widthStepper" = "Hyllans bredd: %d px";
+"settings.shelf.autoPrunePicker" = "Ta bort filer äldre än";
+"settings.shelf.prune.never" = "Aldrig";
+"settings.shelf.prune.oneDay" = "1 dag";
+"settings.shelf.prune.threeDays" = "3 dagar";
+"settings.shelf.prune.sevenDays" = "7 dagar";
+"settings.shelf.prune.fourteenDays" = "14 dagar";
+"settings.shelf.prune.thirtyDays" = "30 dagar";
+"settings.shelf.prune.ninetyDays" = "90 dagar";
+"settings.shelf.pruneLabel.off" = "Automatisk rensning är av — hyllan behåller filer tills du tar bort dem manuellt.";
+/* "settings.shelf.pruneLabel.on" definieras i Localizable.stringsdict (behöver böjning av dag/dagar). */
+
+/* Avsnittet ”Start” */
+"settings.launch.title" = "Start";
+"settings.launch.atLogin" = "Starta vid inloggning";
+
+/* Avsnittet ”Google Drive” */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Standardnamn för undermapp";
+"settings.drive.chooseFolder" = "Välj mapp…";
+"settings.drive.reset" = "Återställ";
+"settings.drive.outsideWarning" = "Mappen ligger utanför Google Drive — filerna synkroniseras inte";
+"settings.drive.statusFound" = "Google Drive hittad: %@. Filer hamnar i ”%@”.";
+"settings.drive.statusNotFound" = "Google Drive hittades inte";
+"settings.drive.destinationUndetermined" = "inte angiven";
+
+/* MARK: - Hylla (ShelfView) */
+"shelf.empty.hint" = "Dra filer hit — eller ta en skärmbild med ⌘⇧3";
+"shelf.help.fileCount" = "Filer på hyllan";
+"action.showInFinder" = "Visa i Finder";
+"shelf.help.settings" = "Inställningar";
+"shelf.help.copyFile" = "Kopiera fil (för AnyDesk och andra fjärrskrivbord)";
+"action.delete" = "Ta bort";
+"action.clearAll" = "Töm allt";
+
+"shelf.toast.openButton" = "Öppna";
+"shelf.player.pressPlayHint" = "Tryck på ▶ för att spela upp";
+
+/* Snabbmeny på kortet */
+"shelf.context.copyFile" = "Kopiera fil";
+"shelf.context.copyPath" = "Kopiera sökväg";
+"shelf.context.uploadToDrive" = "Till Google Drive";
+
+/* Panelen ”Välj en destination” (Google Drive) */
+"shelf.drive.whereToPut" = "Välj en destination";
+"shelf.drive.notConnected" = "Google Drive är inte anslutet";
+"shelf.drive.notInstalled" = "Google Drive är inte installerat";
+"shelf.drive.uploadHelp" = "Till Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "en mapp";
+
+/* MARK: - Varningar (NSAlert) */
+"alert.clearAll.title" = "Töm hyllan?";
+"alert.clearAll.confirmButton" = "Töm";
+"alert.clearAll.cancelButton" = "Avbryt";
+
+/* MARK: - Varningar om mappbevakning (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Mappen ”%@” kan inte speglas — det är en hel systemmapp; välj en undermapp istället.";
+"watcher.warning.bulkFolder" = "Mappen ”%@”: befintligt innehåll (%d filer) flyttas inte — endast nya filer hamnar på hyllan.";
+"watcher.warning.accessNotGranted" = "Mappen ”%@”: åtkomst inte beviljad — tillåt den i Inställningar.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive hittades inte: installera Google Drive for desktop och logga in";
+
+/* MARK: - ”Spelas nu” (ScriptedNowPlaying) */
+/* Namnet på appen ”Music” (Apple Music) — visas under låttiteln i minispelaren. */
+"app.musicName" = "Musik";

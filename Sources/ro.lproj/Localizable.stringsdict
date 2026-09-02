@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- „Golești raftul?” — avertisment NSAlert înainte de a muta tot raftul în Coșul de gunoi. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d element va fi mutat în Coșul de gunoi. Poate fi anulat doar din Coșul de gunoi.</string>
+			<key>few</key>
+			<string>%d elemente vor fi mutate în Coșul de gunoi. Poate fi anulat doar din Coșul de gunoi.</string>
+			<key>other</key>
+			<string>%d de elemente vor fi mutate în Coșul de gunoi. Poate fi anulat doar din Coșul de gunoi.</string>
+		</dict>
+	</dict>
+
+	<!-- Eticheta curățării automate „Șterge fișierele mai vechi de N zile”. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Fișierele mai vechi de %#@days@ sunt mutate în Coșul de gunoi. Se verifică la pornire și o dată pe oră.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d zi</string>
+			<key>few</key>
+			<string>%d zile</string>
+			<key>other</key>
+			<string>%d de zile</string>
+		</dict>
+	</dict>
+
+	<!-- Toast „Încărcat pe Google Drive („folder”): N fișier(e)”. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Încărcat pe Google Drive („%@”): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d fișier</string>
+			<key>few</key>
+			<string>%d fișiere</string>
+			<key>other</key>
+			<string>%d de fișiere</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

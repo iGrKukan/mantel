@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Varoitus "Tyhjennetäänkö hylly?" ennen koko hyllyn siirtämistä Roskakoriin. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d kohde siirretään Roskakoriin. Toiminnon voi kumota vain Roskakorista.</string>
+			<key>other</key>
+			<string>%d kohdetta siirretään Roskakoriin. Toiminnon voi kumota vain Roskakorista.</string>
+		</dict>
+	</dict>
+
+	<!-- Automaattisen siivouksen selite "Poista tätä vanhemmat tiedostot (N päivää)". -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Yli %#@days@ vanhat tiedostot siirretään Roskakoriin. Tarkistus tehdään käynnistyksessä ja kerran tunnissa.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d päivä</string>
+			<key>other</key>
+			<string>%d päivää</string>
+		</dict>
+	</dict>
+
+	<!-- Ilmoitus "Ladattu Google Driveen ("kansio"): N tiedosto(a)". -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Ladattu Google Driveen (”%@”): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d tiedosto</string>
+			<key>other</key>
+			<string>%d tiedostoa</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

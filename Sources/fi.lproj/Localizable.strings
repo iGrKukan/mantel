@@ -1,0 +1,102 @@
+/* Mantel — suomenkielinen lokalisointi */
+
+/* MARK: - Valikkorivi (AppDelegate) */
+"menu.showShelf" = "Näytä hylly";
+"menu.openDriveFolder" = "Avaa Google Drive -kansio";
+"menu.clearShelf" = "Tyhjennä hylly";
+"menu.settings" = "Asetukset…";
+"menu.quit" = "Lopeta";
+
+/* Toiminto "Avaa kirjastokansio" — käytössä sekä valikkorivillä että asetusikkunassa. */
+"action.openLibrary" = "Avaa kirjastokansio";
+
+/* MARK: - Asetusikkuna (SettingsWindow) */
+"settings.window.title" = "Mantelin asetukset";
+
+/* Osio "Seuranta" */
+"settings.watching.title" = "Seuranta";
+"settings.watching.desktopLabel" = "Työpöytä";
+"settings.watching.desktopToggle" = "Seuraa työpöytää";
+"settings.watching.screenshotsToggle" = "Seuraa kansiota ~/Screenshots";
+"settings.watching.hotZone" = "Laajenna kohdistettaessa";
+"settings.watching.accessDenied" = "%@ — käyttöoikeutta ei myönnetty";
+"settings.watching.grantButton" = "Myönnä käyttöoikeus…";
+"settings.watching.grantMessage" = "Valitse kansio ”%@”, jotta Mantel voi seurata sitä.";
+
+/* Osio "Lähdekansiot" */
+"settings.folders.title" = "Lähdekansiot";
+"settings.folders.hint" = "Näihin kansioihin tallennettu tiedosto päätyy hyllylle — ei vain kuvakaappaukset.";
+"settings.folders.empty" = "Kansioita ei ole valittu";
+"settings.folders.add" = "Lisää kansio…";
+"settings.folders.addPrompt" = "Lisää";
+"settings.folders.moveToggle" = "Siirrä tiedostot pois kansiosta (älä kopioi)";
+"settings.folders.moveHint" = "Pois päältä — tiedosto kopioidaan ja alkuperäinen jää paikalleen. Päällä — tiedosto siirretään hyllylle, samoin kuin kuvakaappaukset.";
+
+/* Osio "Hylly" */
+"settings.shelf.title" = "Hylly";
+"settings.shelf.widthStepper" = "Hyllyn leveys: %d px";
+"settings.shelf.autoPrunePicker" = "Poista tätä vanhemmat tiedostot";
+"settings.shelf.prune.never" = "Ei koskaan";
+"settings.shelf.prune.oneDay" = "1 päivä";
+"settings.shelf.prune.threeDays" = "3 päivää";
+"settings.shelf.prune.sevenDays" = "7 päivää";
+"settings.shelf.prune.fourteenDays" = "14 päivää";
+"settings.shelf.prune.thirtyDays" = "30 päivää";
+"settings.shelf.prune.ninetyDays" = "90 päivää";
+"settings.shelf.pruneLabel.off" = "Automaattinen siivous on pois päältä — hylly säilyttää tiedostot, kunnes poistat ne itse.";
+/* "settings.shelf.pruneLabel.on" määritellään tiedostossa Localizable.stringsdict (tarvitsee päivä/päivää-taivutuksen). */
+
+/* Osio "Käynnistys" */
+"settings.launch.title" = "Käynnistys";
+"settings.launch.atLogin" = "Käynnistä kirjautuessa";
+
+/* Osio "Google Drive" */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Alikansion oletusnimi";
+"settings.drive.chooseFolder" = "Valitse kansio…";
+"settings.drive.reset" = "Palauta";
+"settings.drive.outsideWarning" = "Kansio on Google Driven ulkopuolella — tiedostoja ei synkronoida";
+"settings.drive.statusFound" = "Google Drive löytyi: %@. Tiedostot päätyvät kansioon ”%@”.";
+"settings.drive.statusNotFound" = "Google Drivea ei löytynyt";
+"settings.drive.destinationUndetermined" = "ei asetettu";
+
+/* MARK: - Hylly (ShelfView) */
+"shelf.empty.hint" = "Vedä tiedostoja tänne — tai ota kuvakaappaus painamalla ⌘⇧3";
+"shelf.help.fileCount" = "Hyllyllä olevat tiedostot";
+"action.showInFinder" = "Näytä Finderissa";
+"shelf.help.settings" = "Asetukset";
+"shelf.help.copyFile" = "Kopioi tiedosto (AnyDeskiä ja muita etätyöpöytiä varten)";
+"action.delete" = "Poista";
+"action.clearAll" = "Tyhjennä kaikki";
+
+"shelf.toast.openButton" = "Avaa";
+"shelf.player.pressPlayHint" = "Paina ▶ toistaaksesi";
+
+/* Kortin pikavalikko */
+"shelf.context.copyFile" = "Kopioi tiedosto";
+"shelf.context.copyPath" = "Kopioi polku";
+"shelf.context.uploadToDrive" = "Google Driveen";
+
+/* Paneeli "Valitse kohde" (Google Drive) */
+"shelf.drive.whereToPut" = "Valitse kohde";
+"shelf.drive.notConnected" = "Google Drive ei ole yhdistetty";
+"shelf.drive.notInstalled" = "Google Drivea ei ole asennettu";
+"shelf.drive.uploadHelp" = "Google Driveen → %@";
+"shelf.drive.fallbackFolderName" = "kansioon";
+
+/* MARK: - Ilmoitukset (NSAlert) */
+"alert.clearAll.title" = "Tyhjennetäänkö hylly?";
+"alert.clearAll.confirmButton" = "Tyhjennä";
+"alert.clearAll.cancelButton" = "Peruuta";
+
+/* MARK: - Kansionseurannan varoitukset (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Kansiota ”%@” ei voi peilata — se on kokonainen järjestelmäkansio; valitse sen sijaan alikansio.";
+"watcher.warning.bulkFolder" = "Kansio ”%@”: nykyistä sisältöä (%d tiedostoa) ei siirretä — vain uudet tiedostot päätyvät hyllylle.";
+"watcher.warning.accessNotGranted" = "Kansio ”%@”: käyttöoikeutta ei myönnetty — salli se Asetuksissa.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drivea ei löytynyt: asenna Google Drive for desktop ja kirjaudu sisään";
+
+/* MARK: - "Nyt soi" (ScriptedNowPlaying) */
+/* Sovelluksen "Music" (Apple Music) nimi — näkyy kappaleen nimen alla minisoittimessa. */
+"app.musicName" = "Musiikki";

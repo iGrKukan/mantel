@@ -52,7 +52,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 SettingsWindowController.shared.show()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                    let settingsWindow = NSApp.windows.first { $0.title.contains("астройк") }
+                    // Ищем окно настроек по styleMask (.titled — есть только у него; полка —
+                    // безрамочная nonactivatingPanel), а не по заголовку — тот теперь
+                    // локализован и не годится для сравнения по подстроке.
+                    let settingsWindow = NSApp.windows.first { $0.isVisible && $0.styleMask.contains(.titled) }
                         ?? NSApp.windows.filter { $0.isVisible && $0.frame.width > 300 }.last
                     if let view = settingsWindow?.contentView {
                         view.layoutSubtreeIfNeeded()
@@ -114,33 +117,33 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func buildMenu() -> NSMenu {
         let menu = NSMenu()
 
-        let toggleItem = NSMenuItem(title: "Показать полку", action: #selector(toggleShelf), keyEquivalent: "s")
+        let toggleItem = NSMenuItem(title: String(localized: "menu.showShelf"), action: #selector(toggleShelf), keyEquivalent: "s")
         toggleItem.keyEquivalentModifierMask = [.command, .option]
         toggleItem.target = self
         menu.addItem(toggleItem)
 
         menu.addItem(.separator())
 
-        let openLibraryItem = NSMenuItem(title: "Открыть папку библиотеки", action: #selector(openLibrary), keyEquivalent: "")
+        let openLibraryItem = NSMenuItem(title: String(localized: "action.openLibrary"), action: #selector(openLibrary), keyEquivalent: "")
         openLibraryItem.target = self
         menu.addItem(openLibraryItem)
 
-        let openDriveItem = NSMenuItem(title: "Открыть папку на Google Диске", action: #selector(openDriveFolder), keyEquivalent: "")
+        let openDriveItem = NSMenuItem(title: String(localized: "menu.openDriveFolder"), action: #selector(openDriveFolder), keyEquivalent: "")
         openDriveItem.target = self
         openDriveItem.isEnabled = GoogleDrive.isAvailable
         menu.addItem(openDriveItem)
 
-        let clearItem = NSMenuItem(title: "Очистить полку", action: #selector(clearShelf), keyEquivalent: "")
+        let clearItem = NSMenuItem(title: String(localized: "menu.clearShelf"), action: #selector(clearShelf), keyEquivalent: "")
         clearItem.target = self
         menu.addItem(clearItem)
 
         menu.addItem(.separator())
 
-        let settingsItem = NSMenuItem(title: "Настройки…", action: #selector(openSettings), keyEquivalent: ",")
+        let settingsItem = NSMenuItem(title: String(localized: "menu.settings"), action: #selector(openSettings), keyEquivalent: ",")
         settingsItem.target = self
         menu.addItem(settingsItem)
 
-        let quitItem = NSMenuItem(title: "Выход", action: #selector(quit), keyEquivalent: "q")
+        let quitItem = NSMenuItem(title: String(localized: "menu.quit"), action: #selector(quit), keyEquivalent: "q")
         quitItem.target = self
         menu.addItem(quitItem)
 

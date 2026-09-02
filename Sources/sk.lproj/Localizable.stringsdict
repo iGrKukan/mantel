@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- „Vymazať policu?“ — upozornenie NSAlert pred presunutím celej police do Koša. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d položka bude presunutá do Koša. Vrátiť späť možno iba z Koša.</string>
+			<key>few</key>
+			<string>%d položky budú presunuté do Koša. Vrátiť späť možno iba z Koša.</string>
+			<key>many</key>
+			<string>%d položky budú presunuté do Koša. Vrátiť späť možno iba z Koša.</string>
+			<key>other</key>
+			<string>%d položiek bude presunutých do Koša. Vrátiť späť možno iba z Koša.</string>
+		</dict>
+	</dict>
+
+	<!-- Popisok automatického čistenia „Odstraňovať súbory staršie než N dní“. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Súbory staršie než %#@days@ sa presúvajú do Koša. Kontrola pri spustení a raz za hodinu.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d deň</string>
+			<key>few</key>
+			<string>%d dni</string>
+			<key>many</key>
+			<string>%d dňa</string>
+			<key>other</key>
+			<string>%d dní</string>
+		</dict>
+	</dict>
+
+	<!-- Upozornenie „Nahrané na Disk Google („priečinok“): N súbor(ov)“. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Nahrané na Disk Google („%@“): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d súbor</string>
+			<key>few</key>
+			<string>%d súbory</string>
+			<key>many</key>
+			<string>%d súboru</string>
+			<key>other</key>
+			<string>%d súborov</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

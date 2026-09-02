@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- «Очистити полицю?» — попередження NSAlert перед переміщенням усієї полиці в Кошик. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d елемент буде переміщено в Кошик. Скасувати можна лише з Кошика.</string>
+			<key>few</key>
+			<string>%d елементи буде переміщено в Кошик. Скасувати можна лише з Кошика.</string>
+			<key>many</key>
+			<string>%d елементів буде переміщено в Кошик. Скасувати можна лише з Кошика.</string>
+			<key>other</key>
+			<string>%d елемента буде переміщено в Кошик. Скасувати можна лише з Кошика.</string>
+		</dict>
+	</dict>
+
+	<!-- Підпис автоочищення «Видаляти файли старші за N днів». -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Файли старші за %#@days@ переносяться в Кошик. Перевірка під час запуску та раз на годину.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d день</string>
+			<key>few</key>
+			<string>%d дні</string>
+			<key>many</key>
+			<string>%d днів</string>
+			<key>other</key>
+			<string>%d дня</string>
+		</dict>
+	</dict>
+
+	<!-- Тост «Завантажено на Google Диск («папка»): N файл(ів)». -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Завантажено на Google Диск («%@»): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d файл</string>
+			<key>few</key>
+			<string>%d файли</string>
+			<key>many</key>
+			<string>%d файлів</string>
+			<key>other</key>
+			<string>%d файла</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

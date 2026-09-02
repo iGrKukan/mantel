@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- ההתראה "לנקות את המדף?" לפני העברת כל המדף לסל האשפה. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>פריט אחד יועבר לסל האשפה. אפשר לבטל את זה רק מתוך סל האשפה.</string>
+			<key>two</key>
+			<string>שני פריטים יועברו לסל האשפה. אפשר לבטל את זה רק מתוך סל האשפה.</string>
+			<key>many</key>
+			<string>%d פריטים יועברו לסל האשפה. אפשר לבטל את זה רק מתוך סל האשפה.</string>
+			<key>other</key>
+			<string>%d פריטים יועברו לסל האשפה. אפשר לבטל את זה רק מתוך סל האשפה.</string>
+		</dict>
+	</dict>
+
+	<!-- תווית הניקוי האוטומטי "מחק קבצים ישנים מ-N ימים". -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>קבצים ישנים %#@days@ יועברו לסל האשפה. הבדיקה מתבצעת בהפעלה ואחת לשעה.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>מיום אחד</string>
+			<key>two</key>
+			<string>מיומיים</string>
+			<key>many</key>
+			<string>מ-%d ימים</string>
+			<key>other</key>
+			<string>מ-%d ימים</string>
+		</dict>
+	</dict>
+
+	<!-- ההודעה "הועלה אל Google Drive ("תיקייה"): N קבצים". -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>הועלה אל Google Drive ("%@"): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>קובץ אחד</string>
+			<key>two</key>
+			<string>שני קבצים</string>
+			<key>many</key>
+			<string>%d קבצים</string>
+			<key>other</key>
+			<string>%d קבצים</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

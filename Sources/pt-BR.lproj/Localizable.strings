@@ -1,0 +1,102 @@
+/* Mantel — Brazilian Portuguese localization */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Mostrar Prateleira";
+"menu.openDriveFolder" = "Abrir Pasta do Google Drive";
+"menu.clearShelf" = "Limpar Prateleira";
+"menu.settings" = "Ajustes…";
+"menu.quit" = "Sair";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Abrir Pasta da Biblioteca";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Ajustes do Mantel";
+
+/* "Watching" section */
+"settings.watching.title" = "Monitoramento";
+"settings.watching.desktopLabel" = "Área de Trabalho";
+"settings.watching.desktopToggle" = "Monitorar a Área de Trabalho";
+"settings.watching.screenshotsToggle" = "Monitorar ~/Screenshots";
+"settings.watching.hotZone" = "Expandir ao passar o cursor";
+"settings.watching.accessDenied" = "%@ — acesso não concedido";
+"settings.watching.grantButton" = "Conceder Acesso…";
+"settings.watching.grantMessage" = "Escolha a pasta “%@” para que o Mantel possa monitorá-la.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Pastas de Origem";
+"settings.folders.hint" = "Qualquer arquivo colocado nessas pastas vai para a prateleira, não só capturas de tela.";
+"settings.folders.empty" = "Nenhuma pasta selecionada";
+"settings.folders.add" = "Adicionar Pasta…";
+"settings.folders.addPrompt" = "Adicionar";
+"settings.folders.moveToggle" = "Mover arquivos para fora da pasta (não copiar)";
+"settings.folders.moveHint" = "Desativado: o arquivo é copiado e o original permanece no lugar. Ativado: o arquivo é movido para a prateleira, do mesmo jeito que as capturas de tela.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Prateleira";
+"settings.shelf.widthStepper" = "Largura da prateleira: %d px";
+"settings.shelf.autoPrunePicker" = "Excluir arquivos com mais de";
+"settings.shelf.prune.never" = "Nunca";
+"settings.shelf.prune.oneDay" = "1 dia";
+"settings.shelf.prune.threeDays" = "3 dias";
+"settings.shelf.prune.sevenDays" = "7 dias";
+"settings.shelf.prune.fourteenDays" = "14 dias";
+"settings.shelf.prune.thirtyDays" = "30 dias";
+"settings.shelf.prune.ninetyDays" = "90 dias";
+"settings.shelf.pruneLabel.off" = "A limpeza automática está desativada — a prateleira mantém os arquivos até você excluí-los manualmente.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Inicialização";
+"settings.launch.atLogin" = "Abrir ao iniciar sessão";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Nome da subpasta padrão";
+"settings.drive.chooseFolder" = "Escolher Pasta…";
+"settings.drive.reset" = "Redefinir";
+"settings.drive.outsideWarning" = "A pasta está fora do Google Drive — os arquivos não serão sincronizados";
+"settings.drive.statusFound" = "Google Drive encontrado: %@. Os arquivos vão para “%@”.";
+"settings.drive.statusNotFound" = "Google Drive não encontrado";
+"settings.drive.destinationUndetermined" = "não definido";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Arraste arquivos aqui — ou tire uma captura de tela com ⌘⇧3";
+"shelf.help.fileCount" = "Arquivos na prateleira";
+"action.showInFinder" = "Mostrar no Finder";
+"shelf.help.settings" = "Ajustes";
+"shelf.help.copyFile" = "Copiar arquivo (para AnyDesk e outras áreas de trabalho remotas)";
+"action.delete" = "Excluir";
+"action.clearAll" = "Limpar Tudo";
+
+"shelf.toast.openButton" = "Abrir";
+"shelf.player.pressPlayHint" = "Pressione ▶ para reproduzir";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Copiar Arquivo";
+"shelf.context.copyPath" = "Copiar Caminho";
+"shelf.context.uploadToDrive" = "Para o Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Escolher um Destino";
+"shelf.drive.notConnected" = "O Google Drive não está conectado";
+"shelf.drive.notInstalled" = "O Google Drive não está instalado";
+"shelf.drive.uploadHelp" = "Para o Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "uma pasta";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Limpar a prateleira?";
+"alert.clearAll.confirmButton" = "Limpar";
+"alert.clearAll.cancelButton" = "Cancelar";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "A pasta “%@” não pode ser espelhada — é uma pasta do sistema inteira; escolha uma subpasta em vez disso.";
+"watcher.warning.bulkFolder" = "Pasta “%@”: o conteúdo existente (%d arquivos) não será movido — só os arquivos novos irão para a prateleira.";
+"watcher.warning.accessNotGranted" = "Pasta “%@”: acesso não concedido — permita em Ajustes.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive não encontrado: instale o Google Drive para computador e faça login";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Música";

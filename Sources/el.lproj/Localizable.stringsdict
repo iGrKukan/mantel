@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- «Εκκαθάριση ραφιού;» — προειδοποίηση NSAlert πριν από τη μετακίνηση όλου του ραφιού στον Κάδο Απορριμμάτων. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d στοιχείο θα μετακινηθεί στον Κάδο Απορριμμάτων. Η αναίρεση είναι δυνατή μόνο από τον Κάδο Απορριμμάτων.</string>
+			<key>other</key>
+			<string>%d στοιχεία θα μετακινηθούν στον Κάδο Απορριμμάτων. Η αναίρεση είναι δυνατή μόνο από τον Κάδο Απορριμμάτων.</string>
+		</dict>
+	</dict>
+
+	<!-- Ετικέτα αυτόματης εκκαθάρισης «Διαγραφή αρχείων παλαιότερων από N ημέρες». -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Τα αρχεία που είναι παλαιότερα από %#@days@ μετακινούνται στον Κάδο Απορριμμάτων. Έλεγχος κατά την εκκίνηση και μία φορά την ώρα.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d ημέρα</string>
+			<key>other</key>
+			<string>%d ημέρες</string>
+		</dict>
+	</dict>
+
+	<!-- Ειδοποίηση «Μεταφορτώθηκε στο Google Drive («φάκελος»): N αρχεία». -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Μεταφορτώθηκε στο Google Drive («%@»): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d αρχείο</string>
+			<key>other</key>
+			<string>%d αρχεία</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

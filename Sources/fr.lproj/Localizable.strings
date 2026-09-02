@@ -1,0 +1,102 @@
+/* Mantel — French localization */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Afficher l'étagère";
+"menu.openDriveFolder" = "Ouvrir le dossier Google Drive";
+"menu.clearShelf" = "Vider l'étagère";
+"menu.settings" = "Réglages…";
+"menu.quit" = "Quitter";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Ouvrir le dossier Bibliothèque";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Réglages de Mantel";
+
+/* "Watching" section */
+"settings.watching.title" = "Surveillance";
+"settings.watching.desktopLabel" = "Bureau";
+"settings.watching.desktopToggle" = "Surveiller le Bureau";
+"settings.watching.screenshotsToggle" = "Surveiller ~/Screenshots";
+"settings.watching.hotZone" = "Déplier au survol";
+"settings.watching.accessDenied" = "%@ — accès non autorisé";
+"settings.watching.grantButton" = "Autoriser l'accès…";
+"settings.watching.grantMessage" = "Choisissez le dossier « %@ » pour que Mantel puisse le surveiller.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Dossiers sources";
+"settings.folders.hint" = "Tout fichier placé dans ces dossiers arrive sur l'étagère, pas seulement les captures d'écran.";
+"settings.folders.empty" = "Aucun dossier sélectionné";
+"settings.folders.add" = "Ajouter un dossier…";
+"settings.folders.addPrompt" = "Ajouter";
+"settings.folders.moveToggle" = "Déplacer les fichiers hors du dossier (ne pas copier)";
+"settings.folders.moveHint" = "Désactivé — le fichier est copié et l'original reste en place. Activé — le fichier est déplacé vers l'étagère, comme pour les captures d'écran.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Étagère";
+"settings.shelf.widthStepper" = "Largeur de l'étagère : %d px";
+"settings.shelf.autoPrunePicker" = "Supprimer les fichiers plus anciens que";
+"settings.shelf.prune.never" = "Jamais";
+"settings.shelf.prune.oneDay" = "1 jour";
+"settings.shelf.prune.threeDays" = "3 jours";
+"settings.shelf.prune.sevenDays" = "7 jours";
+"settings.shelf.prune.fourteenDays" = "14 jours";
+"settings.shelf.prune.thirtyDays" = "30 jours";
+"settings.shelf.prune.ninetyDays" = "90 jours";
+"settings.shelf.pruneLabel.off" = "Le nettoyage automatique est désactivé — l'étagère conserve les fichiers jusqu'à ce que vous les supprimiez manuellement.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Démarrage";
+"settings.launch.atLogin" = "Ouvrir à la session";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Nom du sous-dossier par défaut";
+"settings.drive.chooseFolder" = "Choisir un dossier…";
+"settings.drive.reset" = "Réinitialiser";
+"settings.drive.outsideWarning" = "Le dossier est en dehors de Google Drive — les fichiers ne seront pas synchronisés";
+"settings.drive.statusFound" = "Google Drive détecté : %@. Les fichiers vont dans « %@ ».";
+"settings.drive.statusNotFound" = "Google Drive introuvable";
+"settings.drive.destinationUndetermined" = "non défini";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Glissez des fichiers ici — ou faites une capture d'écran avec ⌘⇧3";
+"shelf.help.fileCount" = "Fichiers sur l'étagère";
+"action.showInFinder" = "Afficher dans le Finder";
+"shelf.help.settings" = "Réglages";
+"shelf.help.copyFile" = "Copier le fichier (pour AnyDesk et autres bureaux à distance)";
+"action.delete" = "Supprimer";
+"action.clearAll" = "Tout effacer";
+
+"shelf.toast.openButton" = "Ouvrir";
+"shelf.player.pressPlayHint" = "Appuyez sur ▶ pour lire";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Copier le fichier";
+"shelf.context.copyPath" = "Copier le chemin";
+"shelf.context.uploadToDrive" = "Vers Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Choisir une destination";
+"shelf.drive.notConnected" = "Google Drive n'est pas connecté";
+"shelf.drive.notInstalled" = "Google Drive n'est pas installé";
+"shelf.drive.uploadHelp" = "Vers Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "un dossier";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Vider l'étagère ?";
+"alert.clearAll.confirmButton" = "Vider";
+"alert.clearAll.cancelButton" = "Annuler";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Le dossier « %@ » ne peut pas être reproduit — c'est un dossier système entier ; choisissez plutôt un sous-dossier.";
+"watcher.warning.bulkFolder" = "Dossier « %@ » : le contenu existant (%d fichiers) ne sera pas déplacé — seuls les nouveaux fichiers arriveront sur l'étagère.";
+"watcher.warning.accessNotGranted" = "Dossier « %@ » : accès non autorisé — autorisez-le dans les Réglages.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive introuvable : installez Google Drive pour ordinateur et connectez-vous";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Musique";

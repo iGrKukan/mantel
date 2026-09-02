@@ -1,0 +1,102 @@
+/* Mantel — ελληνική τοπικοποίηση */
+
+/* MARK: - Γραμμή μενού (AppDelegate) */
+"menu.showShelf" = "Εμφάνιση ραφιού";
+"menu.openDriveFolder" = "Άνοιγμα φακέλου Google Drive";
+"menu.clearShelf" = "Εκκαθάριση ραφιού";
+"menu.settings" = "Ρυθμίσεις…";
+"menu.quit" = "Τερματισμός";
+
+/* Η ενέργεια «Άνοιγμα φακέλου βιβλιοθήκης» — κοινή για τη γραμμή μενού και το παράθυρο ρυθμίσεων. */
+"action.openLibrary" = "Άνοιγμα φακέλου βιβλιοθήκης";
+
+/* MARK: - Παράθυρο ρυθμίσεων (SettingsWindow) */
+"settings.window.title" = "Ρυθμίσεις Mantel";
+
+/* Ενότητα «Παρακολούθηση» */
+"settings.watching.title" = "Παρακολούθηση";
+"settings.watching.desktopLabel" = "Επιφάνεια εργασίας";
+"settings.watching.desktopToggle" = "Παρακολούθηση Επιφάνειας εργασίας";
+"settings.watching.screenshotsToggle" = "Παρακολούθηση ~/Screenshots";
+"settings.watching.hotZone" = "Ανάπτυξη κατά την τοποθέτηση δείκτη";
+"settings.watching.accessDenied" = "%@ — δεν έχει παραχωρηθεί πρόσβαση";
+"settings.watching.grantButton" = "Παραχώρηση πρόσβασης…";
+"settings.watching.grantMessage" = "Επίλεξε τον φάκελο «%@» ώστε το Mantel να μπορεί να τον παρακολουθεί.";
+
+/* Ενότητα «Φάκελοι προέλευσης» */
+"settings.folders.title" = "Φάκελοι προέλευσης";
+"settings.folders.hint" = "Κάθε αρχείο που τοποθετείται σε αυτούς τους φακέλους καταλήγει στο ράφι, όχι μόνο τα στιγμιότυπα οθόνης.";
+"settings.folders.empty" = "Δεν έχουν επιλεγεί φάκελοι";
+"settings.folders.add" = "Προσθήκη φακέλου…";
+"settings.folders.addPrompt" = "Προσθήκη";
+"settings.folders.moveToggle" = "Μετακίνηση αρχείων εκτός φακέλου (χωρίς αντιγραφή)";
+"settings.folders.moveHint" = "Απενεργοποιημένο — το αρχείο αντιγράφεται και το πρωτότυπο παραμένει στη θέση του. Ενεργοποιημένο — το αρχείο μετακινείται στο ράφι, όπως ακριβώς και τα στιγμιότυπα οθόνης.";
+
+/* Ενότητα «Ράφι» */
+"settings.shelf.title" = "Ράφι";
+"settings.shelf.widthStepper" = "Πλάτος ραφιού: %d px";
+"settings.shelf.autoPrunePicker" = "Διαγραφή αρχείων παλαιότερων από";
+"settings.shelf.prune.never" = "Ποτέ";
+"settings.shelf.prune.oneDay" = "1 ημέρα";
+"settings.shelf.prune.threeDays" = "3 ημέρες";
+"settings.shelf.prune.sevenDays" = "7 ημέρες";
+"settings.shelf.prune.fourteenDays" = "14 ημέρες";
+"settings.shelf.prune.thirtyDays" = "30 ημέρες";
+"settings.shelf.prune.ninetyDays" = "90 ημέρες";
+"settings.shelf.pruneLabel.off" = "Η αυτόματη εκκαθάριση είναι απενεργοποιημένη — το ράφι διατηρεί τα αρχεία μέχρι να τα διαγράψεις χειροκίνητα.";
+/* Το "settings.shelf.pruneLabel.on" ορίζεται στο Localizable.stringsdict (χρειάζεται πληθυντικό για «ημέρα/ημέρες»). */
+
+/* Ενότητα «Εκκίνηση» */
+"settings.launch.title" = "Εκκίνηση";
+"settings.launch.atLogin" = "Εκκίνηση κατά τη σύνδεση";
+
+/* Ενότητα «Google Drive» */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Προεπιλεγμένο όνομα υποφακέλου";
+"settings.drive.chooseFolder" = "Επιλογή φακέλου…";
+"settings.drive.reset" = "Επαναφορά";
+"settings.drive.outsideWarning" = "Ο φάκελος βρίσκεται εκτός του Google Drive — τα αρχεία δεν θα συγχρονίζονται";
+"settings.drive.statusFound" = "Το Google Drive βρέθηκε: %@. Τα αρχεία καταλήγουν στο «%@».";
+"settings.drive.statusNotFound" = "Δεν βρέθηκε Google Drive";
+"settings.drive.destinationUndetermined" = "μη ορισμένο";
+
+/* MARK: - Ράφι (ShelfView) */
+"shelf.empty.hint" = "Σύρε αρχεία εδώ — ή τράβηξε ένα στιγμιότυπο με ⌘⇧3";
+"shelf.help.fileCount" = "Αρχεία στο ράφι";
+"action.showInFinder" = "Εμφάνιση στο Finder";
+"shelf.help.settings" = "Ρυθμίσεις";
+"shelf.help.copyFile" = "Αντιγραφή αρχείου (για AnyDesk και άλλες απομακρυσμένες επιφάνειες εργασίας)";
+"action.delete" = "Διαγραφή";
+"action.clearAll" = "Εκκαθάριση όλων";
+
+"shelf.toast.openButton" = "Άνοιγμα";
+"shelf.player.pressPlayHint" = "Πάτησε ▶ για αναπαραγωγή";
+
+/* Μενού περιβάλλοντος κάρτας */
+"shelf.context.copyFile" = "Αντιγραφή αρχείου";
+"shelf.context.copyPath" = "Αντιγραφή διαδρομής";
+"shelf.context.uploadToDrive" = "Στο Google Drive";
+
+/* Πλαίσιο «Επιλογή προορισμού» (Google Drive) */
+"shelf.drive.whereToPut" = "Επιλογή προορισμού";
+"shelf.drive.notConnected" = "Το Google Drive δεν είναι συνδεδεμένο";
+"shelf.drive.notInstalled" = "Το Google Drive δεν είναι εγκατεστημένο";
+"shelf.drive.uploadHelp" = "Στο Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "έναν φάκελο";
+
+/* MARK: - Ειδοποιήσεις (NSAlert) */
+"alert.clearAll.title" = "Εκκαθάριση ραφιού;";
+"alert.clearAll.confirmButton" = "Εκκαθάριση";
+"alert.clearAll.cancelButton" = "Άκυρο";
+
+/* MARK: - Προειδοποιήσεις παρακολούθησης φακέλων (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Ο φάκελος «%@» δεν μπορεί να αντικατοπτριστεί — πρόκειται για ολόκληρο φάκελο συστήματος· επίλεξε έναν υποφάκελο αντ' αυτού.";
+"watcher.warning.bulkFolder" = "Φάκελος «%@»: το υπάρχον περιεχόμενο (%d αρχεία) δεν θα μετακινηθεί — μόνο τα νέα αρχεία θα καταλήξουν στο ράφι.";
+"watcher.warning.accessNotGranted" = "Φάκελος «%@»: δεν έχει παραχωρηθεί πρόσβαση — επίτρεψέ την στις Ρυθμίσεις.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Δεν βρέθηκε Google Drive: εγκατέστησε το Google Drive for desktop και συνδέσου";
+
+/* MARK: - «Τώρα αναπαράγεται» (ScriptedNowPlaying) */
+/* Το όνομα της εφαρμογής «Μουσική» (Apple Music) — εμφανίζεται κάτω από τον τίτλο του τραγουδιού στο μίνι player. */
+"app.musicName" = "Μουσική";

@@ -1,0 +1,102 @@
+/* Mantel — русская локализация */
+
+/* MARK: - Меню в строке меню (AppDelegate) */
+"menu.showShelf" = "Показать полку";
+"menu.openDriveFolder" = "Открыть папку на Google Диске";
+"menu.clearShelf" = "Очистить полку";
+"menu.settings" = "Настройки…";
+"menu.quit" = "Выход";
+
+/* Действие «открыть папку библиотеки» — общее для меню в строке меню и окна настроек. */
+"action.openLibrary" = "Открыть папку библиотеки";
+
+/* MARK: - Окно настроек (SettingsWindow) */
+"settings.window.title" = "Настройки Mantel";
+
+/* Раздел «Слежение» */
+"settings.watching.title" = "Слежение";
+"settings.watching.desktopLabel" = "Рабочий стол";
+"settings.watching.desktopToggle" = "Следить за Рабочим столом";
+"settings.watching.screenshotsToggle" = "Следить за ~/Screenshots";
+"settings.watching.hotZone" = "Раскрывать по наведению";
+"settings.watching.accessDenied" = "%@ — доступ не выдан";
+"settings.watching.grantButton" = "Разрешить…";
+"settings.watching.grantMessage" = "Выбери папку «%@», чтобы Mantel мог за ней следить.";
+
+/* Раздел «Папки-источники» */
+"settings.folders.title" = "Папки-источники";
+"settings.folders.hint" = "Из этих папок в полку попадает любой файл, а не только снимки экрана.";
+"settings.folders.empty" = "Папки не выбраны";
+"settings.folders.add" = "Добавить папку…";
+"settings.folders.addPrompt" = "Добавить";
+"settings.folders.moveToggle" = "Забирать файлы из папки (не копировать)";
+"settings.folders.moveHint" = "Выключено — файл копируется, оригинал остаётся на месте. Включено — файл переносится в полку, как это делается со снимками экрана.";
+
+/* Раздел «Полка» */
+"settings.shelf.title" = "Полка";
+"settings.shelf.widthStepper" = "Ширина полки: %d px";
+"settings.shelf.autoPrunePicker" = "Удалять файлы старше";
+"settings.shelf.prune.never" = "Никогда";
+"settings.shelf.prune.oneDay" = "1 дня";
+"settings.shelf.prune.threeDays" = "3 дней";
+"settings.shelf.prune.sevenDays" = "7 дней";
+"settings.shelf.prune.fourteenDays" = "14 дней";
+"settings.shelf.prune.thirtyDays" = "30 дней";
+"settings.shelf.prune.ninetyDays" = "90 дней";
+"settings.shelf.pruneLabel.off" = "Автоочистка выключена — полка хранит файлы, пока не удалишь вручную.";
+"settings.shelf.pruneLabel.on" = "Файлы старше %d дн. отправляются в Корзину. Проверка при запуске и раз в час.";
+
+/* Раздел «Запуск» */
+"settings.launch.title" = "Запуск";
+"settings.launch.atLogin" = "Запускать при входе";
+
+/* Раздел «Google Диск» */
+"settings.drive.title" = "Google Диск";
+"settings.drive.subfolderField" = "Имя подпапки по умолчанию";
+"settings.drive.chooseFolder" = "Выбрать папку…";
+"settings.drive.reset" = "Сбросить";
+"settings.drive.outsideWarning" = "Папка вне Google Диска — файлы не будут синхронизированы";
+"settings.drive.statusFound" = "Google Диск найден: %@. Файлы попадают в «%@».";
+"settings.drive.statusNotFound" = "Google Диск не найден";
+"settings.drive.destinationUndetermined" = "не определена";
+
+/* MARK: - Полка (ShelfView) */
+"shelf.empty.hint" = "Перетащи сюда файлы — или сделай ⌘⇧3";
+"shelf.help.fileCount" = "Файлов в полке";
+"action.showInFinder" = "Показать в Finder";
+"shelf.help.settings" = "Настройки";
+"shelf.help.copyFile" = "Скопировать файл (для AnyDesk и других удалённых столов)";
+"action.delete" = "Удалить";
+"action.clearAll" = "Очистить всё";
+
+"shelf.toast.openButton" = "Открыть";
+"shelf.player.pressPlayHint" = "Нажми ▶, чтобы включить";
+
+/* Контекстное меню карточки */
+"shelf.context.copyFile" = "Скопировать файл";
+"shelf.context.copyPath" = "Скопировать путь";
+"shelf.context.uploadToDrive" = "На Google Диск";
+
+/* Панель «Куда положить» (Google Диск) */
+"shelf.drive.whereToPut" = "Куда положить";
+"shelf.drive.notConnected" = "Google Диск не подключён";
+"shelf.drive.notInstalled" = "Google Диск не установлен";
+"shelf.drive.uploadHelp" = "На Google Диск → %@";
+"shelf.drive.fallbackFolderName" = "папку";
+
+/* MARK: - Предупреждения (NSAlert) */
+"alert.clearAll.title" = "Очистить полку?";
+"alert.clearAll.confirmButton" = "Очистить";
+"alert.clearAll.cancelButton" = "Отмена";
+
+/* MARK: - Предупреждения слежения за папками (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Папка «%@» не подходит для зеркалирования — это системная папка целиком, выберите подпапку.";
+"watcher.warning.bulkFolder" = "Папка «%@»: старое содержимое (%d файлов) не переносится — в полку попадут только новые файлы.";
+"watcher.warning.accessNotGranted" = "Папка «%@»: доступ не выдан — разреши её в настройках.";
+
+/* MARK: - Google Диск (GoogleDrive) */
+"drive.error.notFound" = "Google Диск не найден: установи Google Drive for desktop и войди в аккаунт";
+
+/* MARK: - «Сейчас играет» (ScriptedNowPlaying) */
+/* Имя приложения «Музыка» (Apple Music) — показывается под названием трека в мини-плеере. */
+"app.musicName" = "Музыка";

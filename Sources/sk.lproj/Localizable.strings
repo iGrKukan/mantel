@@ -1,0 +1,102 @@
+/* Mantel — slovenská lokalizácia */
+
+/* MARK: - Panel s ponukou (AppDelegate) */
+"menu.showShelf" = "Zobraziť policu";
+"menu.openDriveFolder" = "Otvoriť priečinok na Disku Google";
+"menu.clearShelf" = "Vymazať policu";
+"menu.settings" = "Nastavenia…";
+"menu.quit" = "Skončiť";
+
+/* Akcia „Otvoriť priečinok knižnice“ – spoločná pre panel s ponukou aj okno nastavení. */
+"action.openLibrary" = "Otvoriť priečinok knižnice";
+
+/* MARK: - Okno nastavení (SettingsWindow) */
+"settings.window.title" = "Nastavenia Mantel";
+
+/* Sekcia „Sledovanie“ */
+"settings.watching.title" = "Sledovanie";
+"settings.watching.desktopLabel" = "Plocha";
+"settings.watching.desktopToggle" = "Sledovať Plochu";
+"settings.watching.screenshotsToggle" = "Sledovať ~/Screenshots";
+"settings.watching.hotZone" = "Rozbaliť pri prejdení myšou";
+"settings.watching.accessDenied" = "%@ — prístup nie je udelený";
+"settings.watching.grantButton" = "Udeliť prístup…";
+"settings.watching.grantMessage" = "Vyberte priečinok „%@“, aby ho Mantel mohol sledovať.";
+
+/* Sekcia „Zdrojové priečinky“ */
+"settings.folders.title" = "Zdrojové priečinky";
+"settings.folders.hint" = "Do police sa dostane každý súbor umiestnený do týchto priečinkov, nielen snímky obrazovky.";
+"settings.folders.empty" = "Nie sú vybrané žiadne priečinky";
+"settings.folders.add" = "Pridať priečinok…";
+"settings.folders.addPrompt" = "Pridať";
+"settings.folders.moveToggle" = "Presúvať súbory z priečinka (nekopírovať)";
+"settings.folders.moveHint" = "Vypnuté — súbor sa skopíruje a originál zostane na mieste. Zapnuté — súbor sa presunie na policu, rovnako ako pri snímkach obrazovky.";
+
+/* Sekcia „Polica“ */
+"settings.shelf.title" = "Polica";
+"settings.shelf.widthStepper" = "Šírka police: %d px";
+"settings.shelf.autoPrunePicker" = "Odstraňovať súbory staršie než";
+"settings.shelf.prune.never" = "Nikdy";
+"settings.shelf.prune.oneDay" = "1 deň";
+"settings.shelf.prune.threeDays" = "3 dni";
+"settings.shelf.prune.sevenDays" = "7 dní";
+"settings.shelf.prune.fourteenDays" = "14 dní";
+"settings.shelf.prune.thirtyDays" = "30 dní";
+"settings.shelf.prune.ninetyDays" = "90 dní";
+"settings.shelf.pruneLabel.off" = "Automatické čistenie je vypnuté — polica uchováva súbory, kým ich neodstránite ručne.";
+/* "settings.shelf.pruneLabel.on" je definovaný v Localizable.stringsdict (potrebuje skloňovanie „deň/dni/dní“). */
+
+/* Sekcia „Spustenie“ */
+"settings.launch.title" = "Spustenie";
+"settings.launch.atLogin" = "Spustiť pri prihlásení";
+
+/* Sekcia „Disk Google“ */
+"settings.drive.title" = "Disk Google";
+"settings.drive.subfolderField" = "Predvolený názov podpriečinka";
+"settings.drive.chooseFolder" = "Vybrať priečinok…";
+"settings.drive.reset" = "Obnoviť";
+"settings.drive.outsideWarning" = "Priečinok je mimo Disku Google — súbory sa nebudú synchronizovať";
+"settings.drive.statusFound" = "Disk Google nájdený: %@. Súbory sa ukladajú do „%@“.";
+"settings.drive.statusNotFound" = "Disk Google nenájdený";
+"settings.drive.destinationUndetermined" = "nenastavené";
+
+/* MARK: - Polica (ShelfView) */
+"shelf.empty.hint" = "Presuňte sem súbory — alebo urobte snímku pomocou ⌘⇧3";
+"shelf.help.fileCount" = "Súborov na polici";
+"action.showInFinder" = "Zobraziť vo Finderi";
+"shelf.help.settings" = "Nastavenia";
+"shelf.help.copyFile" = "Kopírovať súbor (pre AnyDesk a iné vzdialené plochy)";
+"action.delete" = "Odstrániť";
+"action.clearAll" = "Vymazať všetko";
+
+"shelf.toast.openButton" = "Otvoriť";
+"shelf.player.pressPlayHint" = "Stlačte ▶ na prehratie";
+
+/* Kontextová ponuka karty */
+"shelf.context.copyFile" = "Kopírovať súbor";
+"shelf.context.copyPath" = "Kopírovať cestu";
+"shelf.context.uploadToDrive" = "Na Disk Google";
+
+/* Panel „Vybrať cieľ“ (Disk Google) */
+"shelf.drive.whereToPut" = "Vyberte cieľ";
+"shelf.drive.notConnected" = "Disk Google nie je pripojený";
+"shelf.drive.notInstalled" = "Disk Google nie je nainštalovaný";
+"shelf.drive.uploadHelp" = "Na Disk Google → %@";
+"shelf.drive.fallbackFolderName" = "priečinok";
+
+/* MARK: - Upozornenia (NSAlert) */
+"alert.clearAll.title" = "Vymazať policu?";
+"alert.clearAll.confirmButton" = "Vymazať";
+"alert.clearAll.cancelButton" = "Zrušiť";
+
+/* MARK: - Upozornenia pri sledovaní priečinkov (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Priečinok „%@“ nemožno zrkadliť — ide o celý systémový priečinok; vyberte podpriečinok.";
+"watcher.warning.bulkFolder" = "Priečinok „%@“: existujúci obsah (%d súborov) sa neprenesie — na policu sa dostanú len nové súbory.";
+"watcher.warning.accessNotGranted" = "Priečinok „%@“: prístup nie je udelený — povoľte ho v Nastaveniach.";
+
+/* MARK: - Disk Google (GoogleDrive) */
+"drive.error.notFound" = "Disk Google nenájdený: nainštalujte aplikáciu Disk Google pre počítač a prihláste sa";
+
+/* MARK: - „Práve sa prehráva“ (ScriptedNowPlaying) */
+/* Názov aplikácie „Hudba“ (Apple Music) — zobrazuje sa pod názvom skladby v mini prehrávači. */
+"app.musicName" = "Hudba";

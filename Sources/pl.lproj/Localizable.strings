@@ -1,0 +1,102 @@
+/* Mantel — polska lokalizacja */
+
+/* MARK: - Pasek menu (AppDelegate) */
+"menu.showShelf" = "Pokaż półkę";
+"menu.openDriveFolder" = "Otwórz folder na Dysku Google";
+"menu.clearShelf" = "Wyczyść półkę";
+"menu.settings" = "Ustawienia…";
+"menu.quit" = "Zakończ";
+
+/* Czynność „Otwórz folder biblioteki” — wspólna dla paska menu i okna ustawień. */
+"action.openLibrary" = "Otwórz folder biblioteki";
+
+/* MARK: - Okno ustawień (SettingsWindow) */
+"settings.window.title" = "Ustawienia Mantel";
+
+/* Sekcja „Obserwowanie” */
+"settings.watching.title" = "Obserwowanie";
+"settings.watching.desktopLabel" = "Biurko";
+"settings.watching.desktopToggle" = "Obserwuj Biurko";
+"settings.watching.screenshotsToggle" = "Obserwuj ~/Screenshots";
+"settings.watching.hotZone" = "Rozwijaj po najechaniu";
+"settings.watching.accessDenied" = "%@ — brak dostępu";
+"settings.watching.grantButton" = "Przyznaj dostęp…";
+"settings.watching.grantMessage" = "Wybierz folder „%@”, aby Mantel mógł go obserwować.";
+
+/* Sekcja „Foldery źródłowe” */
+"settings.folders.title" = "Foldery źródłowe";
+"settings.folders.hint" = "Każdy plik umieszczony w tych folderach trafia na półkę, nie tylko zrzuty ekranu.";
+"settings.folders.empty" = "Nie wybrano folderów";
+"settings.folders.add" = "Dodaj folder…";
+"settings.folders.addPrompt" = "Dodaj";
+"settings.folders.moveToggle" = "Przenoś pliki z folderu (nie kopiuj)";
+"settings.folders.moveHint" = "Wyłączone — plik jest kopiowany, a oryginał zostaje na miejscu. Włączone — plik jest przenoszony na półkę, tak samo jak zrzuty ekranu.";
+
+/* Sekcja „Półka” */
+"settings.shelf.title" = "Półka";
+"settings.shelf.widthStepper" = "Szerokość półki: %d px";
+"settings.shelf.autoPrunePicker" = "Usuwaj pliki starsze niż";
+"settings.shelf.prune.never" = "Nigdy";
+"settings.shelf.prune.oneDay" = "1 dzień";
+"settings.shelf.prune.threeDays" = "3 dni";
+"settings.shelf.prune.sevenDays" = "7 dni";
+"settings.shelf.prune.fourteenDays" = "14 dni";
+"settings.shelf.prune.thirtyDays" = "30 dni";
+"settings.shelf.prune.ninetyDays" = "90 dni";
+"settings.shelf.pruneLabel.off" = "Automatyczne czyszczenie jest wyłączone — półka przechowuje pliki, dopóki nie usuniesz ich ręcznie.";
+/* "settings.shelf.pruneLabel.on" jest zdefiniowany w Localizable.stringsdict (wymaga odmiany „dzień/dni”). */
+
+/* Sekcja „Uruchamianie” */
+"settings.launch.title" = "Uruchamianie";
+"settings.launch.atLogin" = "Uruchamiaj przy logowaniu";
+
+/* Sekcja „Dysk Google” */
+"settings.drive.title" = "Dysk Google";
+"settings.drive.subfolderField" = "Domyślna nazwa podfolderu";
+"settings.drive.chooseFolder" = "Wybierz folder…";
+"settings.drive.reset" = "Resetuj";
+"settings.drive.outsideWarning" = "Folder znajduje się poza Dyskiem Google — pliki nie będą synchronizowane";
+"settings.drive.statusFound" = "Znaleziono Dysk Google: %@. Pliki trafiają do „%@”.";
+"settings.drive.statusNotFound" = "Nie znaleziono Dysku Google";
+"settings.drive.destinationUndetermined" = "nie ustawiono";
+
+/* MARK: - Półka (ShelfView) */
+"shelf.empty.hint" = "Przeciągnij tu pliki — albo zrób zrzut ekranu za pomocą ⌘⇧3";
+"shelf.help.fileCount" = "Plików na półce";
+"action.showInFinder" = "Pokaż w Finderze";
+"shelf.help.settings" = "Ustawienia";
+"shelf.help.copyFile" = "Skopiuj plik (dla AnyDesk i innych zdalnych pulpitów)";
+"action.delete" = "Usuń";
+"action.clearAll" = "Wyczyść wszystko";
+
+"shelf.toast.openButton" = "Otwórz";
+"shelf.player.pressPlayHint" = "Naciśnij ▶, aby odtworzyć";
+
+/* Menu kontekstowe karty */
+"shelf.context.copyFile" = "Skopiuj plik";
+"shelf.context.copyPath" = "Skopiuj ścieżkę";
+"shelf.context.uploadToDrive" = "Na Dysk Google";
+
+/* Panel „Wybierz miejsce docelowe” (Dysk Google) */
+"shelf.drive.whereToPut" = "Wybierz miejsce docelowe";
+"shelf.drive.notConnected" = "Dysk Google nie jest połączony";
+"shelf.drive.notInstalled" = "Dysk Google nie jest zainstalowany";
+"shelf.drive.uploadHelp" = "Na Dysk Google → %@";
+"shelf.drive.fallbackFolderName" = "folder";
+
+/* MARK: - Alerty (NSAlert) */
+"alert.clearAll.title" = "Wyczyścić półkę?";
+"alert.clearAll.confirmButton" = "Wyczyść";
+"alert.clearAll.cancelButton" = "Anuluj";
+
+/* MARK: - Ostrzeżenia obserwowania folderów (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Folderu „%@” nie można lustrzanie odwzorować — to cały folder systemowy; wybierz podfolder.";
+"watcher.warning.bulkFolder" = "Folder „%@”: istniejąca zawartość (%d plików) nie zostanie przeniesiona — na półkę trafią tylko nowe pliki.";
+"watcher.warning.accessNotGranted" = "Folder „%@”: brak dostępu — zezwól na niego w Ustawieniach.";
+
+/* MARK: - Dysk Google (GoogleDrive) */
+"drive.error.notFound" = "Nie znaleziono Dysku Google: zainstaluj Dysk Google na komputer i zaloguj się";
+
+/* MARK: - „Teraz odtwarzane” (ScriptedNowPlaying) */
+/* Nazwa aplikacji „Muzyka” (Apple Music) — wyświetlana pod tytułem utworu w mini-odtwarzaczu. */
+"app.musicName" = "Muzyka";

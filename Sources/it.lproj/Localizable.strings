@@ -1,0 +1,102 @@
+/* Mantel — Italian localization */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Mostra la mensola";
+"menu.openDriveFolder" = "Apri cartella di Google Drive";
+"menu.clearShelf" = "Svuota la mensola";
+"menu.settings" = "Impostazioni…";
+"menu.quit" = "Esci";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Apri cartella Libreria";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Impostazioni di Mantel";
+
+/* "Watching" section */
+"settings.watching.title" = "Monitoraggio";
+"settings.watching.desktopLabel" = "Scrivania";
+"settings.watching.desktopToggle" = "Monitora la Scrivania";
+"settings.watching.screenshotsToggle" = "Monitora ~/Screenshots";
+"settings.watching.hotZone" = "Espandi al passaggio del cursore";
+"settings.watching.accessDenied" = "%@ — accesso non concesso";
+"settings.watching.grantButton" = "Consenti accesso…";
+"settings.watching.grantMessage" = "Scegli la cartella “%@” in modo che Mantel possa monitorarla.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Cartelle di origine";
+"settings.folders.hint" = "Ogni file inserito in queste cartelle arriva sulla mensola, non solo le schermate.";
+"settings.folders.empty" = "Nessuna cartella selezionata";
+"settings.folders.add" = "Aggiungi cartella…";
+"settings.folders.addPrompt" = "Aggiungi";
+"settings.folders.moveToggle" = "Sposta i file fuori dalla cartella (non copiare)";
+"settings.folders.moveHint" = "Disattivato: il file viene copiato e l'originale resta al suo posto. Attivato: il file viene spostato sulla mensola, come avviene per le schermate.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Mensola";
+"settings.shelf.widthStepper" = "Larghezza mensola: %d px";
+"settings.shelf.autoPrunePicker" = "Elimina i file più vecchi di";
+"settings.shelf.prune.never" = "Mai";
+"settings.shelf.prune.oneDay" = "1 giorno";
+"settings.shelf.prune.threeDays" = "3 giorni";
+"settings.shelf.prune.sevenDays" = "7 giorni";
+"settings.shelf.prune.fourteenDays" = "14 giorni";
+"settings.shelf.prune.thirtyDays" = "30 giorni";
+"settings.shelf.prune.ninetyDays" = "90 giorni";
+"settings.shelf.pruneLabel.off" = "La pulizia automatica è disattivata: la mensola conserva i file finché non li elimini manualmente.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Avvio";
+"settings.launch.atLogin" = "Apri all'accesso";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Nome della sottocartella predefinita";
+"settings.drive.chooseFolder" = "Scegli cartella…";
+"settings.drive.reset" = "Ripristina";
+"settings.drive.outsideWarning" = "La cartella è esterna a Google Drive — i file non verranno sincronizzati";
+"settings.drive.statusFound" = "Google Drive trovato: %@. I file vengono salvati in “%@”.";
+"settings.drive.statusNotFound" = "Google Drive non trovato";
+"settings.drive.destinationUndetermined" = "non impostata";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Trascina qui i file — oppure fai una schermata con ⌘⇧3";
+"shelf.help.fileCount" = "File sulla mensola";
+"action.showInFinder" = "Mostra nel Finder";
+"shelf.help.settings" = "Impostazioni";
+"shelf.help.copyFile" = "Copia file (per AnyDesk e altri desktop remoti)";
+"action.delete" = "Elimina";
+"action.clearAll" = "Svuota tutto";
+
+"shelf.toast.openButton" = "Apri";
+"shelf.player.pressPlayHint" = "Premi ▶ per riprodurre";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Copia file";
+"shelf.context.copyPath" = "Copia percorso";
+"shelf.context.uploadToDrive" = "Su Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Scegli una destinazione";
+"shelf.drive.notConnected" = "Google Drive non è connesso";
+"shelf.drive.notInstalled" = "Google Drive non è installato";
+"shelf.drive.uploadHelp" = "Su Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "una cartella";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Svuotare la mensola?";
+"alert.clearAll.confirmButton" = "Svuota";
+"alert.clearAll.cancelButton" = "Annulla";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "La cartella “%@” non può essere replicata: è un'intera cartella di sistema; scegli invece una sottocartella.";
+"watcher.warning.bulkFolder" = "Cartella “%@”: il contenuto esistente (%d file) non verrà spostato — solo i nuovi file arriveranno sulla mensola.";
+"watcher.warning.accessNotGranted" = "Cartella “%@”: accesso non concesso — consentilo nelle Impostazioni.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive non trovato: installa Google Drive per desktop ed effettua l'accesso";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Musica";

@@ -1,0 +1,102 @@
+/* Mantel — हिंदी लोकलाइज़ेशन */
+
+/* MARK: - मेनू बार (AppDelegate) */
+"menu.showShelf" = "शेल्फ़ दिखाएं";
+"menu.openDriveFolder" = "Google Drive फ़ोल्डर खोलें";
+"menu.clearShelf" = "शेल्फ़ साफ़ करें";
+"menu.settings" = "सेटिंग्स…";
+"menu.quit" = "छोड़ें";
+
+/* "लाइब्रेरी फ़ोल्डर खोलें" कार्रवाई — मेनू बार और सेटिंग्स विंडो दोनों में इस्तेमाल होती है। */
+"action.openLibrary" = "लाइब्रेरी फ़ोल्डर खोलें";
+
+/* MARK: - सेटिंग्स विंडो (SettingsWindow) */
+"settings.window.title" = "Mantel सेटिंग्स";
+
+/* "निगरानी" सेक्शन */
+"settings.watching.title" = "निगरानी";
+"settings.watching.desktopLabel" = "डेस्कटॉप";
+"settings.watching.desktopToggle" = "डेस्कटॉप पर नज़र रखें";
+"settings.watching.screenshotsToggle" = "~/Screenshots पर नज़र रखें";
+"settings.watching.hotZone" = "होवर करने पर बड़ा करें";
+"settings.watching.accessDenied" = "%@ — पहुंच नहीं दी गई";
+"settings.watching.grantButton" = "पहुंच दें…";
+"settings.watching.grantMessage" = "“%@” फ़ोल्डर चुनें ताकि Mantel उस पर नज़र रख सके।";
+
+/* "स्रोत फ़ोल्डर" सेक्शन */
+"settings.folders.title" = "स्रोत फ़ोल्डर";
+"settings.folders.hint" = "इन फ़ोल्डरों में रखी कोई भी फ़ाइल शेल्फ़ पर पहुंच जाती है, सिर्फ़ स्क्रीनशॉट नहीं।";
+"settings.folders.empty" = "कोई फ़ोल्डर नहीं चुना गया";
+"settings.folders.add" = "फ़ोल्डर जोड़ें…";
+"settings.folders.addPrompt" = "जोड़ें";
+"settings.folders.moveToggle" = "फ़ाइलों को फ़ोल्डर से हटाएं (कॉपी न करें)";
+"settings.folders.moveHint" = "बंद — फ़ाइल कॉपी होती है और मूल फ़ाइल अपनी जगह रहती है। चालू — फ़ाइल शेल्फ़ पर ले जाई जाती है, ठीक जैसे स्क्रीनशॉट के साथ होता है।";
+
+/* "शेल्फ़" सेक्शन */
+"settings.shelf.title" = "शेल्फ़";
+"settings.shelf.widthStepper" = "शेल्फ़ की चौड़ाई: %d px";
+"settings.shelf.autoPrunePicker" = "इससे पुरानी फ़ाइलें हटाएं";
+"settings.shelf.prune.never" = "कभी नहीं";
+"settings.shelf.prune.oneDay" = "1 दिन";
+"settings.shelf.prune.threeDays" = "3 दिन";
+"settings.shelf.prune.sevenDays" = "7 दिन";
+"settings.shelf.prune.fourteenDays" = "14 दिन";
+"settings.shelf.prune.thirtyDays" = "30 दिन";
+"settings.shelf.prune.ninetyDays" = "90 दिन";
+"settings.shelf.pruneLabel.off" = "ऑटो-क्लीनअप बंद है — जब तक आप खुद न हटाएं, शेल्फ़ फ़ाइलें रखे रहती है।";
+/* "settings.shelf.pruneLabel.on" को Localizable.stringsdict में परिभाषित किया गया है (दिन/दिनों की बहुवचन ज़रूरत के कारण)। */
+
+/* "स्टार्टअप" सेक्शन */
+"settings.launch.title" = "स्टार्टअप";
+"settings.launch.atLogin" = "लॉगिन पर शुरू करें";
+
+/* "Google Drive" सेक्शन */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "डिफ़ॉल्ट सबफ़ोल्डर नाम";
+"settings.drive.chooseFolder" = "फ़ोल्डर चुनें…";
+"settings.drive.reset" = "रीसेट करें";
+"settings.drive.outsideWarning" = "फ़ोल्डर Google Drive के बाहर है — फ़ाइलें सिंक नहीं होंगी";
+"settings.drive.statusFound" = "Google Drive मिला: %@. फ़ाइलें “%@” में जाती हैं।";
+"settings.drive.statusNotFound" = "Google Drive नहीं मिला";
+"settings.drive.destinationUndetermined" = "तय नहीं है";
+
+/* MARK: - शेल्फ़ (ShelfView) */
+"shelf.empty.hint" = "फ़ाइलें यहां खींचकर लाएं — या ⌘⇧3 से स्क्रीनशॉट लें";
+"shelf.help.fileCount" = "शेल्फ़ पर मौजूद फ़ाइलें";
+"action.showInFinder" = "Finder में दिखाएं";
+"shelf.help.settings" = "सेटिंग्स";
+"shelf.help.copyFile" = "फ़ाइल कॉपी करें (AnyDesk और अन्य रिमोट डेस्कटॉप के लिए)";
+"action.delete" = "हटाएं";
+"action.clearAll" = "सब साफ़ करें";
+
+"shelf.toast.openButton" = "खोलें";
+"shelf.player.pressPlayHint" = "चलाने के लिए ▶ दबाएं";
+
+/* कार्ड का संदर्भ मेनू */
+"shelf.context.copyFile" = "फ़ाइल कॉपी करें";
+"shelf.context.copyPath" = "पाथ कॉपी करें";
+"shelf.context.uploadToDrive" = "Google Drive पर";
+
+/* "गंतव्य चुनें" पैनल (Google Drive) */
+"shelf.drive.whereToPut" = "गंतव्य चुनें";
+"shelf.drive.notConnected" = "Google Drive कनेक्ट नहीं है";
+"shelf.drive.notInstalled" = "Google Drive इंस्टॉल नहीं है";
+"shelf.drive.uploadHelp" = "Google Drive पर → %@";
+"shelf.drive.fallbackFolderName" = "एक फ़ोल्डर";
+
+/* MARK: - अलर्ट (NSAlert) */
+"alert.clearAll.title" = "क्या शेल्फ़ साफ़ करें?";
+"alert.clearAll.confirmButton" = "साफ़ करें";
+"alert.clearAll.cancelButton" = "रद्द करें";
+
+/* MARK: - फ़ोल्डर-निगरानी चेतावनियां (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "“%@” फ़ोल्डर को मिरर नहीं किया जा सकता — यह एक पूरा सिस्टम फ़ोल्डर है; इसके बजाय कोई सबफ़ोल्डर चुनें।";
+"watcher.warning.bulkFolder" = "“%@” फ़ोल्डर: मौजूदा कॉन्टेंट (%d फ़ाइलें) नहीं ले जाया जाएगा — सिर्फ़ नई फ़ाइलें शेल्फ़ पर पहुंचेंगी।";
+"watcher.warning.accessNotGranted" = "“%@” फ़ोल्डर: पहुंच नहीं दी गई — इसे सेटिंग्स में अनुमति दें।";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive नहीं मिला: Google Drive for desktop इंस्टॉल करें और साइन इन करें";
+
+/* MARK: - "अभी चल रहा है" (ScriptedNowPlaying) */
+/* "Music" (Apple Music) ऐप का नाम — मिनी प्लेयर में ट्रैक टाइटल के नीचे दिखाया जाता है। */
+"app.musicName" = "संगीत";

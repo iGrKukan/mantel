@@ -1,0 +1,102 @@
+/* Mantel — การแปลภาษาไทย */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "แสดงชั้นวาง";
+"menu.openDriveFolder" = "เปิดโฟลเดอร์ Google Drive";
+"menu.clearShelf" = "ล้างชั้นวาง";
+"menu.settings" = "การตั้งค่า…";
+"menu.quit" = "ออก";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "เปิดโฟลเดอร์ไลบรารี";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "การตั้งค่า Mantel";
+
+/* "Watching" section */
+"settings.watching.title" = "การเฝ้าดู";
+"settings.watching.desktopLabel" = "เดสก์ท็อป";
+"settings.watching.desktopToggle" = "เฝ้าดูเดสก์ท็อป";
+"settings.watching.screenshotsToggle" = "เฝ้าดู ~/Screenshots";
+"settings.watching.hotZone" = "ขยายเมื่อชี้เมาส์";
+"settings.watching.accessDenied" = "%@ — ยังไม่ได้รับสิทธิ์เข้าถึง";
+"settings.watching.grantButton" = "ให้สิทธิ์เข้าถึง…";
+"settings.watching.grantMessage" = "เลือกโฟลเดอร์ “%@” เพื่อให้ Mantel เฝ้าดูได้";
+
+/* "Source Folders" section */
+"settings.folders.title" = "โฟลเดอร์ต้นทาง";
+"settings.folders.hint" = "ไฟล์ใดก็ตามที่วางไว้ในโฟลเดอร์เหล่านี้จะไปอยู่บนชั้นวาง ไม่ใช่แค่ภาพหน้าจอ";
+"settings.folders.empty" = "ยังไม่ได้เลือกโฟลเดอร์";
+"settings.folders.add" = "เพิ่มโฟลเดอร์…";
+"settings.folders.addPrompt" = "เพิ่ม";
+"settings.folders.moveToggle" = "ย้ายไฟล์ออกจากโฟลเดอร์ (ไม่คัดลอก)";
+"settings.folders.moveHint" = "ปิด — ไฟล์จะถูกคัดลอก และไฟล์ต้นฉบับยังอยู่ที่เดิม เปิด — ไฟล์จะถูกย้ายไปยังชั้นวาง เช่นเดียวกับภาพหน้าจอ";
+
+/* "Shelf" section */
+"settings.shelf.title" = "ชั้นวาง";
+"settings.shelf.widthStepper" = "ความกว้างของชั้นวาง: %d px";
+"settings.shelf.autoPrunePicker" = "ลบไฟล์ที่เก่ากว่า";
+"settings.shelf.prune.never" = "ไม่ต้องลบ";
+"settings.shelf.prune.oneDay" = "1 วัน";
+"settings.shelf.prune.threeDays" = "3 วัน";
+"settings.shelf.prune.sevenDays" = "7 วัน";
+"settings.shelf.prune.fourteenDays" = "14 วัน";
+"settings.shelf.prune.thirtyDays" = "30 วัน";
+"settings.shelf.prune.ninetyDays" = "90 วัน";
+"settings.shelf.pruneLabel.off" = "การล้างอัตโนมัติปิดอยู่ — ชั้นวางจะเก็บไฟล์ไว้จนกว่าคุณจะลบเอง";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "การเริ่มทำงาน";
+"settings.launch.atLogin" = "เปิดใช้งานเมื่อเข้าสู่ระบบ";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "ชื่อโฟลเดอร์ย่อยเริ่มต้น";
+"settings.drive.chooseFolder" = "เลือกโฟลเดอร์…";
+"settings.drive.reset" = "รีเซ็ต";
+"settings.drive.outsideWarning" = "โฟลเดอร์อยู่นอก Google Drive — ไฟล์จะไม่ถูกซิงค์";
+"settings.drive.statusFound" = "พบ Google Drive: %@ ไฟล์จะไปอยู่ที่ “%@”";
+"settings.drive.statusNotFound" = "ไม่พบ Google Drive";
+"settings.drive.destinationUndetermined" = "ยังไม่ได้ตั้งค่า";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "ลากไฟล์มาที่นี่ — หรือจับภาพหน้าจอด้วย ⌘⇧3";
+"shelf.help.fileCount" = "จำนวนไฟล์บนชั้นวาง";
+"action.showInFinder" = "แสดงใน Finder";
+"shelf.help.settings" = "การตั้งค่า";
+"shelf.help.copyFile" = "คัดลอกไฟล์ (สำหรับ AnyDesk และเดสก์ท็อประยะไกลอื่น ๆ)";
+"action.delete" = "ลบ";
+"action.clearAll" = "ล้างทั้งหมด";
+
+"shelf.toast.openButton" = "เปิด";
+"shelf.player.pressPlayHint" = "กด ▶ เพื่อเล่น";
+
+/* Card context menu */
+"shelf.context.copyFile" = "คัดลอกไฟล์";
+"shelf.context.copyPath" = "คัดลอกพาธ";
+"shelf.context.uploadToDrive" = "ไปยัง Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "เลือกปลายทาง";
+"shelf.drive.notConnected" = "ยังไม่ได้เชื่อมต่อ Google Drive";
+"shelf.drive.notInstalled" = "ยังไม่ได้ติดตั้ง Google Drive";
+"shelf.drive.uploadHelp" = "ไปยัง Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "โฟลเดอร์";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "ล้างชั้นวางหรือไม่?";
+"alert.clearAll.confirmButton" = "ล้าง";
+"alert.clearAll.cancelButton" = "ยกเลิก";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "ไม่สามารถมิเรอร์โฟลเดอร์ “%@” ได้ — เป็นโฟลเดอร์ระบบทั้งหมด โปรดเลือกโฟลเดอร์ย่อยแทน";
+"watcher.warning.bulkFolder" = "โฟลเดอร์ “%@”: เนื้อหาที่มีอยู่เดิม (%d ไฟล์) จะไม่ถูกย้าย — มีเพียงไฟล์ใหม่เท่านั้นที่จะไปอยู่บนชั้นวาง";
+"watcher.warning.accessNotGranted" = "โฟลเดอร์ “%@”: ยังไม่ได้รับสิทธิ์เข้าถึง — โปรดอนุญาตในการตั้งค่า";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "ไม่พบ Google Drive: โปรดติดตั้ง Google Drive for desktop และลงชื่อเข้าใช้";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "เพลง";

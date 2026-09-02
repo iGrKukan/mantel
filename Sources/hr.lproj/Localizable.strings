@@ -1,0 +1,102 @@
+/* Mantel — hrvatska lokalizacija */
+
+/* MARK: - Traka izbornika (AppDelegate) */
+"menu.showShelf" = "Prikaži policu";
+"menu.openDriveFolder" = "Otvori mapu na Google Disku";
+"menu.clearShelf" = "Isprazni policu";
+"menu.settings" = "Postavke…";
+"menu.quit" = "Izlaz";
+
+/* Radnja „Otvori mapu knjižnice” – zajednička za traku izbornika i prozor postavki. */
+"action.openLibrary" = "Otvori mapu knjižnice";
+
+/* MARK: - Prozor postavki (SettingsWindow) */
+"settings.window.title" = "Postavke aplikacije Mantel";
+
+/* Odjeljak „Praćenje” */
+"settings.watching.title" = "Praćenje";
+"settings.watching.desktopLabel" = "Radna površina";
+"settings.watching.desktopToggle" = "Prati Radnu površinu";
+"settings.watching.screenshotsToggle" = "Prati ~/Screenshots";
+"settings.watching.hotZone" = "Proširi pri prelasku mišem";
+"settings.watching.accessDenied" = "%@ — pristup nije odobren";
+"settings.watching.grantButton" = "Odobri pristup…";
+"settings.watching.grantMessage" = "Odaberi mapu „%@” kako bi je Mantel mogao pratiti.";
+
+/* Odjeljak „Izvorne mape” */
+"settings.folders.title" = "Izvorne mape";
+"settings.folders.hint" = "Svaka datoteka smještena u ove mape završava na polici, ne samo snimke zaslona.";
+"settings.folders.empty" = "Nije odabrana nijedna mapa";
+"settings.folders.add" = "Dodaj mapu…";
+"settings.folders.addPrompt" = "Dodaj";
+"settings.folders.moveToggle" = "Premjesti datoteke iz mape (ne kopiraj)";
+"settings.folders.moveHint" = "Isključeno — datoteka se kopira, a original ostaje na mjestu. Uključeno — datoteka se premješta na policu, isto kao kod snimki zaslona.";
+
+/* Odjeljak „Polica” */
+"settings.shelf.title" = "Polica";
+"settings.shelf.widthStepper" = "Širina police: %d px";
+"settings.shelf.autoPrunePicker" = "Briši datoteke starije od";
+"settings.shelf.prune.never" = "Nikada";
+"settings.shelf.prune.oneDay" = "1 dan";
+"settings.shelf.prune.threeDays" = "3 dana";
+"settings.shelf.prune.sevenDays" = "7 dana";
+"settings.shelf.prune.fourteenDays" = "14 dana";
+"settings.shelf.prune.thirtyDays" = "30 dana";
+"settings.shelf.prune.ninetyDays" = "90 dana";
+"settings.shelf.pruneLabel.off" = "Automatsko čišćenje isključeno je — polica čuva datoteke dok ih ručno ne izbrišeš.";
+/* "settings.shelf.pruneLabel.on" definiran je u Localizable.stringsdict (treba oblik množine za „dan/dana”). */
+
+/* Odjeljak „Pokretanje” */
+"settings.launch.title" = "Pokretanje";
+"settings.launch.atLogin" = "Pokreni pri prijavi";
+
+/* Odjeljak „Google Disk” */
+"settings.drive.title" = "Google Disk";
+"settings.drive.subfolderField" = "Zadani naziv podmape";
+"settings.drive.chooseFolder" = "Odaberi mapu…";
+"settings.drive.reset" = "Vrati izvorno";
+"settings.drive.outsideWarning" = "Mapa je izvan Google Diska — datoteke se neće sinkronizirati";
+"settings.drive.statusFound" = "Google Disk pronađen: %@. Datoteke idu u „%@”.";
+"settings.drive.statusNotFound" = "Google Disk nije pronađen";
+"settings.drive.destinationUndetermined" = "nije postavljeno";
+
+/* MARK: - Polica (ShelfView) */
+"shelf.empty.hint" = "Povuci datoteke ovamo — ili snimi zaslon pomoću ⌘⇧3";
+"shelf.help.fileCount" = "Datoteka na polici";
+"action.showInFinder" = "Prikaži u Finderu";
+"shelf.help.settings" = "Postavke";
+"shelf.help.copyFile" = "Kopiraj datoteku (za AnyDesk i druge udaljene radne površine)";
+"action.delete" = "Izbriši";
+"action.clearAll" = "Isprazni sve";
+
+"shelf.toast.openButton" = "Otvori";
+"shelf.player.pressPlayHint" = "Pritisni ▶ za reprodukciju";
+
+/* Kontekstni izbornik kartice */
+"shelf.context.copyFile" = "Kopiraj datoteku";
+"shelf.context.copyPath" = "Kopiraj putanju";
+"shelf.context.uploadToDrive" = "Na Google Disk";
+
+/* Ploča „Odaberi odredište” (Google Disk) */
+"shelf.drive.whereToPut" = "Odaberi odredište";
+"shelf.drive.notConnected" = "Google Disk nije povezan";
+"shelf.drive.notInstalled" = "Google Disk nije instaliran";
+"shelf.drive.uploadHelp" = "Na Google Disk → %@";
+"shelf.drive.fallbackFolderName" = "mapu";
+
+/* MARK: - Upozorenja (NSAlert) */
+"alert.clearAll.title" = "Isprazniti policu?";
+"alert.clearAll.confirmButton" = "Isprazni";
+"alert.clearAll.cancelButton" = "Odustani";
+
+/* MARK: - Upozorenja praćenja mapa (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Mapa „%@” ne može se zrcaliti — riječ je o cijeloj sustavskoj mapi; umjesto toga odaberi podmapu.";
+"watcher.warning.bulkFolder" = "Mapa „%@”: postojeći sadržaj (%d datoteka) neće biti premješten — na policu će stići samo nove datoteke.";
+"watcher.warning.accessNotGranted" = "Mapa „%@”: pristup nije odobren — dopusti ga u Postavkama.";
+
+/* MARK: - Google Disk (GoogleDrive) */
+"drive.error.notFound" = "Google Disk nije pronađen: instaliraj Google Drive for desktop i prijavi se";
+
+/* MARK: - „Sada se reproducira” (ScriptedNowPlaying) */
+/* Naziv aplikacije „Glazba” (Apple Music) — prikazuje se ispod naziva pjesme u mini playeru. */
+"app.musicName" = "Glazba";

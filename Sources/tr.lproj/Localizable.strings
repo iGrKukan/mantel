@@ -1,0 +1,102 @@
+/* Mantel — Türkçe yerelleştirme */
+
+/* MARK: - Menü çubuğu (AppDelegate) */
+"menu.showShelf" = "Rafı Göster";
+"menu.openDriveFolder" = "Google Drive Klasörünü Aç";
+"menu.clearShelf" = "Rafı Temizle";
+"menu.settings" = "Ayarlar…";
+"menu.quit" = "Çıkış";
+
+/* "Kitaplık klasörünü aç" eylemi — menü çubuğu ve ayarlar penceresi tarafından ortak kullanılır. */
+"action.openLibrary" = "Kitaplık Klasörünü Aç";
+
+/* MARK: - Ayarlar penceresi (SettingsWindow) */
+"settings.window.title" = "Mantel Ayarları";
+
+/* "İzleme" bölümü */
+"settings.watching.title" = "İzleme";
+"settings.watching.desktopLabel" = "Masaüstü";
+"settings.watching.desktopToggle" = "Masaüstünü İzle";
+"settings.watching.screenshotsToggle" = "~/Screenshots Klasörünü İzle";
+"settings.watching.hotZone" = "Üzerine gelince genişlet";
+"settings.watching.accessDenied" = "%@ — erişim verilmedi";
+"settings.watching.grantButton" = "Erişim Ver…";
+"settings.watching.grantMessage" = "Mantel’in izleyebilmesi için “%@” klasörünü seçin.";
+
+/* "Kaynak Klasörler" bölümü */
+"settings.folders.title" = "Kaynak Klasörler";
+"settings.folders.hint" = "Bu klasörlere konan her dosya rafa düşer, sadece ekran görüntüleri değil.";
+"settings.folders.empty" = "Klasör seçilmedi";
+"settings.folders.add" = "Klasör Ekle…";
+"settings.folders.addPrompt" = "Ekle";
+"settings.folders.moveToggle" = "Dosyaları klasörden taşı (kopyalama)";
+"settings.folders.moveHint" = "Kapalı — dosya kopyalanır, orijinali yerinde kalır. Açık — dosya, ekran görüntülerinde olduğu gibi rafa taşınır.";
+
+/* "Raf" bölümü */
+"settings.shelf.title" = "Raf";
+"settings.shelf.widthStepper" = "Raf genişliği: %d px";
+"settings.shelf.autoPrunePicker" = "Şundan eski dosyaları sil";
+"settings.shelf.prune.never" = "Asla";
+"settings.shelf.prune.oneDay" = "1 gün";
+"settings.shelf.prune.threeDays" = "3 gün";
+"settings.shelf.prune.sevenDays" = "7 gün";
+"settings.shelf.prune.fourteenDays" = "14 gün";
+"settings.shelf.prune.thirtyDays" = "30 gün";
+"settings.shelf.prune.ninetyDays" = "90 gün";
+"settings.shelf.pruneLabel.off" = "Otomatik temizleme kapalı — siz elle silmedikçe raf dosyaları saklar.";
+/* "settings.shelf.pruneLabel.on" Localizable.stringsdict içinde tanımlıdır (Türkçede çokluk eki sayıya göre değişmez, tek biçim yeterlidir). */
+
+/* "Başlangıç" bölümü */
+"settings.launch.title" = "Başlangıç";
+"settings.launch.atLogin" = "Girişte başlat";
+
+/* "Google Drive" bölümü */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Varsayılan alt klasör adı";
+"settings.drive.chooseFolder" = "Klasör Seç…";
+"settings.drive.reset" = "Sıfırla";
+"settings.drive.outsideWarning" = "Klasör Google Drive dışında — dosyalar eşitlenmeyecek";
+"settings.drive.statusFound" = "Google Drive bulundu: %@. Dosyalar “%@” klasörüne gidiyor.";
+"settings.drive.statusNotFound" = "Google Drive bulunamadı";
+"settings.drive.destinationUndetermined" = "belirlenmedi";
+
+/* MARK: - Raf (ShelfView) */
+"shelf.empty.hint" = "Dosyaları buraya sürükleyin — ya da ⌘⇧3 ile ekran görüntüsü alın";
+"shelf.help.fileCount" = "Raftaki dosyalar";
+"action.showInFinder" = "Finder’da Göster";
+"shelf.help.settings" = "Ayarlar";
+"shelf.help.copyFile" = "Dosyayı kopyala (AnyDesk ve diğer uzak masaüstleri için)";
+"action.delete" = "Sil";
+"action.clearAll" = "Tümünü Temizle";
+
+"shelf.toast.openButton" = "Aç";
+"shelf.player.pressPlayHint" = "Oynatmak için ▶ tuşuna basın";
+
+/* Kart bağlam menüsü */
+"shelf.context.copyFile" = "Dosyayı Kopyala";
+"shelf.context.copyPath" = "Yolu Kopyala";
+"shelf.context.uploadToDrive" = "Google Drive’a";
+
+/* "Hedef Seç" paneli (Google Drive) */
+"shelf.drive.whereToPut" = "Hedef Seç";
+"shelf.drive.notConnected" = "Google Drive bağlı değil";
+"shelf.drive.notInstalled" = "Google Drive kurulu değil";
+"shelf.drive.uploadHelp" = "Google Drive’a → %@";
+"shelf.drive.fallbackFolderName" = "bir klasöre";
+
+/* MARK: - Uyarılar (NSAlert) */
+"alert.clearAll.title" = "Raf temizlensin mi?";
+"alert.clearAll.confirmButton" = "Temizle";
+"alert.clearAll.cancelButton" = "İptal";
+
+/* MARK: - Klasör izleme uyarıları (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "“%@” klasörü yansıtılamaz — bu klasör bütün bir sistem klasörü; onun yerine bir alt klasör seçin.";
+"watcher.warning.bulkFolder" = "“%@” klasörü: mevcut içerik (%d dosya) taşınmayacak — yalnızca yeni dosyalar rafa düşer.";
+"watcher.warning.accessNotGranted" = "“%@” klasörü: erişim verilmedi — Ayarlar’dan izin verin.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive bulunamadı: Google Drive for desktop’ı kurup oturum açın";
+
+/* MARK: - "Şimdi Çalıyor" (ScriptedNowPlaying) */
+/* "Music" (Apple Music) uygulamasının adı — mini oynatıcıda parça adının altında gösterilir. */
+"app.musicName" = "Müzik";

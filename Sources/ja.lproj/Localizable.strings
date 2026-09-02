@@ -1,0 +1,102 @@
+/* Mantel — японская локализация */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "棚を表示";
+"menu.openDriveFolder" = "Google Driveのフォルダを開く";
+"menu.clearShelf" = "棚を空にする";
+"menu.settings" = "設定…";
+"menu.quit" = "終了";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "ライブラリフォルダを開く";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Mantelの設定";
+
+/* "Watching" section */
+"settings.watching.title" = "監視";
+"settings.watching.desktopLabel" = "デスクトップ";
+"settings.watching.desktopToggle" = "デスクトップを監視";
+"settings.watching.screenshotsToggle" = "~/Screenshotsを監視";
+"settings.watching.hotZone" = "ホバーで展開";
+"settings.watching.accessDenied" = "%@ — アクセスが許可されていません";
+"settings.watching.grantButton" = "アクセスを許可…";
+"settings.watching.grantMessage" = "Mantelが監視できるように、「%@」フォルダを選んでください。";
+
+/* "Source Folders" section */
+"settings.folders.title" = "ソースフォルダ";
+"settings.folders.hint" = "これらのフォルダに置いたファイルは、スクリーンショットに限らずすべて棚に追加されます。";
+"settings.folders.empty" = "フォルダが選択されていません";
+"settings.folders.add" = "フォルダを追加…";
+"settings.folders.addPrompt" = "追加";
+"settings.folders.moveToggle" = "フォルダからファイルを移動する（コピーしない）";
+"settings.folders.moveHint" = "オフ — ファイルはコピーされ、元のファイルはそのまま残ります。オン — スクリーンショットと同様に、ファイルは棚に移動されます。";
+
+/* "Shelf" section */
+"settings.shelf.title" = "棚";
+"settings.shelf.widthStepper" = "棚の幅：%d px";
+"settings.shelf.autoPrunePicker" = "次より古いファイルを削除";
+"settings.shelf.prune.never" = "しない";
+"settings.shelf.prune.oneDay" = "1日";
+"settings.shelf.prune.threeDays" = "3日";
+"settings.shelf.prune.sevenDays" = "7日";
+"settings.shelf.prune.fourteenDays" = "14日";
+"settings.shelf.prune.thirtyDays" = "30日";
+"settings.shelf.prune.ninetyDays" = "90日";
+"settings.shelf.pruneLabel.off" = "自動削除はオフです。手動で削除するまで棚にファイルが残ります。";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "起動";
+"settings.launch.atLogin" = "ログイン時に起動";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "デフォルトのサブフォルダ名";
+"settings.drive.chooseFolder" = "フォルダを選択…";
+"settings.drive.reset" = "リセット";
+"settings.drive.outsideWarning" = "フォルダがGoogle Driveの外にあります。ファイルは同期されません";
+"settings.drive.statusFound" = "Google Driveが見つかりました：%@。ファイルは「%@」に保存されます。";
+"settings.drive.statusNotFound" = "Google Driveが見つかりません";
+"settings.drive.destinationUndetermined" = "未設定";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "ここにファイルをドラッグ — または⌘⇧3でスクリーンショットを撮影";
+"shelf.help.fileCount" = "棚のファイル数";
+"action.showInFinder" = "Finderに表示";
+"shelf.help.settings" = "設定";
+"shelf.help.copyFile" = "ファイルをコピー（AnyDeskなどのリモートデスクトップ用）";
+"action.delete" = "削除";
+"action.clearAll" = "すべて削除";
+
+"shelf.toast.openButton" = "開く";
+"shelf.player.pressPlayHint" = "▶を押して再生";
+
+/* Card context menu */
+"shelf.context.copyFile" = "ファイルをコピー";
+"shelf.context.copyPath" = "パスをコピー";
+"shelf.context.uploadToDrive" = "Google Driveへ";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "保存先を選択";
+"shelf.drive.notConnected" = "Google Driveが接続されていません";
+"shelf.drive.notInstalled" = "Google Driveがインストールされていません";
+"shelf.drive.uploadHelp" = "Google Driveへ → %@";
+"shelf.drive.fallbackFolderName" = "フォルダ";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "棚を空にしますか？";
+"alert.clearAll.confirmButton" = "空にする";
+"alert.clearAll.cancelButton" = "キャンセル";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "「%@」フォルダはミラーリングできません。システムフォルダ全体のため、サブフォルダを選んでください。";
+"watcher.warning.bulkFolder" = "「%@」フォルダ：既存のコンテンツ（%d個のファイル）は移動されません。新しいファイルのみ棚に追加されます。";
+"watcher.warning.accessNotGranted" = "「%@」フォルダ：アクセスが許可されていません。設定で許可してください。";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Driveが見つかりません：Google Drive for desktopをインストールしてサインインしてください";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "ミュージック";

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- التنبيه "هل تريد إفراغ الرف؟" قبل نقل الرف بالكامل إلى سلة المهملات. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>لا عناصر ستُنقل إلى سلة المهملات. يمكن التراجع عن هذا من سلة المهملات فقط.</string>
+			<key>one</key>
+			<string>سيتم نقل عنصر واحد إلى سلة المهملات. يمكن التراجع عن هذا من سلة المهملات فقط.</string>
+			<key>two</key>
+			<string>سيتم نقل عنصرين إلى سلة المهملات. يمكن التراجع عن هذا من سلة المهملات فقط.</string>
+			<key>few</key>
+			<string>سيتم نقل %d عناصر إلى سلة المهملات. يمكن التراجع عن هذا من سلة المهملات فقط.</string>
+			<key>many</key>
+			<string>سيتم نقل %d عنصرًا إلى سلة المهملات. يمكن التراجع عن هذا من سلة المهملات فقط.</string>
+			<key>other</key>
+			<string>سيتم نقل %d عنصر إلى سلة المهملات. يمكن التراجع عن هذا من سلة المهملات فقط.</string>
+		</dict>
+	</dict>
+
+	<!-- تسمية التنظيف التلقائي "حذف الملفات الأقدم من N يوم". -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>تُنقل الملفات الأقدم من %#@days@ إلى سلة المهملات. يتم الفحص عند بدء التشغيل ومرة كل ساعة.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>0 يوم</string>
+			<key>one</key>
+			<string>يوم واحد</string>
+			<key>two</key>
+			<string>يومين</string>
+			<key>few</key>
+			<string>%d أيام</string>
+			<key>many</key>
+			<string>%d يومًا</string>
+			<key>other</key>
+			<string>%d يوم</string>
+		</dict>
+	</dict>
+
+	<!-- الإشعار "تم الرفع إلى Google Drive ("مجلد"): N ملف". -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>تم الرفع إلى Google Drive ("%@"): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>لم يتم رفع أي ملف</string>
+			<key>one</key>
+			<string>ملف واحد</string>
+			<key>two</key>
+			<string>ملفين</string>
+			<key>few</key>
+			<string>%d ملفات</string>
+			<key>many</key>
+			<string>%d ملفًا</string>
+			<key>other</key>
+			<string>%d ملف</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

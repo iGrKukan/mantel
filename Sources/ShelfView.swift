@@ -247,7 +247,7 @@ struct ShelfView: View {
             Image(systemName: "tray.and.arrow.down")
                 .font(.system(size: 22))
                 .foregroundStyle(.white.opacity(0.25))
-            Text("Перетащи сюда файлы — или сделай ⌘⇧3")
+            Text(String(localized: "shelf.empty.hint"))
                 .font(.system(size: 11))
                 .foregroundStyle(.white.opacity(0.35))
         }
@@ -264,9 +264,9 @@ struct ShelfView: View {
             Text("\(library.items.count)")
                 .font(.system(size: 9, design: .rounded))
                 .foregroundStyle(.white.opacity(0.4))
-                .help("Файлов в полке")
+                .help(String(localized: "shelf.help.fileCount"))
                 .onTapGesture { NSWorkspace.shared.open(Library.root) }
-            HoverIconButton(system: "folder", help: "Показать в Finder") {
+            HoverIconButton(system: "folder", help: String(localized: "action.showInFinder")) {
                 for i in toolbarTargets { library.reveal(i) }
             }
             GoogleDriveButton(state: uploadState,
@@ -275,18 +275,18 @@ struct ShelfView: View {
                               action: { uploadSelected(toolbarTargets) },
                               onDropURLs: { uploadURLs($0) },
                               onDropURLsTo: { urls, folder in uploadURLs(urls, to: folder) })
-            HoverIconButton(system: "gearshape", help: "Настройки") {
+            HoverIconButton(system: "gearshape", help: String(localized: "shelf.help.settings")) {
                 SettingsWindowController.shared.show()
             }
-            HoverIconButton(system: "doc.on.doc", help: "Скопировать файл (для AnyDesk и других удалённых столов)") {
+            HoverIconButton(system: "doc.on.doc", help: String(localized: "shelf.help.copyFile")) {
                 copyToPasteboard(toolbarTargets)
             }
-            HoverIconButton(system: "trash", help: "Удалить") {
+            HoverIconButton(system: "trash", help: String(localized: "action.delete")) {
                 let victims = toolbarTargets
                 for v in victims { library.remove(v) }
                 selection.subtract(Set(victims.map { $0.id }))
             }
-            HoverIconButton(system: "xmark.bin", help: "Очистить всё") {
+            HoverIconButton(system: "xmark.bin", help: String(localized: "action.clearAll")) {
                 confirmClearAll()
             }
             Spacer(minLength: 4)
@@ -298,11 +298,11 @@ struct ShelfView: View {
     private func confirmClearAll() {
         guard !library.items.isEmpty else { return }
         let alert = NSAlert()
-        alert.messageText = "Очистить полку?"
-        alert.informativeText = "Все \(library.items.count) элемент(ов) отправятся в Корзину. Отменить можно только из Корзины."
+        alert.messageText = String(localized: "alert.clearAll.title")
+        alert.informativeText = String(format: String(localized: "alert.clearAll.message"), library.items.count)
         alert.alertStyle = .warning
-        alert.addButton(withTitle: "Очистить")
-        alert.addButton(withTitle: "Отмена")
+        alert.addButton(withTitle: String(localized: "alert.clearAll.confirmButton"))
+        alert.addButton(withTitle: String(localized: "alert.clearAll.cancelButton"))
         NSApp.activate(ignoringOtherApps: true)
         if alert.runModal() == .alertFirstButtonReturn {
             library.clear()
@@ -317,12 +317,12 @@ struct ShelfView: View {
             Image(systemName: "checkmark.circle.fill")
                 .font(.system(size: 11))
                 .foregroundStyle(Color(red: 0.30, green: 0.78, blue: 0.45))
-            Text("Загружено на Google Диск («\(uploadDestinationName)»): \(uploadedCount) файл(ов)")
+            Text(String(format: String(localized: "toast.uploaded.message"), uploadDestinationName, uploadedCount))
                 .font(.system(size: 10.5))
                 .foregroundStyle(.white.opacity(0.8))
                 .lineLimit(1)
             Spacer(minLength: 8)
-            Button("Открыть") { GoogleDrive.openFolder() }
+            Button(String(localized: "shelf.toast.openButton")) { GoogleDrive.openFolder() }
                 .buttonStyle(.plain)
                 .font(.system(size: 10.5, weight: .medium))
                 .foregroundStyle(accent)
@@ -406,7 +406,7 @@ struct ShelfView: View {
         if systemPlayerActive {
             return nowPlaying.artist.isEmpty ? timeShort(nowPlaying.duration) : nowPlaying.artist
         }
-        if currentAudioItem == nil { return "Нажми ▶, чтобы включить" }
+        if currentAudioItem == nil { return String(localized: "shelf.player.pressPlayHint") }
         return audio.trackArtist.isEmpty ? timeShort(audio.duration) : audio.trackArtist
     }
 
@@ -806,12 +806,12 @@ private struct GoogleDriveButton: View {
     /// строка сама по себе цель дропа (бросил на строку → файл ушёл именно туда).
     private var destinationPanel: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Куда положить")
+            Text(String(localized: "shelf.drive.whereToPut"))
                 .font(.system(size: 10, weight: .semibold))
                 .foregroundStyle(.white)
 
             if !GoogleDrive.isAvailable {
-                Text("Google Диск не подключён")
+                Text(String(localized: "shelf.drive.notConnected"))
                     .font(.system(size: 10.5))
                     .foregroundStyle(.white.opacity(0.5))
             } else {
@@ -884,13 +884,13 @@ private struct GoogleDriveButton: View {
     private var helpText: String {
         switch state {
         case .failed: return errorMessage
-        case .idle: return disabled ? "Google Диск не установлен" : "На Google Диск → \(destinationName)"
-        case .uploading, .done: return "На Google Диск → \(destinationName)"
+        case .idle: return disabled ? String(localized: "shelf.drive.notInstalled") : String(format: String(localized: "shelf.drive.uploadHelp"), destinationName)
+        case .uploading, .done: return String(format: String(localized: "shelf.drive.uploadHelp"), destinationName)
         }
     }
 
     private var destinationName: String {
-        GoogleDrive.destinationURL?.lastPathComponent ?? "папку"
+        GoogleDrive.destinationURL?.lastPathComponent ?? String(localized: "shelf.drive.fallbackFolderName")
     }
 }
 
@@ -998,25 +998,25 @@ private struct ShelfCardView: View {
         .scaleEffect(isSelected ? 1.02 : 1.0)
         .animation(.spring(response: 0.25), value: isSelected)
         .contextMenu {
-            Button("Показать в Finder", action: onReveal)
-            Button("Скопировать файл") {
+            Button(String(localized: "action.showInFinder"), action: onReveal)
+            Button(String(localized: "shelf.context.copyFile")) {
                 let pb = NSPasteboard.general
                 pb.clearContents()
                 pb.writeObjects([item.url as NSURL])
             }
-            Button("Скопировать путь") {
+            Button(String(localized: "shelf.context.copyPath")) {
                 let pb = NSPasteboard.general
                 pb.clearContents()
                 pb.setString(item.url.path, forType: .string)
             }
             if GoogleDrive.isAvailable {
                 Button(action: onUpload) {
-                    Label("На Google Диск", systemImage: "icloud.and.arrow.up")
+                    Label(String(localized: "shelf.context.uploadToDrive"), systemImage: "icloud.and.arrow.up")
                 }
             }
             Divider()
-            Button("Удалить", role: .destructive, action: onDelete)
-            Button("Очистить всё", role: .destructive, action: onClearAll)
+            Button(String(localized: "action.delete"), role: .destructive, action: onDelete)
+            Button(String(localized: "action.clearAll"), role: .destructive, action: onClearAll)
         }
         .onHover { isHovering = $0 }
     }

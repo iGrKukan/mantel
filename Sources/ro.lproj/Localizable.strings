@@ -1,0 +1,102 @@
+/* Mantel — localizare română */
+
+/* MARK: - Bara de meniu (AppDelegate) */
+"menu.showShelf" = "Afișează raftul";
+"menu.openDriveFolder" = "Deschide folderul din Google Drive";
+"menu.clearShelf" = "Golește raftul";
+"menu.settings" = "Setări…";
+"menu.quit" = "Ieșire";
+
+/* Acțiunea „Deschide folderul bibliotecii” – comună pentru bara de meniu și fereastra de setări. */
+"action.openLibrary" = "Deschide folderul bibliotecii";
+
+/* MARK: - Fereastra de setări (SettingsWindow) */
+"settings.window.title" = "Setări Mantel";
+
+/* Secțiunea „Monitorizare” */
+"settings.watching.title" = "Monitorizare";
+"settings.watching.desktopLabel" = "Birou";
+"settings.watching.desktopToggle" = "Monitorizează Biroul";
+"settings.watching.screenshotsToggle" = "Monitorizează ~/Screenshots";
+"settings.watching.hotZone" = "Extinde la trecerea cursorului";
+"settings.watching.accessDenied" = "%@ — acces neacordat";
+"settings.watching.grantButton" = "Acordă acces…";
+"settings.watching.grantMessage" = "Alege folderul „%@” pentru ca Mantel să îl poată monitoriza.";
+
+/* Secțiunea „Foldere sursă” */
+"settings.folders.title" = "Foldere sursă";
+"settings.folders.hint" = "Orice fișier plasat în aceste foldere ajunge pe raft, nu doar capturile de ecran.";
+"settings.folders.empty" = "Niciun folder selectat";
+"settings.folders.add" = "Adaugă folder…";
+"settings.folders.addPrompt" = "Adaugă";
+"settings.folders.moveToggle" = "Mută fișierele din folder (nu le copia)";
+"settings.folders.moveHint" = "Dezactivat — fișierul este copiat, iar originalul rămâne la locul lui. Activat — fișierul este mutat pe raft, la fel ca la capturile de ecran.";
+
+/* Secțiunea „Raft” */
+"settings.shelf.title" = "Raft";
+"settings.shelf.widthStepper" = "Lățimea raftului: %d px";
+"settings.shelf.autoPrunePicker" = "Șterge fișierele mai vechi de";
+"settings.shelf.prune.never" = "Niciodată";
+"settings.shelf.prune.oneDay" = "1 zi";
+"settings.shelf.prune.threeDays" = "3 zile";
+"settings.shelf.prune.sevenDays" = "7 zile";
+"settings.shelf.prune.fourteenDays" = "14 zile";
+"settings.shelf.prune.thirtyDays" = "30 de zile";
+"settings.shelf.prune.ninetyDays" = "90 de zile";
+"settings.shelf.pruneLabel.off" = "Curățarea automată este dezactivată — raftul păstrează fișierele până le ștergi manual.";
+/* "settings.shelf.pruneLabel.on" este definit în Localizable.stringsdict (necesită forma de plural pentru „zi/zile”). */
+
+/* Secțiunea „Pornire” */
+"settings.launch.title" = "Pornire";
+"settings.launch.atLogin" = "Pornește la conectare";
+
+/* Secțiunea „Google Drive” */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Numele implicit al subfolderului";
+"settings.drive.chooseFolder" = "Alege folderul…";
+"settings.drive.reset" = "Resetează";
+"settings.drive.outsideWarning" = "Folderul este în afara Google Drive — fișierele nu vor fi sincronizate";
+"settings.drive.statusFound" = "Google Drive găsit: %@. Fișierele ajung în „%@”.";
+"settings.drive.statusNotFound" = "Google Drive nu a fost găsit";
+"settings.drive.destinationUndetermined" = "nesetat";
+
+/* MARK: - Raft (ShelfView) */
+"shelf.empty.hint" = "Trage fișiere aici — sau fă o captură de ecran cu ⌘⇧3";
+"shelf.help.fileCount" = "Fișiere pe raft";
+"action.showInFinder" = "Arată în Finder";
+"shelf.help.settings" = "Setări";
+"shelf.help.copyFile" = "Copiază fișierul (pentru AnyDesk și alte birouri la distanță)";
+"action.delete" = "Șterge";
+"action.clearAll" = "Golește tot";
+
+"shelf.toast.openButton" = "Deschide";
+"shelf.player.pressPlayHint" = "Apasă ▶ pentru redare";
+
+/* Meniul contextual al cardului */
+"shelf.context.copyFile" = "Copiază fișierul";
+"shelf.context.copyPath" = "Copiază calea";
+"shelf.context.uploadToDrive" = "Pe Google Drive";
+
+/* Panoul „Alege o destinație” (Google Drive) */
+"shelf.drive.whereToPut" = "Alege o destinație";
+"shelf.drive.notConnected" = "Google Drive nu este conectat";
+"shelf.drive.notInstalled" = "Google Drive nu este instalat";
+"shelf.drive.uploadHelp" = "Pe Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "un folder";
+
+/* MARK: - Alerte (NSAlert) */
+"alert.clearAll.title" = "Golești raftul?";
+"alert.clearAll.confirmButton" = "Golește";
+"alert.clearAll.cancelButton" = "Anulează";
+
+/* MARK: - Avertismente de monitorizare a folderelor (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Folderul „%@” nu poate fi oglindit — este un folder de sistem întreg; alege un subfolder în schimb.";
+"watcher.warning.bulkFolder" = "Folderul „%@”: conținutul existent (%d fișiere) nu va fi mutat — doar fișierele noi vor ajunge pe raft.";
+"watcher.warning.accessNotGranted" = "Folderul „%@”: acces neacordat — permite-l în Setări.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "Google Drive nu a fost găsit: instalează Google Drive for desktop și conectează-te";
+
+/* MARK: - „Se redă acum” (ScriptedNowPlaying) */
+/* Numele aplicației „Muzică” (Apple Music) — afișat sub titlul piesei în mini playerul. */
+"app.musicName" = "Muzică";

@@ -146,7 +146,7 @@ enum ScriptedNowPlaying {
 
         return Snapshot(
             appBundleID: musicBundleID,
-            appName: "Музыка",
+            appName: String(localized: "app.musicName"),
             title: title,
             artist: artist,
             album: album,

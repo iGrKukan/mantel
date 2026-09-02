@@ -1,0 +1,102 @@
+/* Mantel — українська локалізація */
+
+/* MARK: - Меню в рядку меню (AppDelegate) */
+"menu.showShelf" = "Показати полицю";
+"menu.openDriveFolder" = "Відкрити папку на Google Диску";
+"menu.clearShelf" = "Очистити полицю";
+"menu.settings" = "Налаштування…";
+"menu.quit" = "Вийти";
+
+/* Дія «Відкрити папку бібліотеки» — спільна для меню в рядку меню та вікна налаштувань. */
+"action.openLibrary" = "Відкрити папку бібліотеки";
+
+/* MARK: - Вікно налаштувань (SettingsWindow) */
+"settings.window.title" = "Налаштування Mantel";
+
+/* Розділ «Стеження» */
+"settings.watching.title" = "Стеження";
+"settings.watching.desktopLabel" = "Стіл";
+"settings.watching.desktopToggle" = "Стежити за Столом";
+"settings.watching.screenshotsToggle" = "Стежити за ~/Screenshots";
+"settings.watching.hotZone" = "Розгортати при наведенні";
+"settings.watching.accessDenied" = "%@ — доступ не надано";
+"settings.watching.grantButton" = "Надати доступ…";
+"settings.watching.grantMessage" = "Виберіть папку «%@», щоб Mantel міг за нею стежити.";
+
+/* Розділ «Папки-джерела» */
+"settings.folders.title" = "Папки-джерела";
+"settings.folders.hint" = "З цих папок на полицю потрапляє будь-який файл, а не лише знімки екрана.";
+"settings.folders.empty" = "Папки не вибрано";
+"settings.folders.add" = "Додати папку…";
+"settings.folders.addPrompt" = "Додати";
+"settings.folders.moveToggle" = "Забирати файли з папки (не копіювати)";
+"settings.folders.moveHint" = "Вимкнено — файл копіюється, оригінал лишається на місці. Увімкнено — файл переноситься на полицю, так само як знімки екрана.";
+
+/* Розділ «Полиця» */
+"settings.shelf.title" = "Полиця";
+"settings.shelf.widthStepper" = "Ширина полиці: %d px";
+"settings.shelf.autoPrunePicker" = "Видаляти файли старші за";
+"settings.shelf.prune.never" = "Ніколи";
+"settings.shelf.prune.oneDay" = "1 день";
+"settings.shelf.prune.threeDays" = "3 дні";
+"settings.shelf.prune.sevenDays" = "7 днів";
+"settings.shelf.prune.fourteenDays" = "14 днів";
+"settings.shelf.prune.thirtyDays" = "30 днів";
+"settings.shelf.prune.ninetyDays" = "90 днів";
+"settings.shelf.pruneLabel.off" = "Автоочищення вимкнено — полиця зберігає файли, поки ви не видалите їх вручну.";
+/* "settings.shelf.pruneLabel.on" визначено в Localizable.stringsdict (потрібна форма множини для «день/дні/днів»). */
+
+/* Розділ «Запуск» */
+"settings.launch.title" = "Запуск";
+"settings.launch.atLogin" = "Запускати під час входу";
+
+/* Розділ «Google Диск» */
+"settings.drive.title" = "Google Диск";
+"settings.drive.subfolderField" = "Назва підпапки за замовчуванням";
+"settings.drive.chooseFolder" = "Вибрати папку…";
+"settings.drive.reset" = "Скинути";
+"settings.drive.outsideWarning" = "Папка поза Google Диском — файли не синхронізуватимуться";
+"settings.drive.statusFound" = "Google Диск знайдено: %@. Файли потрапляють у «%@».";
+"settings.drive.statusNotFound" = "Google Диск не знайдено";
+"settings.drive.destinationUndetermined" = "не визначено";
+
+/* MARK: - Полиця (ShelfView) */
+"shelf.empty.hint" = "Перетягніть файли сюди — або зробіть знімок за допомогою ⌘⇧3";
+"shelf.help.fileCount" = "Файлів на полиці";
+"action.showInFinder" = "Показати у Finder";
+"shelf.help.settings" = "Налаштування";
+"shelf.help.copyFile" = "Скопіювати файл (для AnyDesk та інших віддалених робочих столів)";
+"action.delete" = "Видалити";
+"action.clearAll" = "Очистити все";
+
+"shelf.toast.openButton" = "Відкрити";
+"shelf.player.pressPlayHint" = "Натисніть ▶, щоб відтворити";
+
+/* Контекстне меню картки */
+"shelf.context.copyFile" = "Скопіювати файл";
+"shelf.context.copyPath" = "Скопіювати шлях";
+"shelf.context.uploadToDrive" = "На Google Диск";
+
+/* Панель «Виберіть місце призначення» (Google Диск) */
+"shelf.drive.whereToPut" = "Виберіть місце призначення";
+"shelf.drive.notConnected" = "Google Диск не підключено";
+"shelf.drive.notInstalled" = "Google Диск не встановлено";
+"shelf.drive.uploadHelp" = "На Google Диск → %@";
+"shelf.drive.fallbackFolderName" = "папку";
+
+/* MARK: - Попередження (NSAlert) */
+"alert.clearAll.title" = "Очистити полицю?";
+"alert.clearAll.confirmButton" = "Очистити";
+"alert.clearAll.cancelButton" = "Скасувати";
+
+/* MARK: - Попередження стеження за папками (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "Папку «%@» не можна дзеркалити — це системна папка цілком; виберіть підпапку.";
+"watcher.warning.bulkFolder" = "Папка «%@»: наявний вміст (%d файлів) не буде перенесено — на полицю потраплятимуть лише нові файли.";
+"watcher.warning.accessNotGranted" = "Папка «%@»: доступ не надано — дозвольте це в Налаштуваннях.";
+
+/* MARK: - Google Диск (GoogleDrive) */
+"drive.error.notFound" = "Google Диск не знайдено: встановіть Google Drive for desktop і увійдіть в акаунт";
+
+/* MARK: - «Зараз грає» (ScriptedNowPlaying) */
+/* Назва застосунку «Музика» (Apple Music) — показується під назвою треку в міні-плеєрі. */
+"app.musicName" = "Музика";

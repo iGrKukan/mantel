@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Varselet "Tømme hyllen?" før hele hyllen flyttes til Papirkurven. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d element flyttes til Papirkurven. Dette kan bare angres derfra.</string>
+			<key>other</key>
+			<string>%d elementer flyttes til Papirkurven. Dette kan bare angres derfra.</string>
+		</dict>
+	</dict>
+
+	<!-- Etiketten for automatisk opprydding "Slett filer eldre enn N dager". -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Filer eldre enn %#@days@ flyttes til Papirkurven. Sjekkes ved oppstart og hver time.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d dag</string>
+			<key>other</key>
+			<string>%d dager</string>
+		</dict>
+	</dict>
+
+	<!-- Meldingen "Lastet opp til Google Drive ("mappe"): N fil(er)". -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Lastet opp til Google Drive («%@»): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d fil</string>
+			<key>other</key>
+			<string>%d filer</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

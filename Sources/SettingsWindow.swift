@@ -10,24 +10,24 @@ struct SettingsView: View {
 #if APPSTORE
             // В песочнице Mantel не может сам взять ~/Desktop и ~/Screenshots — доступ
             // должен явно выдать пользователь через NSOpenPanel (см. FolderAccess).
-            Section("Слежение") {
-                trackedFolderRow(title: "Рабочий стол", path: desktopPath, isOn: $settings.watchDesktop)
+            Section(String(localized: "settings.watching.title")) {
+                trackedFolderRow(title: String(localized: "settings.watching.desktopLabel"), path: desktopPath, isOn: $settings.watchDesktop)
                 trackedFolderRow(title: "~/Screenshots", path: screenshotsPath, isOn: $settings.watchScreenshotsFolder)
-                Toggle("Раскрывать по наведению", isOn: $settings.hotZoneEnabled)
+                Toggle(String(localized: "settings.watching.hotZone"), isOn: $settings.hotZoneEnabled)
             }
 #else
-            Section("Слежение") {
-                Toggle("Следить за Рабочим столом", isOn: $settings.watchDesktop)
-                Toggle("Следить за ~/Screenshots", isOn: $settings.watchScreenshotsFolder)
-                Toggle("Раскрывать по наведению", isOn: $settings.hotZoneEnabled)
+            Section(String(localized: "settings.watching.title")) {
+                Toggle(String(localized: "settings.watching.desktopToggle"), isOn: $settings.watchDesktop)
+                Toggle(String(localized: "settings.watching.screenshotsToggle"), isOn: $settings.watchScreenshotsFolder)
+                Toggle(String(localized: "settings.watching.hotZone"), isOn: $settings.hotZoneEnabled)
             }
 #endif
-            Section("Папки-источники") {
-                Text("Из этих папок в полку попадает любой файл, а не только снимки экрана.")
+            Section(String(localized: "settings.folders.title")) {
+                Text(String(localized: "settings.folders.hint"))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 if settings.mirrorFolders.isEmpty {
-                    Text("Папки не выбраны")
+                    Text(String(localized: "settings.folders.empty"))
                         .foregroundStyle(.secondary)
                 } else {
                     ForEach(settings.mirrorFolders, id: \.self) { path in
@@ -44,9 +44,9 @@ struct SettingsView: View {
                         }
                     }
                 }
-                Button("Добавить папку…") { addMirrorFolder() }
-                Toggle("Забирать файлы из папки (не копировать)", isOn: $settings.mirrorMovesFiles)
-                Text("Выключено — файл копируется, оригинал остаётся на месте. Включено — файл переносится в полку, как это делается со снимками экрана.")
+                Button(String(localized: "settings.folders.add")) { addMirrorFolder() }
+                Toggle(String(localized: "settings.folders.moveToggle"), isOn: $settings.mirrorMovesFiles)
+                Text(String(localized: "settings.folders.moveHint"))
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 if !settings.lastMirrorWarning.isEmpty {
@@ -55,27 +55,27 @@ struct SettingsView: View {
                         .foregroundStyle(.yellow)
                 }
             }
-            Section("Полка") {
-                Stepper("Ширина полки: \(Int(settings.shelfWidth)) px",
+            Section(String(localized: "settings.shelf.title")) {
+                Stepper(String(format: String(localized: "settings.shelf.widthStepper"), Int(settings.shelfWidth)),
                         value: $settings.shelfWidth, in: 480...1400, step: 40)
-                Picker("Удалять файлы старше", selection: $settings.autoPruneDays) {
-                    Text("Никогда").tag(0)
-                    Text("1 дня").tag(1)
-                    Text("3 дней").tag(3)
-                    Text("7 дней").tag(7)
-                    Text("14 дней").tag(14)
-                    Text("30 дней").tag(30)
-                    Text("90 дней").tag(90)
+                Picker(String(localized: "settings.shelf.autoPrunePicker"), selection: $settings.autoPruneDays) {
+                    Text(String(localized: "settings.shelf.prune.never")).tag(0)
+                    Text(String(localized: "settings.shelf.prune.oneDay")).tag(1)
+                    Text(String(localized: "settings.shelf.prune.threeDays")).tag(3)
+                    Text(String(localized: "settings.shelf.prune.sevenDays")).tag(7)
+                    Text(String(localized: "settings.shelf.prune.fourteenDays")).tag(14)
+                    Text(String(localized: "settings.shelf.prune.thirtyDays")).tag(30)
+                    Text(String(localized: "settings.shelf.prune.ninetyDays")).tag(90)
                 }
                 Text(autoPruneLabel)
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-            Section("Запуск") {
-                Toggle("Запускать при входе", isOn: $settings.launchAtLogin)
+            Section(String(localized: "settings.launch.title")) {
+                Toggle(String(localized: "settings.launch.atLogin"), isOn: $settings.launchAtLogin)
             }
-            Section("Google Диск") {
-                TextField("Имя подпапки по умолчанию", text: $settings.googleDriveSubfolder)
+            Section(String(localized: "settings.drive.title")) {
+                TextField(String(localized: "settings.drive.subfolderField"), text: $settings.googleDriveSubfolder)
                 HStack(spacing: 6) {
                     Image(systemName: "folder")
                     Text(destinationDisplayPath)
@@ -83,8 +83,8 @@ struct SettingsView: View {
                         .truncationMode(.middle)
                 }
                 HStack {
-                    Button("Выбрать папку…") { chooseGoogleDriveDestination() }
-                    Button("Сбросить") { settings.googleDriveDestination = "" }
+                    Button(String(localized: "settings.drive.chooseFolder")) { chooseGoogleDriveDestination() }
+                    Button(String(localized: "settings.drive.reset")) { settings.googleDriveDestination = "" }
                         .disabled(settings.googleDriveDestination.isEmpty)
                 }
                 if let warning = destinationOutsideDriveWarning {
@@ -97,7 +97,7 @@ struct SettingsView: View {
                     .foregroundStyle(.secondary)
             }
             Section {
-                Button("Открыть папку библиотеки") {
+                Button(String(localized: "action.openLibrary")) {
                     NSWorkspace.shared.open(Library.root)
                 }
             }
@@ -118,10 +118,10 @@ struct SettingsView: View {
             Toggle(title, isOn: isOn)
         } else {
             HStack {
-                Text("\(title) — доступ не выдан")
+                Text(String(format: String(localized: "settings.watching.accessDenied"), title))
                     .foregroundStyle(.secondary)
                 Spacer()
-                Button("Разрешить…") { grantAccess(to: path) }
+                Button(String(localized: "settings.watching.grantButton")) { grantAccess(to: path) }
             }
         }
     }
@@ -133,7 +133,7 @@ struct SettingsView: View {
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = false
         panel.directoryURL = URL(fileURLWithPath: path)
-        panel.message = "Выбери папку «\((path as NSString).lastPathComponent)», чтобы Mantel мог за ней следить."
+        panel.message = String(format: String(localized: "settings.watching.grantMessage"), (path as NSString).lastPathComponent)
         guard panel.runModal() == .OK, let url = panel.urls.first else { return }
         FolderAccess.store(url)
         // Закладка появилась — перезапускаем наблюдатель и обновляем это окно.
@@ -144,21 +144,21 @@ struct SettingsView: View {
 
     private var autoPruneLabel: String {
         settings.autoPruneDays == 0
-            ? "Автоочистка выключена — полка хранит файлы, пока не удалишь вручную."
-            : "Файлы старше \(settings.autoPruneDays) дн. отправляются в Корзину. Проверка при запуске и раз в час."
+            ? String(localized: "settings.shelf.pruneLabel.off")
+            : String(format: String(localized: "settings.shelf.pruneLabel.on"), settings.autoPruneDays)
     }
 
     private var driveStatus: String {
         if let root = GoogleDrive.driveRoot {
-            return "Google Диск найден: \(root.path). Файлы попадают в «\(destinationDisplayPath)»."
+            return String(format: String(localized: "settings.drive.statusFound"), root.path, destinationDisplayPath)
         } else {
-            return "Google Диск не найден"
+            return String(localized: "settings.drive.statusNotFound")
         }
     }
 
     /// Путь папки назначения, сокращённый через `~` — для строки под полем настроек.
     private var destinationDisplayPath: String {
-        guard let dest = GoogleDrive.destinationURL else { return "не определена" }
+        guard let dest = GoogleDrive.destinationURL else { return String(localized: "settings.drive.destinationUndetermined") }
         return (dest.path as NSString).abbreviatingWithTildeInPath
     }
 
@@ -167,7 +167,7 @@ struct SettingsView: View {
         guard !settings.googleDriveDestination.isEmpty, let root = GoogleDrive.driveRoot else { return nil }
         let dest = (settings.googleDriveDestination as NSString).expandingTildeInPath
         guard !dest.hasPrefix(root.path) else { return nil }
-        return "Папка вне Google Диска — файлы не будут синхронизированы"
+        return String(localized: "settings.drive.outsideWarning")
     }
 
     private func chooseGoogleDriveDestination() {
@@ -190,7 +190,7 @@ struct SettingsView: View {
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = true
-        panel.prompt = "Добавить"
+        panel.prompt = String(localized: "settings.folders.addPrompt")
         guard panel.runModal() == .OK else { return }
         for url in panel.urls {
             FolderAccess.store(url)
@@ -214,7 +214,7 @@ final class SettingsWindowController {
                 contentRect: NSRect(x: 0, y: 0, width: 460, height: 700),
                 styleMask: [.titled, .closable, .miniaturizable],
                 backing: .buffered, defer: false)
-            w.title = "Настройки Mantel"
+            w.title = String(localized: "settings.window.title")
             w.contentView = hosting
             w.isReleasedWhenClosed = false
             w.center()

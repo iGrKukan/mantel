@@ -1,0 +1,102 @@
+/* Mantel — 简体中文本地化 */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "显示置物架";
+"menu.openDriveFolder" = "打开 Google Drive 文件夹";
+"menu.clearShelf" = "清空置物架";
+"menu.settings" = "设置…";
+"menu.quit" = "退出";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "打开资源库文件夹";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Mantel 设置";
+
+/* "Watching" section */
+"settings.watching.title" = "监视";
+"settings.watching.desktopLabel" = "桌面";
+"settings.watching.desktopToggle" = "监视桌面";
+"settings.watching.screenshotsToggle" = "监视 ~/Screenshots";
+"settings.watching.hotZone" = "悬停展开";
+"settings.watching.accessDenied" = "%@ — 未获得访问权限";
+"settings.watching.grantButton" = "授予访问权限…";
+"settings.watching.grantMessage" = "请选择“%@”文件夹，以便 Mantel 可以监视它。";
+
+/* "Source Folders" section */
+"settings.folders.title" = "源文件夹";
+"settings.folders.hint" = "放入这些文件夹中的任何文件都会进入置物架，不仅限于屏幕截图。";
+"settings.folders.empty" = "未选择文件夹";
+"settings.folders.add" = "添加文件夹…";
+"settings.folders.addPrompt" = "添加";
+"settings.folders.moveToggle" = "将文件移出文件夹（不复制）";
+"settings.folders.moveHint" = "关闭 — 文件会被复制，原文件保留在原处。开启 — 文件会像屏幕截图一样被移动到置物架。";
+
+/* "Shelf" section */
+"settings.shelf.title" = "置物架";
+"settings.shelf.widthStepper" = "置物架宽度：%d px";
+"settings.shelf.autoPrunePicker" = "删除早于以下时间的文件";
+"settings.shelf.prune.never" = "从不";
+"settings.shelf.prune.oneDay" = "1 天";
+"settings.shelf.prune.threeDays" = "3 天";
+"settings.shelf.prune.sevenDays" = "7 天";
+"settings.shelf.prune.fourteenDays" = "14 天";
+"settings.shelf.prune.thirtyDays" = "30 天";
+"settings.shelf.prune.ninetyDays" = "90 天";
+"settings.shelf.pruneLabel.off" = "自动清理已关闭 — 置物架会保留文件，直到你手动删除。";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "启动";
+"settings.launch.atLogin" = "登录时启动";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "默认子文件夹名称";
+"settings.drive.chooseFolder" = "选择文件夹…";
+"settings.drive.reset" = "重置";
+"settings.drive.outsideWarning" = "文件夹不在 Google Drive 内 — 文件将不会同步";
+"settings.drive.statusFound" = "已找到 Google Drive：%@。文件会保存到“%@”。";
+"settings.drive.statusNotFound" = "未找到 Google Drive";
+"settings.drive.destinationUndetermined" = "未设置";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "将文件拖到这里 — 或按 ⌘⇧3 截屏";
+"shelf.help.fileCount" = "置物架上的文件数";
+"action.showInFinder" = "在 Finder 中显示";
+"shelf.help.settings" = "设置";
+"shelf.help.copyFile" = "复制文件（用于 AnyDesk 等远程桌面）";
+"action.delete" = "删除";
+"action.clearAll" = "全部清空";
+
+"shelf.toast.openButton" = "打开";
+"shelf.player.pressPlayHint" = "按 ▶ 播放";
+
+/* Card context menu */
+"shelf.context.copyFile" = "复制文件";
+"shelf.context.copyPath" = "复制路径";
+"shelf.context.uploadToDrive" = "上传到 Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "选择保存位置";
+"shelf.drive.notConnected" = "Google Drive 未连接";
+"shelf.drive.notInstalled" = "Google Drive 未安装";
+"shelf.drive.uploadHelp" = "上传到 Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "文件夹";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "要清空置物架吗？";
+"alert.clearAll.confirmButton" = "清空";
+"alert.clearAll.cancelButton" = "取消";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "“%@”文件夹无法镜像 — 它是整个系统文件夹，请改选子文件夹。";
+"watcher.warning.bulkFolder" = "“%@”文件夹：现有内容（%d 个文件）不会被移动 — 只有新文件会进入置物架。";
+"watcher.warning.accessNotGranted" = "“%@”文件夹：未获得访问权限 — 请在设置中允许。";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "未找到 Google Drive：请安装 Google Drive for desktop 并登录";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "音乐";

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- „Isprazniti policu?” — upozorenje NSAlert prije premještanja cijele police u Koš. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d stavka bit će premještena u Koš. Poništavanje je moguće samo iz Koša.</string>
+			<key>few</key>
+			<string>%d stavke bit će premještene u Koš. Poništavanje je moguće samo iz Koša.</string>
+			<key>many</key>
+			<string>%d stavki bit će premješteno u Koš. Poništavanje je moguće samo iz Koša.</string>
+			<key>other</key>
+			<string>%d stavki bit će premješteno u Koš. Poništavanje je moguće samo iz Koša.</string>
+		</dict>
+	</dict>
+
+	<!-- Oznaka automatskog čišćenja „Briši datoteke starije od N dana”. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Datoteke starije od %#@days@ premještaju se u Koš. Provjera pri pokretanju i jednom na sat.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d dan</string>
+			<key>few</key>
+			<string>%d dana</string>
+			<key>many</key>
+			<string>%d dana</string>
+			<key>other</key>
+			<string>%d dana</string>
+		</dict>
+	</dict>
+
+	<!-- Obavijest „Preneseno na Google Disk („mapa”): N datoteka”. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Preneseno na Google Disk („%@”): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d datoteka</string>
+			<key>few</key>
+			<string>%d datoteke</string>
+			<key>many</key>
+			<string>%d datoteka</string>
+			<key>other</key>
+			<string>%d datoteka</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

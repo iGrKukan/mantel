@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- „Wyczyścić półkę?” — ostrzeżenie NSAlert przed przeniesieniem całej półki do Kosza. -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d element zostanie przeniesiony do Kosza. Cofnąć to można tylko z Kosza.</string>
+			<key>few</key>
+			<string>%d elementy zostaną przeniesione do Kosza. Cofnąć to można tylko z Kosza.</string>
+			<key>many</key>
+			<string>%d elementów zostanie przeniesionych do Kosza. Cofnąć to można tylko z Kosza.</string>
+			<key>other</key>
+			<string>%d elementu zostanie przeniesione do Kosza. Cofnąć to można tylko z Kosza.</string>
+		</dict>
+	</dict>
+
+	<!-- Podpis autoczyszczenia „Usuwaj pliki starsze niż N dni”. -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Pliki starsze niż %#@days@ są przenoszone do Kosza. Sprawdzane przy uruchomieniu i raz na godzinę.</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d dzień</string>
+			<key>few</key>
+			<string>%d dni</string>
+			<key>many</key>
+			<string>%d dni</string>
+			<key>other</key>
+			<string>%d dnia</string>
+		</dict>
+	</dict>
+
+	<!-- Powiadomienie „Przesłano na Dysk Google („folder”): N plik(ów)”. -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Przesłano na Dysk Google („%@”): %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d plik</string>
+			<key>few</key>
+			<string>%d pliki</string>
+			<key>many</key>
+			<string>%d plików</string>
+			<key>other</key>
+			<string>%d pliku</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

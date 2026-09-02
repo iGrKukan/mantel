@@ -1,0 +1,102 @@
+/* Mantel — الترجمة العربية */
+
+/* MARK: - قائمة شريط القوائم (AppDelegate) */
+"menu.showShelf" = "إظهار الرف";
+"menu.openDriveFolder" = "فتح مجلد Google Drive";
+"menu.clearShelf" = "إفراغ الرف";
+"menu.settings" = "الإعدادات…";
+"menu.quit" = "إنهاء";
+
+/* الإجراء "فتح مجلد المكتبة" — مشترك بين قائمة شريط القوائم ونافذة الإعدادات. */
+"action.openLibrary" = "فتح مجلد المكتبة";
+
+/* MARK: - نافذة الإعدادات (SettingsWindow) */
+"settings.window.title" = "إعدادات Mantel";
+
+/* قسم "المراقبة" */
+"settings.watching.title" = "المراقبة";
+"settings.watching.desktopLabel" = "سطح المكتب";
+"settings.watching.desktopToggle" = "مراقبة سطح المكتب";
+"settings.watching.screenshotsToggle" = "مراقبة ~/Screenshots";
+"settings.watching.hotZone" = "التوسّع عند المرور بالمؤشر";
+"settings.watching.accessDenied" = "%@ — لم يتم منح الإذن";
+"settings.watching.grantButton" = "منح الإذن…";
+"settings.watching.grantMessage" = "اختر مجلد \"%@\" حتى يتمكن Mantel من مراقبته.";
+
+/* قسم "المجلدات المصدر" */
+"settings.folders.title" = "المجلدات المصدر";
+"settings.folders.hint" = "أي ملف يوضع في هذه المجلدات ينتقل إلى الرف، وليس لقطات الشاشة فقط.";
+"settings.folders.empty" = "لم يتم اختيار مجلدات";
+"settings.folders.add" = "إضافة مجلد…";
+"settings.folders.addPrompt" = "إضافة";
+"settings.folders.moveToggle" = "نقل الملفات من المجلد (بدلًا من نسخها)";
+"settings.folders.moveHint" = "متوقف — يُنسخ الملف ويبقى الأصل في مكانه. مفعّل — يُنقل الملف إلى الرف، كما يحدث مع لقطات الشاشة.";
+
+/* قسم "الرف" */
+"settings.shelf.title" = "الرف";
+"settings.shelf.widthStepper" = "عرض الرف: %d px";
+"settings.shelf.autoPrunePicker" = "حذف الملفات الأقدم من";
+"settings.shelf.prune.never" = "أبدًا";
+"settings.shelf.prune.oneDay" = "يوم واحد";
+"settings.shelf.prune.threeDays" = "3 أيام";
+"settings.shelf.prune.sevenDays" = "7 أيام";
+"settings.shelf.prune.fourteenDays" = "14 يومًا";
+"settings.shelf.prune.thirtyDays" = "30 يومًا";
+"settings.shelf.prune.ninetyDays" = "90 يومًا";
+"settings.shelf.pruneLabel.off" = "التنظيف التلقائي متوقف — يحتفظ الرف بالملفات إلى أن تحذفها يدويًا.";
+/* "settings.shelf.pruneLabel.on" مُعرَّف في ملف Localizable.stringsdict (يحتاج إلى صيغ الجمع العربية الست). */
+
+/* قسم "بدء التشغيل" */
+"settings.launch.title" = "بدء التشغيل";
+"settings.launch.atLogin" = "التشغيل عند الدخول";
+
+/* قسم "Google Drive" */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "الاسم الافتراضي للمجلد الفرعي";
+"settings.drive.chooseFolder" = "اختيار مجلد…";
+"settings.drive.reset" = "إعادة التعيين";
+"settings.drive.outsideWarning" = "المجلد خارج Google Drive — لن تتم مزامنة الملفات";
+"settings.drive.statusFound" = "تم العثور على Google Drive: %@. تنتقل الملفات إلى \"%@\".";
+"settings.drive.statusNotFound" = "لم يتم العثور على Google Drive";
+"settings.drive.destinationUndetermined" = "غير محدد";
+
+/* MARK: - الرف (ShelfView) */
+"shelf.empty.hint" = "اسحب الملفات إلى هنا — أو التقط لقطة شاشة باستخدام ⌘⇧3";
+"shelf.help.fileCount" = "الملفات الموجودة على الرف";
+"action.showInFinder" = "إظهار في Finder";
+"shelf.help.settings" = "الإعدادات";
+"shelf.help.copyFile" = "نسخ الملف (لبرنامج AnyDesk وأسطح المكتب البعيدة الأخرى)";
+"action.delete" = "حذف";
+"action.clearAll" = "مسح الكل";
+
+"shelf.toast.openButton" = "فتح";
+"shelf.player.pressPlayHint" = "اضغط ▶ للتشغيل";
+
+/* القائمة السياقية للبطاقة */
+"shelf.context.copyFile" = "نسخ الملف";
+"shelf.context.copyPath" = "نسخ المسار";
+"shelf.context.uploadToDrive" = "إلى Google Drive";
+
+/* لوحة "اختيار وجهة" (Google Drive) */
+"shelf.drive.whereToPut" = "اختيار وجهة";
+"shelf.drive.notConnected" = "Google Drive غير متصل";
+"shelf.drive.notInstalled" = "Google Drive غير مثبَّت";
+"shelf.drive.uploadHelp" = "إلى Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "مجلد";
+
+/* MARK: - التنبيهات (NSAlert) */
+"alert.clearAll.title" = "هل تريد إفراغ الرف؟";
+"alert.clearAll.confirmButton" = "إفراغ";
+"alert.clearAll.cancelButton" = "إلغاء";
+
+/* MARK: - تحذيرات مراقبة المجلدات (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "لا يمكن نسخ مجلد \"%@\" — لأنه مجلد نظام كامل؛ اختر مجلدًا فرعيًا بدلًا منه.";
+"watcher.warning.bulkFolder" = "مجلد \"%@\": المحتوى الحالي (%d ملفات) لن يُنقل — الملفات الجديدة فقط هي التي تنتقل إلى الرف.";
+"watcher.warning.accessNotGranted" = "مجلد \"%@\": لم يتم منح الإذن — اسمح به من الإعدادات.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "لم يتم العثور على Google Drive: ثبّت تطبيق Google Drive for desktop وسجّل الدخول";
+
+/* MARK: - "التشغيل الآن" (ScriptedNowPlaying) */
+/* اسم تطبيق "Music" (Apple Music) — يظهر أسفل عنوان المقطع في المشغّل المصغّر. */
+"app.musicName" = "الموسيقى";

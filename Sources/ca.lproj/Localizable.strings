@@ -1,0 +1,102 @@
+/* Mantel — Catalan localization */
+
+/* MARK: - Menu bar (AppDelegate) */
+"menu.showShelf" = "Mostra el prestatge";
+"menu.openDriveFolder" = "Obre la carpeta de Google Drive";
+"menu.clearShelf" = "Buida el prestatge";
+"menu.settings" = "Configuració…";
+"menu.quit" = "Surt";
+
+/* "Open library folder" action — shared by the menu bar and the settings window. */
+"action.openLibrary" = "Obre la carpeta de la biblioteca";
+
+/* MARK: - Settings window (SettingsWindow) */
+"settings.window.title" = "Configuració del Mantel";
+
+/* "Watching" section */
+"settings.watching.title" = "Vigilància";
+"settings.watching.desktopLabel" = "Escriptori";
+"settings.watching.desktopToggle" = "Vigila l'Escriptori";
+"settings.watching.screenshotsToggle" = "Vigila ~/Screenshots";
+"settings.watching.hotZone" = "Expandeix en passar-hi el cursor";
+"settings.watching.accessDenied" = "%@ — accés no concedit";
+"settings.watching.grantButton" = "Concedeix l'accés…";
+"settings.watching.grantMessage" = "Tria la carpeta «%@» perquè el Mantel la pugui vigilar.";
+
+/* "Source Folders" section */
+"settings.folders.title" = "Carpetes d'origen";
+"settings.folders.hint" = "Qualsevol fitxer que es col·loqui en aquestes carpetes va al prestatge, no només les captures de pantalla.";
+"settings.folders.empty" = "No hi ha cap carpeta seleccionada";
+"settings.folders.add" = "Afegeix una carpeta…";
+"settings.folders.addPrompt" = "Afegeix";
+"settings.folders.moveToggle" = "Treu els fitxers de la carpeta (no copiar)";
+"settings.folders.moveHint" = "Desactivat: el fitxer es copia i l'original es queda al seu lloc. Activat: el fitxer es mou al prestatge, igual que amb les captures de pantalla.";
+
+/* "Shelf" section */
+"settings.shelf.title" = "Prestatge";
+"settings.shelf.widthStepper" = "Amplada del prestatge: %d px";
+"settings.shelf.autoPrunePicker" = "Suprimeix els fitxers més antics de";
+"settings.shelf.prune.never" = "Mai";
+"settings.shelf.prune.oneDay" = "1 dia";
+"settings.shelf.prune.threeDays" = "3 dies";
+"settings.shelf.prune.sevenDays" = "7 dies";
+"settings.shelf.prune.fourteenDays" = "14 dies";
+"settings.shelf.prune.thirtyDays" = "30 dies";
+"settings.shelf.prune.ninetyDays" = "90 dies";
+"settings.shelf.pruneLabel.off" = "La neteja automàtica està desactivada: el prestatge conserva els fitxers fins que els suprimeixis manualment.";
+/* "settings.shelf.pruneLabel.on" is defined in Localizable.stringsdict (needs day/days pluralization; the Russian source text uses the invariant abbreviation "дн." so it doesn't need a stringsdict entry). */
+
+/* "Startup" section */
+"settings.launch.title" = "Inici";
+"settings.launch.atLogin" = "Obre en iniciar la sessió";
+
+/* "Google Drive" section */
+"settings.drive.title" = "Google Drive";
+"settings.drive.subfolderField" = "Nom de la subcarpeta per defecte";
+"settings.drive.chooseFolder" = "Tria una carpeta…";
+"settings.drive.reset" = "Restableix";
+"settings.drive.outsideWarning" = "La carpeta és fora de Google Drive — els fitxers no se sincronitzaran";
+"settings.drive.statusFound" = "S'ha trobat Google Drive: %@. Els fitxers van a «%@».";
+"settings.drive.statusNotFound" = "No s'ha trobat Google Drive";
+"settings.drive.destinationUndetermined" = "sense definir";
+
+/* MARK: - Shelf (ShelfView) */
+"shelf.empty.hint" = "Arrossega fitxers aquí — o fes una captura de pantalla amb ⌘⇧3";
+"shelf.help.fileCount" = "Fitxers al prestatge";
+"action.showInFinder" = "Mostra al Finder";
+"shelf.help.settings" = "Configuració";
+"shelf.help.copyFile" = "Copia el fitxer (per a AnyDesk i altres escriptoris remots)";
+"action.delete" = "Suprimeix";
+"action.clearAll" = "Buida-ho tot";
+
+"shelf.toast.openButton" = "Obre";
+"shelf.player.pressPlayHint" = "Prem ▶ per reproduir";
+
+/* Card context menu */
+"shelf.context.copyFile" = "Copia el fitxer";
+"shelf.context.copyPath" = "Copia el camí";
+"shelf.context.uploadToDrive" = "A Google Drive";
+
+/* "Choose a destination" panel (Google Drive) */
+"shelf.drive.whereToPut" = "Tria una destinació";
+"shelf.drive.notConnected" = "Google Drive no està connectat";
+"shelf.drive.notInstalled" = "Google Drive no està instal·lat";
+"shelf.drive.uploadHelp" = "A Google Drive → %@";
+"shelf.drive.fallbackFolderName" = "una carpeta";
+
+/* MARK: - Alerts (NSAlert) */
+"alert.clearAll.title" = "Buidar el prestatge?";
+"alert.clearAll.confirmButton" = "Buida";
+"alert.clearAll.cancelButton" = "Cancel·la";
+
+/* MARK: - Folder-watching warnings (CaptureWatcher) */
+"watcher.warning.forbiddenFolder" = "La carpeta «%@» no es pot reflectir — és una carpeta de sistema sencera; tria una subcarpeta en el seu lloc.";
+"watcher.warning.bulkFolder" = "Carpeta «%@»: el contingut existent (%d fitxers) no es mourà — només els fitxers nous aniran al prestatge.";
+"watcher.warning.accessNotGranted" = "Carpeta «%@»: accés no concedit — permet-ho a la Configuració.";
+
+/* MARK: - Google Drive (GoogleDrive) */
+"drive.error.notFound" = "No s'ha trobat Google Drive: instal·la Google Drive per a ordinador i inicia la sessió";
+
+/* MARK: - "Now Playing" (ScriptedNowPlaying) */
+/* The "Music" app (Apple Music) name — shown under the track title in the mini player. */
+"app.musicName" = "Música";

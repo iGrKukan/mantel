@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- पूरी शेल्फ़ को ट्रैश में भेजने से पहले "क्या शेल्फ़ साफ़ करें?" अलर्ट। -->
+	<key>alert.clearAll.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@items@</string>
+		<key>items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d आइटम ट्रैश में चला जाएगा। इसे सिर्फ़ ट्रैश से ही वापस लाया जा सकता है।</string>
+			<key>other</key>
+			<string>%d आइटम ट्रैश में चले जाएंगे। इसे सिर्फ़ ट्रैश से ही वापस लाया जा सकता है।</string>
+		</dict>
+	</dict>
+
+	<!-- ऑटो-क्लीनअप लेबल "इससे पुरानी फ़ाइलें हटाएं (N दिन)"। -->
+	<key>settings.shelf.pruneLabel.on</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@days@ से पुरानी फ़ाइलें ट्रैश में भेज दी जाती हैं। शुरू होने पर और हर घंटे जांच होती है।</string>
+		<key>days</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d दिन</string>
+			<key>other</key>
+			<string>%d दिन</string>
+		</dict>
+	</dict>
+
+	<!-- टोस्ट संदेश "Google Drive ("फ़ोल्डर") पर अपलोड हुई: N फ़ाइलें"। -->
+	<key>toast.uploaded.message</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>Google Drive (“%@”) पर अपलोड हुई: %#@files@</string>
+		<key>files</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>%d फ़ाइल</string>
+			<key>other</key>
+			<string>%d फ़ाइलें</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

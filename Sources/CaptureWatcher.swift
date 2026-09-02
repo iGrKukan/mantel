@@ -111,18 +111,17 @@ final class CaptureWatcher {
         for folder in folders {
             let path = folder.standardizedFileURL.path
             if forbidden.contains(path) {
-                let msg = "Папка «\(path)» не подходит для зеркалирования — это системная папка целиком, выберите подпапку."
-                NSLog("Mantel: %@", msg)
-                warnings.append(msg)
+                // NSLog — отладочное сообщение, остаётся по-русски всегда, независимо от локали.
+                NSLog("Mantel: Папка «%@» не подходит для зеркалирования — это системная папка целиком, выберите подпапку.", path)
+                warnings.append(String(format: String(localized: "watcher.warning.forbiddenFolder"), path))
                 continue
             }
             let count = (try? fm.contentsOfDirectory(atPath: path))?.count ?? 0
             if bulkySystemFolders.contains(path) || count > Self.maxMirrorFiles {
                 skipBulk.insert(path)
                 let name = (path as NSString).lastPathComponent
-                let msg = "Папка «\(name)»: старое содержимое (\(count) файлов) не переносится — в полку попадут только новые файлы."
-                NSLog("Mantel: %@", msg)
-                warnings.append(msg)
+                NSLog("Mantel: Папка «%@»: старое содержимое (%d файлов) не переносится — в полку попадут только новые файлы.", name, count)
+                warnings.append(String(format: String(localized: "watcher.warning.bulkFolder"), name, count))
             }
             accepted.append(folder)
         }
@@ -144,9 +143,8 @@ final class CaptureWatcher {
                 accessible.append(url)
             } else {
                 let name = (folder.path as NSString).lastPathComponent
-                let msg = "Папка «\(name)»: доступ не выдан — разреши её в настройках."
-                NSLog("Mantel: %@", msg)
-                warnings.append(msg)
+                NSLog("Mantel: Папка «%@»: доступ не выдан — разреши её в настройках.", name)
+                warnings.append(String(format: String(localized: "watcher.warning.accessNotGranted"), name))
             }
         }
         return (accessible, warnings)

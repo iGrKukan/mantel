@@ -76,9 +76,21 @@
 "shelf.player.pressPlayHint" = "Press ▶ to play";
 
 /* Card context menu */
+"card.share" = "Share…";
+"card.sendToMessages" = "Send to Messages";
 "shelf.context.copyFile" = "Copy File";
 "shelf.context.copyPath" = "Copy Path";
+"card.ocr" = "Copy Text from Image";
 "shelf.context.uploadToDrive" = "To Google Drive";
+
+/* Action column */
+"action.share.help" = "Share selected";
+
+/* Toasts — text recognition (TextRecognition) */
+"toast.ocr.working" = "Recognizing text…";
+"toast.ocr.done" = "Text copied: %d characters";
+"toast.ocr.empty" = "No text on this image";
+"toast.ocr.failed" = "Couldn't recognize text";
 
 /* "Choose a destination" panel (Google Drive) */
 "shelf.drive.whereToPut" = "Choose a Destination";

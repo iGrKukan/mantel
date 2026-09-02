@@ -76,9 +76,21 @@
 "shelf.player.pressPlayHint" = "Нажми ▶, чтобы включить";
 
 /* Контекстное меню карточки */
+"card.share" = "Поделиться…";
+"card.sendToMessages" = "Отправить в Сообщения";
 "shelf.context.copyFile" = "Скопировать файл";
 "shelf.context.copyPath" = "Скопировать путь";
+"card.ocr" = "Скопировать текст с картинки";
 "shelf.context.uploadToDrive" = "На Google Диск";
+
+/* Правый столбик действий */
+"action.share.help" = "Поделиться выделенным";
+
+/* Тосты — распознавание текста (TextRecognition) */
+"toast.ocr.working" = "Распознаю текст…";
+"toast.ocr.done" = "Текст скопирован: %d символов";
+"toast.ocr.empty" = "Текста на картинке нет";
+"toast.ocr.failed" = "Не удалось распознать текст";
 
 /* Панель «Куда положить» (Google Диск) */
 "shelf.drive.whereToPut" = "Куда положить";

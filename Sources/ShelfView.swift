@@ -31,9 +31,35 @@ struct ShelfView: View {
     @State private var uploadError: String = ""
     @State private var uploadedCount: Int = 0
     @State private var uploadDestinationName: String = ""
-    @State private var showUploadToast = false
+
+    /// Универсальный тост внизу панели — выгрузка на Диск и распознавание текста
+    /// показывают в нём свой значок/текст/цвет через один и тот же механизм.
+    @State private var toast: ToastMessage?
+    /// Растёт при каждом показе тоста — не даёт устаревшему таймеру скрыть тост,
+    /// который уже сменился новым (например «Распознаю…» → результат).
+    @State private var toastToken: Int = 0
+
+    /// Невидимый якорь для NSSharingServicePicker — см. ShareAnchor ниже.
+    @State private var shareAnchorView: NSView?
 
     enum UploadState: Equatable { case idle, uploading, done, failed }
+
+    struct ToastMessage: Equatable {
+        var icon: String
+        var text: String
+        var tint: Color
+        /// true — вместо значка крутится маленький индикатор («Распознаю текст…»).
+        var isWorking: Bool = false
+        var actionTitle: String? = nil
+        var action: (() -> Void)? = nil
+
+        // Замыкание не Equatable — сравниваем по остальным полям, этого достаточно,
+        // чтобы SwiftUI не путал разные тосты между собой.
+        static func == (lhs: ToastMessage, rhs: ToastMessage) -> Bool {
+            lhs.icon == rhs.icon && lhs.text == rhs.text && lhs.tint == rhs.tint
+                && lhs.isWorking == rhs.isWorking && lhs.actionTitle == rhs.actionTitle
+        }
+    }
 
     private let cornerRadius: CGFloat = 26
     private let accent = Color(red: 0.65, green: 0.55, blue: 0.98)
@@ -92,13 +118,14 @@ struct ShelfView: View {
                 actionColumn.frame(width: 48)
             }
 
-            if showUploadToast {
-                uploadToast
+            if let toast {
+                toastView(toast)
                     .padding(.horizontal, 10)
                     .padding(.bottom, 8)
                     .transition(.opacity.combined(with: .move(edge: .bottom)))
             }
         }
+        .background(ShareAnchor(view: $shareAnchorView))
         .background(
             RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
                 .fill(Color(red: 0.085, green: 0.085, blue: 0.095))
@@ -141,7 +168,7 @@ struct ShelfView: View {
         .contentShape(Rectangle())
         .onTapGesture { selection.removeAll() }
         .onDrop(of: [.fileURL], isTargeted: $dropTargeted, perform: handleDrop)
-        .animation(.easeInOut(duration: 0.15), value: showUploadToast)
+        .animation(.easeInOut(duration: 0.15), value: toast)
     }
 
     private var divider: some View {
@@ -182,7 +209,9 @@ struct ShelfView: View {
                                             },
                                             selectedURLsProvider: { selectedURLs(including: item) },
                                             onReveal: { for i in targetItems(including: item) { library.reveal(i) } },
+                                            onShare: { presentSharePicker(urls: selectedURLs(including: item), anchor: shareAnchorView) },
                                             onUpload: { uploadSelected(targetItems(including: item)) },
+                                            onOCR: { recognizeText(for: item) },
                                             onDelete: {
                                                 let victims = targetItems(including: item)
                                                 for v in victims { library.remove(v) }
@@ -286,42 +315,61 @@ struct ShelfView: View {
 
     // MARK: правый столбик действий
 
+    /// Тонкий горизонтальный разделитель столбика — тот же приглушённый стиль, что
+    /// у вертикального `divider` между колонками панели.
+    private var actionColumnDivider: some View {
+        Rectangle().fill(Color.white.opacity(0.08)).frame(width: 18, height: 1)
+    }
+
+    /// 8 иконок в столбике шириной 48 не всегда влезают по высоте (полка 200–272 px) —
+    /// поэтому сгруппированы (часто используемые сверху, служебные снизу, разделитель
+    /// между ними) И на случай нехватки места весь столбик умеет прокручиваться.
     private var actionColumn: some View {
-        VStack(spacing: 10) {
-            Spacer(minLength: 4)
-            // Счётчик файлов полки — клик открывает саму папку полки в Finder, чтобы
-            // до старых, уже проскроллившихся файлов всегда можно было добраться.
-            Text("\(library.items.count)")
-                .font(.system(size: 9, design: .rounded))
-                .foregroundStyle(.white.opacity(0.4))
-                .help(String(localized: "shelf.help.fileCount"))
-                .onTapGesture { NSWorkspace.shared.open(Library.root) }
-            HoverIconButton(system: "folder", help: String(localized: "action.showInFinder")) {
-                for i in toolbarTargets { library.reveal(i) }
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 6) {
+                // Счётчик файлов полки — клик открывает саму папку полки в Finder, чтобы
+                // до старых, уже проскроллившихся файлов всегда можно было добраться.
+                Text("\(library.items.count)")
+                    .font(.system(size: 9, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.4))
+                    .help(String(localized: "shelf.help.fileCount"))
+                    .onTapGesture { NSWorkspace.shared.open(Library.root) }
+
+                // Часто используемые.
+                HoverIconButton(system: "square.and.arrow.up", help: String(localized: "action.share.help")) {
+                    presentSharePicker(urls: toolbarTargets.map { $0.url }, anchor: shareAnchorView)
+                }
+                GoogleDriveButton(state: uploadState,
+                                  errorMessage: uploadError,
+                                  disabled: !GoogleDrive.isAvailable,
+                                  action: { uploadSelected(toolbarTargets) },
+                                  onDropURLs: { uploadURLs($0) },
+                                  onDropURLsTo: { urls, folder in uploadURLs(urls, to: folder) })
+                HoverIconButton(system: "folder", help: String(localized: "action.showInFinder")) {
+                    for i in toolbarTargets { library.reveal(i) }
+                }
+
+                actionColumnDivider
+
+                // Служебные.
+                HoverIconButton(system: "doc.on.doc", help: String(localized: "shelf.help.copyFile")) {
+                    copyToPasteboard(toolbarTargets)
+                }
+                HoverIconButton(system: "gearshape", help: String(localized: "shelf.help.settings")) {
+                    SettingsWindowController.shared.show()
+                }
+                HoverIconButton(system: "trash", help: String(localized: "action.delete")) {
+                    let victims = toolbarTargets
+                    for v in victims { library.remove(v) }
+                    selection.subtract(Set(victims.map { $0.id }))
+                }
+                HoverIconButton(system: "xmark.bin", help: String(localized: "action.clearAll")) {
+                    confirmClearAll()
+                }
             }
-            GoogleDriveButton(state: uploadState,
-                              errorMessage: uploadError,
-                              disabled: !GoogleDrive.isAvailable,
-                              action: { uploadSelected(toolbarTargets) },
-                              onDropURLs: { uploadURLs($0) },
-                              onDropURLsTo: { urls, folder in uploadURLs(urls, to: folder) })
-            HoverIconButton(system: "gearshape", help: String(localized: "shelf.help.settings")) {
-                SettingsWindowController.shared.show()
-            }
-            HoverIconButton(system: "doc.on.doc", help: String(localized: "shelf.help.copyFile")) {
-                copyToPasteboard(toolbarTargets)
-            }
-            HoverIconButton(system: "trash", help: String(localized: "action.delete")) {
-                let victims = toolbarTargets
-                for v in victims { library.remove(v) }
-                selection.subtract(Set(victims.map { $0.id }))
-            }
-            HoverIconButton(system: "xmark.bin", help: String(localized: "action.clearAll")) {
-                confirmClearAll()
-            }
-            Spacer(minLength: 4)
+            .padding(.vertical, 6)
+            .frame(maxWidth: .infinity)
         }
-        .padding(.vertical, 8)
     }
 
     /// «Очистить всё» — необратимо на вид, поэтому спрашиваем. Файлы уходят в Корзину.
@@ -340,22 +388,50 @@ struct ShelfView: View {
         }
     }
 
-    // MARK: тост «выгружено на Google Диск»
+    // MARK: универсальный тост внизу панели
 
-    private var uploadToast: some View {
+    /// Показывает `message` и сам себя прячет через `duration` секунд — если за это
+    /// время не пришёл более новый тост (см. `toastToken`).
+    private func showToast(_ message: ToastMessage, duration: Double = 2.5) {
+        toastToken &+= 1
+        let token = toastToken
+        withAnimation(.easeInOut(duration: 0.15)) { toast = message }
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            if toastToken == token {
+                withAnimation(.easeInOut(duration: 0.15)) { toast = nil }
+            }
+        }
+    }
+
+    /// Тост без автоскрытия — держится, пока его не сменит следующий showToast/setWorkingToast
+    /// (используется, пока идёт распознавание текста).
+    private func setWorkingToast(_ message: ToastMessage) {
+        toastToken &+= 1
+        withAnimation(.easeInOut(duration: 0.15)) { toast = message }
+    }
+
+    private func toastView(_ message: ToastMessage) -> some View {
         HStack(spacing: 6) {
-            Image(systemName: "checkmark.circle.fill")
-                .font(.system(size: 11))
-                .foregroundStyle(Color(red: 0.30, green: 0.78, blue: 0.45))
-            Text(String(format: String(localized: "toast.uploaded.message"), uploadDestinationName, uploadedCount))
+            if message.isWorking {
+                ProgressView()
+                    .controlSize(.mini)
+                    .frame(width: 12, height: 12)
+            } else {
+                Image(systemName: message.icon)
+                    .font(.system(size: 11))
+                    .foregroundStyle(message.tint)
+            }
+            Text(message.text)
                 .font(.system(size: 10.5))
                 .foregroundStyle(.white.opacity(0.8))
                 .lineLimit(1)
             Spacer(minLength: 8)
-            Button(String(localized: "shelf.toast.openButton")) { GoogleDrive.openFolder() }
-                .buttonStyle(.plain)
-                .font(.system(size: 10.5, weight: .medium))
-                .foregroundStyle(accent)
+            if let actionTitle = message.actionTitle, let action = message.action {
+                Button(actionTitle, action: action)
+                    .buttonStyle(.plain)
+                    .font(.system(size: 10.5, weight: .medium))
+                    .foregroundStyle(accent)
+            }
         }
         .padding(.horizontal, 10)
         .frame(height: 26)
@@ -617,11 +693,16 @@ struct ShelfView: View {
         case .success(let count):
             uploadState = .done
             uploadedCount = count
-            showUploadToast = true
+            showToast(ToastMessage(
+                icon: "checkmark.circle.fill",
+                text: String(format: String(localized: "toast.uploaded.message"), uploadDestinationName, count),
+                tint: Color(red: 0.30, green: 0.78, blue: 0.45),
+                actionTitle: String(localized: "shelf.toast.openButton"),
+                action: { GoogleDrive.openFolder() }
+            ))
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 if uploadState == .done { uploadState = .idle }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) { showUploadToast = false }
         case .failure(let error):
             uploadError = error.localizedDescription
             uploadState = .failed
@@ -645,6 +726,52 @@ struct ShelfView: View {
         let m = Int(t) / 60
         let s = Int(t) % 60
         return String(format: "%d:%02d", m, s)
+    }
+
+    // MARK: «Поделиться» (NSSharingServicePicker)
+
+    /// Показывает системный пикер «Поделиться» относительно `anchor`. Полка — NSPanel
+    /// с canBecomeKey == false, поэтому пикер нельзя показать относительно keyWindow —
+    /// его нет; anchor — невидимый NSView внутри самой полки (см. ShareAnchor ниже).
+    private func presentSharePicker(urls: [URL], anchor: NSView?) {
+        guard !urls.isEmpty else { return }
+        guard let anchor, anchor.window != nil else {
+            NSLog("Mantel: нет якоря для показа «Поделиться»")
+            return
+        }
+        let picker = NSSharingServicePicker(items: urls)
+        picker.show(relativeTo: anchor.bounds, of: anchor, preferredEdge: .minY)
+    }
+
+    // MARK: распознавание текста с картинки (Vision)
+
+    private func recognizeText(for item: ShelfItem) {
+        guard FileManager.default.fileExists(atPath: item.url.path) else {
+            showToast(ToastMessage(icon: "exclamationmark.triangle.fill",
+                                    text: String(localized: "toast.ocr.failed"),
+                                    tint: .red))
+            return
+        }
+        setWorkingToast(ToastMessage(icon: "text.viewfinder",
+                                      text: String(localized: "toast.ocr.working"),
+                                      tint: .white.opacity(0.7),
+                                      isWorking: true))
+        TextRecognition.recognize(item.url) { text in
+            guard let text, !text.isEmpty else {
+                showToast(ToastMessage(icon: "text.viewfinder",
+                                        text: String(localized: "toast.ocr.empty"),
+                                        tint: .white.opacity(0.4)))
+                return
+            }
+            let pb = NSPasteboard.general
+            pb.clearContents()
+            pb.setString(text, forType: .string)
+            showToast(ToastMessage(
+                icon: "checkmark.circle.fill",
+                text: String(format: String(localized: "toast.ocr.done"), text.count),
+                tint: Color(red: 0.30, green: 0.78, blue: 0.45)
+            ))
+        }
     }
 }
 
@@ -730,9 +857,9 @@ private struct HoverIconButton: View {
     var body: some View {
         Button(action: action) {
             Image(systemName: system)
-                .font(.system(size: 13))
+                .font(.system(size: 12.5))
                 .foregroundStyle(disabled ? Color.white.opacity(0.25) : (hovering ? Color.white : Color.white.opacity(0.6)))
-                .frame(width: 28, height: 28)
+                .frame(width: 26, height: 26)
         }
         .buttonStyle(.plain)
         .disabled(disabled)
@@ -989,7 +1116,9 @@ private struct ShelfCardView: View {
     let onSelect: (Bool) -> Void
     let selectedURLsProvider: () -> [URL]
     let onReveal: () -> Void
+    let onShare: () -> Void
     let onUpload: () -> Void
+    let onOCR: () -> Void
     let onDelete: () -> Void
     let onClearAll: () -> Void
 
@@ -1028,7 +1157,23 @@ private struct ShelfCardView: View {
         .scaleEffect(isSelected ? 1.02 : 1.0)
         .animation(.spring(response: 0.25), value: isSelected)
         .contextMenu {
+            Button(action: onShare) {
+                Label(String(localized: "card.share"), systemImage: "square.and.arrow.up")
+            }
+            // Отдельный быстрый пункт для iMessage — только если сервис реально
+            // доступен (iMessage настроен), иначе пункт просто не показываем.
+            if let messagesService = NSSharingService(named: .composeMessage),
+               messagesService.canPerform(withItems: selectedURLsProvider()) {
+                Button {
+                    messagesService.perform(withItems: selectedURLsProvider())
+                } label: {
+                    Label(String(localized: "card.sendToMessages"), systemImage: "message.fill")
+                }
+            }
             Button(String(localized: "action.showInFinder"), action: onReveal)
+
+            Divider()
+
             Button(String(localized: "shelf.context.copyFile")) {
                 let pb = NSPasteboard.general
                 pb.clearContents()
@@ -1039,11 +1184,19 @@ private struct ShelfCardView: View {
                 pb.clearContents()
                 pb.setString(item.url.path, forType: .string)
             }
+            if TextRecognition.isSupported(item) {
+                Button(action: onOCR) {
+                    Label(String(localized: "card.ocr"), systemImage: "text.viewfinder")
+                }
+            }
+
             if GoogleDrive.isAvailable {
+                Divider()
                 Button(action: onUpload) {
                     Label(String(localized: "shelf.context.uploadToDrive"), systemImage: "icloud.and.arrow.up")
                 }
             }
+
             Divider()
             Button(String(localized: "action.delete"), role: .destructive, action: onDelete)
             Button(String(localized: "action.clearAll"), role: .destructive, action: onClearAll)
@@ -1129,9 +1282,10 @@ private struct ShelfCardView: View {
 
     private var hoverControls: some View {
         VStack {
-            HStack(spacing: 6) {
+            HStack(spacing: 4) {
                 Spacer()
                 hoverButton(system: "eye") { QuickLookHelper.shared.preview(urls: [item.url]) }
+                hoverButton(system: "square.and.arrow.up", action: onShare)
                 hoverButton(system: "trash") { onDelete() }
             }
             .padding(6)
@@ -1165,6 +1319,23 @@ private struct ShelfCardView: View {
         f.dateFormat = "HH:mm"
         return f.string(from: date)
     }
+}
+
+// MARK: - Якорь для NSSharingServicePicker
+
+/// Невидимый NSView-якорь (по образцу DragCatcher ниже) — хранит ссылку на себя в
+/// `view`, чтобы NSSharingServicePicker было относительно чего показать: полка —
+/// NSPanel с canBecomeKey == false, у неё никогда нет keyWindow.
+private struct ShareAnchor: NSViewRepresentable {
+    @Binding var view: NSView?
+
+    func makeNSView(context: Context) -> NSView {
+        let anchor = NSView(frame: .zero)
+        DispatchQueue.main.async { view = anchor }
+        return anchor
+    }
+
+    func updateNSView(_ nsView: NSView, context: Context) {}
 }
 
 // MARK: - AppKit-слой карточки: клик, двойной клик, multi-drag наружу

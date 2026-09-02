@@ -2,7 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- "Clear the shelf?" NSAlert warning before moving the whole shelf to the Trash. -->
 	<key>alert.clearAll.message</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -19,10 +18,6 @@
 			<string>%d items will be moved to the Trash. This can only be undone from the Trash.</string>
 		</dict>
 	</dict>
-
-	<!-- "Delete files older than N days" auto-cleanup label — the Russian source text uses
-	     the invariant abbreviation "дн." and needs no stringsdict entry, but English "day/days"
-	     does. -->
 	<key>settings.shelf.pruneLabel.on</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>
@@ -39,8 +34,22 @@
 			<string>%d days</string>
 		</dict>
 	</dict>
-
-	<!-- "Uploaded to Google Drive ("folder"): N file(s)" toast. -->
+	<key>toast.ocr.done</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@chars@</string>
+		<key>chars</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>Text copied: %d character</string>
+			<key>other</key>
+			<string>Text copied: %d characters</string>
+		</dict>
+	</dict>
 	<key>toast.uploaded.message</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

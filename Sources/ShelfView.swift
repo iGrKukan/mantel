@@ -96,8 +96,8 @@ struct ShelfView: View {
     private var pill: some View {
         VStack(spacing: 0) {
             Capsule()
-                .fill(Color.white.opacity(0.28))
-                .frame(width: 110, height: 4)
+                .fill(Color.white.opacity(0.42))
+                .frame(width: 170, height: 5)
                 .padding(.top, 1)
             Spacer(minLength: 0)
         }
@@ -206,6 +206,11 @@ struct ShelfView: View {
                                                 } else {
                                                     selection = [item.id]
                                                 }
+                                            },
+                                            onRightClickSelect: {
+                                                // Правый клик по карточке вне выделения делает её
+                                                // единственной выделенной — видно, что уйдёт.
+                                                if !selection.contains(item.id) { selection = [item.id] }
                                             },
                                             selectedURLsProvider: { selectedURLs(including: item) },
                                             onReveal: { for i in targetItems(including: item) { library.reveal(i) } },
@@ -337,6 +342,7 @@ struct ShelfView: View {
 
                 // Часто используемые.
                 HoverIconButton(system: "square.and.arrow.up", help: String(localized: "action.share.help")) {
+                    ensureSelectionForToolbar()
                     presentSharePicker(urls: toolbarTargets.map { $0.url }, anchor: shareAnchorView)
                 }
                 GoogleDriveButton(state: uploadState,
@@ -660,6 +666,13 @@ struct ShelfView: View {
         return []
     }
 
+    /// Действия из правого столбика работают с выделением. Если ничего не выделено,
+    /// берём самый свежий файл и подсвечиваем его, чтобы было видно, с чем работаем.
+    private func ensureSelectionForToolbar() {
+        guard selection.isEmpty, let first = library.items.first else { return }
+        selection = [first.id]
+    }
+
     // MARK: Google Диск
 
     /// Кладём сами файлы в буфер обмена: так их принимают AnyDesk (кнопка «файл»
@@ -739,8 +752,21 @@ struct ShelfView: View {
             NSLog("Mantel: нет якоря для показа «Поделиться»")
             return
         }
+        // Пока пикер открыт, полка не должна сворачиваться: курсор уходит в системное
+        // меню за её пределы, и автоскрытие обрывало бы отправку.
+        ShelfController.shared.suppressAutoHide = true
         let picker = NSSharingServicePicker(items: urls)
+        picker.delegate = SharePickerKeeper.shared
         picker.show(relativeTo: anchor.bounds, of: anchor, preferredEdge: .minY)
+    }
+
+    private func sendToMessages(urls: [URL]) {
+        guard let service = NSSharingService(named: .composeMessage), service.canPerform(withItems: urls) else { return }
+        ShelfController.shared.suppressAutoHide = true
+        service.perform(withItems: urls)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            ShelfController.shared.suppressAutoHide = false
+        }
     }
 
     // MARK: распознавание текста с картинки (Vision)
@@ -1114,6 +1140,7 @@ private struct ShelfCardView: View {
     let isSelected: Bool
     let thumbVersion: Int
     let onSelect: (Bool) -> Void
+    let onRightClickSelect: () -> Void
     let selectedURLsProvider: () -> [URL]
     let onReveal: () -> Void
     let onShare: () -> Void
@@ -1135,7 +1162,8 @@ private struct ShelfCardView: View {
             // AppKit-слой снизу: клик/двойной клик/multi-drag. SwiftUI-контент рисуется
             // поверх и не мешает hit-тестингу самой карточки, но интерактивные кнопки
             // объявлены ПОСЛЕ него, чтобы получать клики первыми.
-            DragCatcher(item: item, selectedURLsProvider: selectedURLsProvider, onClick: onSelect)
+            DragCatcher(item: item, selectedURLsProvider: selectedURLsProvider,
+                        onClick: onSelect, onRightClick: onRightClickSelect)
 
             bottomLabel
             badge
@@ -1165,7 +1193,11 @@ private struct ShelfCardView: View {
             if let messagesService = NSSharingService(named: .composeMessage),
                messagesService.canPerform(withItems: selectedURLsProvider()) {
                 Button {
+                    ShelfController.shared.suppressAutoHide = true
                     messagesService.perform(withItems: selectedURLsProvider())
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        ShelfController.shared.suppressAutoHide = false
+                    }
                 } label: {
                     Label(String(localized: "card.sendToMessages"), systemImage: "message.fill")
                 }
@@ -1347,12 +1379,14 @@ private struct DragCatcher: NSViewRepresentable {
     let item: ShelfItem
     let selectedURLsProvider: () -> [URL]
     let onClick: (Bool) -> Void
+    let onRightClick: () -> Void
 
     func makeNSView(context: Context) -> DragCatcherView {
         let view = DragCatcherView()
         view.item = item
         view.selectedURLsProvider = selectedURLsProvider
         view.onClick = onClick
+        view.onRightClick = onRightClick
         return view
     }
 
@@ -1360,10 +1394,12 @@ private struct DragCatcher: NSViewRepresentable {
         nsView.item = item
         nsView.selectedURLsProvider = selectedURLsProvider
         nsView.onClick = onClick
+        nsView.onRightClick = onRightClick
     }
 }
 
 private final class DragCatcherView: NSView, NSDraggingSource {
+    var onRightClick: (() -> Void)?
     var item: ShelfItem!
     var selectedURLsProvider: (() -> [URL])?
     var onClick: ((Bool) -> Void)?
@@ -1379,6 +1415,13 @@ private final class DragCatcherView: NSView, NSDraggingSource {
             return
         }
         onClick?(event.modifierFlags.contains(.command))
+    }
+
+    /// Правый клик по невыделенной карточке делает её выделенной — иначе неясно,
+    /// какой именно файл уйдёт по «Поделиться».
+    override func rightMouseDown(with event: NSEvent) {
+        onRightClick?()
+        super.rightMouseDown(with: event)
     }
 
     override func mouseDragged(with event: NSEvent) {
@@ -1576,5 +1619,20 @@ final class QuickLookHelper: NSObject, QLPreviewPanelDataSource {
 
     func previewPanel(_ panel: QLPreviewPanel!, previewItemAt index: Int) -> QLPreviewItem! {
         urls[index] as NSURL
+    }
+}
+
+
+/// Держит подавление автоскрытия, пока открыт пикер «Поделиться»,
+/// и снимает его, когда пользователь выбрал сервис или закрыл меню.
+final class SharePickerKeeper: NSObject, NSSharingServicePickerDelegate {
+    static let shared = SharePickerKeeper()
+
+    func sharingServicePicker(_ picker: NSSharingServicePicker, didChoose service: NSSharingService?) {
+        // service == nil — пикер закрыли без выбора.
+        let delay: TimeInterval = service == nil ? 0.3 : 2.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            ShelfController.shared.suppressAutoHide = false
+        }
     }
 }

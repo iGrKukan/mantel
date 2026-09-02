@@ -42,12 +42,12 @@ final class ShelfUIState: ObservableObject {
 // MARK: - Геометрия
 
 private enum ShelfGeometry {
-    static let collapsedHeight: CGFloat = 6
+    static let collapsedHeight: CGFloat = 8
     /// Отступ развёрнутой панели от верхнего края экрана — чтобы были видны скруглённые
     /// верхние углы. Свёрнутая «пилюля» остаётся прижатой к самому верху (отступ 0).
     static let expandedTopGap: CGFloat = 8
-    static let hotZoneWidth: CGFloat = 260
-    static let hotZoneHeight: CGFloat = 6
+    static let hotZoneWidth: CGFloat = 440
+    static let hotZoneHeight: CGFloat = 16
     /// Запас вокруг развёрнутой панели, за пределами которого считаем, что курсор ушёл.
     static let hideMargin: CGFloat = 40
     static let hideDelay: TimeInterval = 0.45
@@ -65,6 +65,9 @@ final class ShelfController {
     /// true пока идёт перетаскивание файла ИЗ полки наружу — на это время скрытие запрещено.
     /// Ставится/снимается DragCatcherView в ShelfView.swift.
     var isDragging = false
+    /// Открыто системное меню, пикер «Поделиться» или другое всплывающее окно —
+    /// пока оно на экране, полку сворачивать нельзя, иначе действие не завершить.
+    var suppressAutoHide = false
 
     /// Состояние развёрнутости для SwiftUI-содержимого панели.
     let uiState = ShelfUIState()
@@ -75,6 +78,9 @@ final class ShelfController {
     private var globalMonitor: Any?
     private var localMonitor: Any?
     private var hideWorkItem: DispatchWorkItem?
+    /// Предыдущее положение курсора — чтобы поймать быстрый пролёт через горячую зону.
+    private var lastMouseLocation: NSPoint = .zero
+    private var cursorTimer: Timer?
     private var autoShowWorkItem: DispatchWorkItem?
     private var libraryCancellable: AnyCancellable?
     private var sizeCancellable: AnyCancellable?
@@ -95,7 +101,30 @@ final class ShelfController {
         hostingView.layer?.backgroundColor = NSColor.clear.cgColor
         panel.contentView = hostingView
         self.panel = panel
+
+        // Пока на экране висит любое меню приложения (контекстное меню карточки,
+        // пикер «Поделиться»), полку не сворачиваем — иначе действие обрывается.
+        let nc = NotificationCenter.default
+        nc.addObserver(forName: NSMenu.didBeginTrackingNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.suppressAutoHide = true
+            self?.cancelHide()
+        }
+        nc.addObserver(forName: NSMenu.didEndTrackingNotification, object: nil, queue: .main) { [weak self] _ in
+            // Небольшая задержка: после закрытия меню курсор часто уже вне полки,
+            // но пользователь, скорее всего, продолжит работать с ней.
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                self?.suppressAutoHide = false
+            }
+        }
         panel.orderFrontRegardless()
+
+        // Опрос позиции курсора. Глобальный монитор событий требует разрешения
+        // «Универсальный доступ», а чтение NSEvent.mouseLocation — нет, поэтому
+        // основным механизмом делаем опрос: полка раскрывается всегда, без разрешений.
+        cursorTimer = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { [weak self] _ in
+            self?.handleMouseMoved()
+        }
+        RunLoop.main.add(cursorTimer!, forMode: .common)
 
         globalMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.mouseMoved, .leftMouseDragged]) { [weak self] _ in
             self?.handleMouseMoved()
@@ -203,6 +232,7 @@ final class ShelfController {
         let screen = ShelfController.currentScreen()
 
         if isExpanded {
+            if suppressAutoHide { cancelHide(); return }
             let bigRect = expandedFrame(on: screen).insetBy(dx: -ShelfGeometry.hideMargin, dy: -ShelfGeometry.hideMargin)
             if NSMouseInRect(mouseLoc, bigRect, false) {
                 cancelHide()
@@ -211,8 +241,12 @@ final class ShelfController {
             }
         } else {
             updatePillAlpha()
+            defer { lastMouseLocation = mouseLoc }
             guard AppSettings.shared.hotZoneEnabled else { return }
-            if NSMouseInRect(mouseLoc, hotZoneRect(on: screen), false) {
+            let zone = hotZoneRect(on: screen)
+            // Прямое попадание либо пересечение отрезка, который курсор прошёл с прошлого
+            // события: при быстром движении точки замера могут перескочить тонкую полоску.
+            if NSMouseInRect(mouseLoc, zone, false) || segmentCrossesZone(from: lastMouseLocation, to: mouseLoc, zone: zone) {
                 show(animated: true)
             }
         }
@@ -223,7 +257,7 @@ final class ShelfController {
         let work = DispatchWorkItem { [weak self] in
             guard let self = self else { return }
             self.hideWorkItem = nil
-            if self.isDragging {
+            if self.isDragging || self.suppressAutoHide {
                 // Перетаскивание наружу ещё идёт — откладываем скрытие ещё раз.
                 self.scheduleHide()
             } else {
@@ -275,7 +309,7 @@ final class ShelfController {
         let screen = ShelfController.currentScreen()
         let nearRect = hotZoneRect(on: screen).insetBy(dx: -ShelfGeometry.pillNearRadius, dy: -ShelfGeometry.pillNearRadius)
         let near = NSMouseInRect(NSEvent.mouseLocation, nearRect, false)
-        panel.alphaValue = near ? 1.0 : 0.25
+        panel.alphaValue = near ? 1.0 : 0.45
     }
 
     // MARK: геометрия
@@ -299,6 +333,21 @@ final class ShelfController {
     }
     private func collapsedFrame(on screen: NSScreen) -> NSRect {
         frame(on: screen, height: ShelfGeometry.collapsedHeight, topGap: 0)
+    }
+
+    /// Пересёк ли отрезок между двумя замерами курсора горячую зону.
+    private func segmentCrossesZone(from a: NSPoint, to b: NSPoint, zone: NSRect) -> Bool {
+        guard a != .zero else { return false }
+        // Курсор шёл вверх и пересёк нижнюю границу зоны в пределах её ширины.
+        guard b.y > a.y || a.y > zone.minY else { return false }
+        let minY = min(a.y, b.y), maxY = max(a.y, b.y)
+        guard minY <= zone.maxY, maxY >= zone.minY else { return false }
+        // Точка пересечения по X на уровне нижней границы зоны.
+        let dy = b.y - a.y
+        let t = abs(dy) < 0.001 ? 0 : (zone.minY - a.y) / dy
+        guard t >= 0, t <= 1 else { return NSPointInRect(NSPoint(x: b.x, y: zone.minY), zone) }
+        let x = a.x + (b.x - a.x) * t
+        return x >= zone.minX && x <= zone.maxX
     }
 
     private func hotZoneRect(on screen: NSScreen) -> NSRect {

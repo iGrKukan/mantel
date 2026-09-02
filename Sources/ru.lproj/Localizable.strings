@@ -35,6 +35,8 @@
 /* Раздел «Полка» */
 "settings.shelf.title" = "Полка";
 "settings.shelf.widthStepper" = "Ширина полки: %d px";
+"settings.shelf.heightStepper" = "Высота полки: %d px";
+"settings.shelf.resetSize" = "Сбросить размер";
 "settings.shelf.autoPrunePicker" = "Удалять файлы старше";
 "settings.shelf.prune.never" = "Никогда";
 "settings.shelf.prune.oneDay" = "1 дня";
@@ -62,6 +64,7 @@
 
 /* MARK: - Полка (ShelfView) */
 "shelf.empty.hint" = "Перетащи сюда файлы — или сделай ⌘⇧3";
+"shelf.resize.help" = "Потяни, чтобы изменить размер полки";
 "shelf.help.fileCount" = "Файлов в полке";
 "action.showInFinder" = "Показать в Finder";
 "shelf.help.settings" = "Настройки";

@@ -57,7 +57,13 @@ struct SettingsView: View {
             }
             Section(String(localized: "settings.shelf.title")) {
                 Stepper(String(format: String(localized: "settings.shelf.widthStepper"), Int(settings.shelfWidth)),
-                        value: $settings.shelfWidth, in: 480...1400, step: 40)
+                        value: $settings.shelfWidth, in: ShelfSizeLimits.minWidth...ShelfSizeLimits.maxWidth, step: 40)
+                Stepper(String(format: String(localized: "settings.shelf.heightStepper"), Int(settings.shelfHeight)),
+                        value: $settings.shelfHeight, in: ShelfSizeLimits.minHeight...ShelfSizeLimits.maxHeight, step: 8)
+                Button(String(localized: "settings.shelf.resetSize")) {
+                    settings.shelfWidth = ShelfSizeLimits.defaultWidth
+                    settings.shelfHeight = ShelfSizeLimits.defaultHeight
+                }
                 Picker(String(localized: "settings.shelf.autoPrunePicker"), selection: $settings.autoPruneDays) {
                     Text(String(localized: "settings.shelf.prune.never")).tag(0)
                     Text(String(localized: "settings.shelf.prune.oneDay")).tag(1)

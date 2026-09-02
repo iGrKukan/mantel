@@ -35,6 +35,8 @@
 /* "Shelf" section */
 "settings.shelf.title" = "Shelf";
 "settings.shelf.widthStepper" = "Shelf width: %d px";
+"settings.shelf.heightStepper" = "Shelf height: %d px";
+"settings.shelf.resetSize" = "Reset Size";
 "settings.shelf.autoPrunePicker" = "Delete files older than";
 "settings.shelf.prune.never" = "Never";
 "settings.shelf.prune.oneDay" = "1 day";
@@ -62,6 +64,7 @@
 
 /* MARK: - Shelf (ShelfView) */
 "shelf.empty.hint" = "Drag files here — or take a screenshot with ⌘⇧3";
+"shelf.resize.help" = "Drag to resize the shelf";
 "shelf.help.fileCount" = "Files on the shelf";
 "action.showInFinder" = "Show in Finder";
 "shelf.help.settings" = "Settings";

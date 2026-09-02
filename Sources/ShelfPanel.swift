@@ -42,7 +42,6 @@ final class ShelfUIState: ObservableObject {
 // MARK: - Геометрия
 
 private enum ShelfGeometry {
-    static let expandedHeight: CGFloat = 272
     static let collapsedHeight: CGFloat = 6
     /// Отступ развёрнутой панели от верхнего края экрана — чтобы были видны скруглённые
     /// верхние углы. Свёрнутая «пилюля» остаётся прижатой к самому верху (отступ 0).
@@ -78,6 +77,7 @@ final class ShelfController {
     private var hideWorkItem: DispatchWorkItem?
     private var autoShowWorkItem: DispatchWorkItem?
     private var libraryCancellable: AnyCancellable?
+    private var sizeCancellable: AnyCancellable?
 
     private init() {}
 
@@ -116,6 +116,16 @@ final class ShelfController {
             self?.updatePillAlpha()
         }
         updatePillAlpha()
+
+        // Изменение ширины/высоты в настройках должно быть видно сразу, если полка
+        // сейчас развёрнута (перетаскивание краёв применяет размер напрямую через
+        // applySize и тоже пишет сюда же — так что этот сабскрайб покрывает и его).
+        sizeCancellable = AppSettings.shared.$shelfWidth
+            .combineLatest(AppSettings.shared.$shelfHeight)
+            .sink { [weak self] width, height in
+                guard let self = self, self.isExpanded else { return }
+                self.applySize(width: CGFloat(width), height: CGFloat(height), live: false)
+            }
     }
 
     // MARK: показ/скрытие
@@ -141,6 +151,20 @@ final class ShelfController {
         uiState.isExpanded = false
         reposition(to: collapsedFrame(on: screen), animated: animated)
         updatePillAlpha()
+    }
+
+    /// Пересчитывает и ставит кадр развёрнутой панели под новый размер — позиция
+    /// остаётся «верх по центру текущего экрана», отступ сверху прежний.
+    /// `live == true` — во время перетаскивания края мышью (без анимации, кадр за кадром),
+    /// иначе — обычная анимация (после mouseUp или после правки в настройках).
+    /// Ничего не делает, если полка сейчас свёрнута — новый размер применится при следующем show().
+    func applySize(width: CGFloat, height: CGFloat, live: Bool) {
+        guard panel != nil, isExpanded else { return }
+        let w = min(max(width, CGFloat(ShelfSizeLimits.minWidth)), CGFloat(ShelfSizeLimits.maxWidth))
+        let h = min(max(height, CGFloat(ShelfSizeLimits.minHeight)), CGFloat(ShelfSizeLimits.maxHeight))
+        let screen = ShelfController.currentScreen()
+        let target = frame(on: screen, width: w, height: h, topGap: ShelfGeometry.expandedTopGap)
+        reposition(to: target, animated: !live)
     }
 
     /// Служебное: отрисовать текущее содержимое панели в PNG (без снимка экрана).
@@ -257,17 +281,21 @@ final class ShelfController {
     // MARK: геометрия
 
     private func width() -> CGFloat { CGFloat(AppSettings.shared.shelfWidth) }
+    private func height() -> CGFloat { CGFloat(AppSettings.shared.shelfHeight) }
+
+    private func frame(on screen: NSScreen, width: CGFloat, height: CGFloat, topGap: CGFloat) -> NSRect {
+        let topInset = screen.safeAreaInsets.top
+        let x = screen.frame.midX - width / 2
+        let y = screen.frame.maxY - topInset - topGap - height
+        return NSRect(x: x, y: y, width: width, height: height)
+    }
 
     private func frame(on screen: NSScreen, height: CGFloat, topGap: CGFloat) -> NSRect {
-        let w = width()
-        let topInset = screen.safeAreaInsets.top
-        let x = screen.frame.midX - w / 2
-        let y = screen.frame.maxY - topInset - topGap - height
-        return NSRect(x: x, y: y, width: w, height: height)
+        frame(on: screen, width: width(), height: height, topGap: topGap)
     }
 
     private func expandedFrame(on screen: NSScreen) -> NSRect {
-        frame(on: screen, height: ShelfGeometry.expandedHeight, topGap: ShelfGeometry.expandedTopGap)
+        frame(on: screen, height: height(), topGap: ShelfGeometry.expandedTopGap)
     }
     private func collapsedFrame(on screen: NSScreen) -> NSRect {
         frame(on: screen, height: ShelfGeometry.collapsedHeight, topGap: 0)

@@ -6,6 +6,17 @@ extension Notification.Name {
     static let shelfSettingsChanged = Notification.Name("by.maru.mantel.settingsChanged")
 }
 
+/// Границы размера полки — общие для полей настроек и перетаскивания краёв мышью.
+enum ShelfSizeLimits {
+    static let minWidth: Double = 480
+    static let maxWidth: Double = 1600
+    static let minHeight: Double = 200
+    static let maxHeight: Double = 600
+    /// Размер по умолчанию — на него возвращает кнопка «Сбросить размер».
+    static let defaultWidth: Double = 720
+    static let defaultHeight: Double = 272
+}
+
 /// Настройки приложения. Хранятся в UserDefaults, читаются при старте (с дефолтами
 /// через register(defaults:)), пишутся при каждом изменении.
 final class AppSettings: ObservableObject {
@@ -17,6 +28,7 @@ final class AppSettings: ObservableObject {
         static let extraFolders = "extraFolders"
         static let hotZoneEnabled = "hotZoneEnabled"
         static let shelfWidth = "shelfWidth"
+        static let shelfHeight = "shelfHeight"
         static let autoPruneDays = "autoPruneDays"
         static let launchAtLogin = "launchAtLogin"
         static let googleDriveSubfolder = "googleDriveSubfolder"
@@ -49,6 +61,9 @@ final class AppSettings: ObservableObject {
     }
     @Published var shelfWidth: Double {
         didSet { UserDefaults.standard.set(shelfWidth, forKey: Keys.shelfWidth) }
+    }
+    @Published var shelfHeight: Double {
+        didSet { UserDefaults.standard.set(shelfHeight, forKey: Keys.shelfHeight) }
     }
     @Published var autoPruneDays: Int {
         didSet { UserDefaults.standard.set(autoPruneDays, forKey: Keys.autoPruneDays) }
@@ -126,7 +141,8 @@ final class AppSettings: ObservableObject {
             Keys.watchScreenshotsFolder: true,
             Keys.extraFolders: [String](),
             Keys.hotZoneEnabled: true,
-            Keys.shelfWidth: 720.0,
+            Keys.shelfWidth: ShelfSizeLimits.defaultWidth,
+            Keys.shelfHeight: ShelfSizeLimits.defaultHeight,
             Keys.autoPruneDays: 0,
             Keys.launchAtLogin: false,
             Keys.googleDriveSubfolder: "Mantel",
@@ -141,6 +157,7 @@ final class AppSettings: ObservableObject {
         extraFolders = d.stringArray(forKey: Keys.extraFolders) ?? []
         hotZoneEnabled = d.bool(forKey: Keys.hotZoneEnabled)
         shelfWidth = d.double(forKey: Keys.shelfWidth)
+        shelfHeight = d.double(forKey: Keys.shelfHeight)
         autoPruneDays = d.integer(forKey: Keys.autoPruneDays)
         launchAtLogin = d.bool(forKey: Keys.launchAtLogin)
         googleDriveSubfolder = d.string(forKey: Keys.googleDriveSubfolder) ?? "Mantel"

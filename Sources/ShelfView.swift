@@ -23,6 +23,9 @@ struct ShelfView: View {
     /// используется и для позиции самодельной полосы прокрутки.
     @State private var anchorIndex: Int = 0
     @State private var shelfHovering = false
+    /// Наведение на всю развёрнутую полку (включая её кромки) — показывает еле заметную
+    /// «ручку» изменения размера у нижнего края.
+    @State private var shelfBodyHovering = false
 
     @State private var uploadState: UploadState = .idle
     @State private var uploadError: String = ""
@@ -108,6 +111,33 @@ struct ShelfView: View {
         .shadow(color: .black.opacity(0.5), radius: 18, y: 6)
         .padding(.horizontal, 8)
         .padding(.bottom, 10)
+        // Зоны захвата кромок — в прозрачном поле вокруг видимой карточки, поэтому не
+        // перекрывают ни кнопки, ни ленту карточек, ни колесо мыши; ловят только мышь
+        // у самого края панели (см. ShelfResizeCatcher ниже).
+        .overlay(alignment: .leading) {
+            ShelfResizeCatcher(edge: .left)
+                .frame(width: 8)
+                .frame(maxHeight: .infinity)
+        }
+        .overlay(alignment: .trailing) {
+            ShelfResizeCatcher(edge: .right)
+                .frame(width: 8)
+                .frame(maxHeight: .infinity)
+        }
+        .overlay(alignment: .bottom) {
+            ZStack {
+                ShelfResizeCatcher(edge: .bottom)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 8)
+                Capsule()
+                    .fill(Color.white.opacity(0.18))
+                    .frame(width: 44, height: 3)
+                    .opacity(shelfBodyHovering ? 1 : 0)
+                    .animation(.easeInOut(duration: 0.15), value: shelfBodyHovering)
+                    .allowsHitTesting(false)
+            }
+        }
+        .onHover { shelfBodyHovering = $0 }
         .contentShape(Rectangle())
         .onTapGesture { selection.removeAll() }
         .onDrop(of: [.fileURL], isTargeted: $dropTargeted, perform: handleDrop)
@@ -1252,6 +1282,100 @@ private final class WheelCatcherView: NSView {
             if let found = findScrollView(in: sub) { return found }
         }
         return nil
+    }
+}
+
+// MARK: - Перетаскивание краёв (изменение размера полки)
+
+/// Какой край панели тянет зона захвата.
+private enum ShelfResizeEdge {
+    case left, right, bottom
+}
+
+/// Невидимая полоска у кромки полки — перетаскивание меняет ширину/высоту.
+/// Ширина всегда растёт/уменьшается симметрично относительно центра экрана
+/// (полка всегда «прибита» по центру сверху), поэтому и левый, и правый край
+/// двигают ширину на удвоенное смещение мыши (см. ShelfResizeCatcherView).
+private struct ShelfResizeCatcher: NSViewRepresentable {
+    let edge: ShelfResizeEdge
+
+    func makeNSView(context: Context) -> ShelfResizeCatcherView {
+        let view = ShelfResizeCatcherView()
+        view.edge = edge
+        view.toolTip = String(localized: "shelf.resize.help")
+        return view
+    }
+
+    func updateNSView(_ nsView: ShelfResizeCatcherView, context: Context) {
+        nsView.edge = edge
+    }
+}
+
+private final class ShelfResizeCatcherView: NSView {
+    var edge: ShelfResizeEdge = .bottom
+
+    private var startMouseLocation: NSPoint = .zero
+    private var startWidth: CGFloat = 0
+    private var startHeight: CGFloat = 0
+
+    // Иначе первый клик по неактивной панели проглатывается системой (см. DragCatcherView).
+    override func acceptsFirstMouse(for event: NSEvent?) -> Bool { true }
+
+    override func mouseDown(with event: NSEvent) {
+        startMouseLocation = NSEvent.mouseLocation
+        startWidth = CGFloat(AppSettings.shared.shelfWidth)
+        startHeight = CGFloat(AppSettings.shared.shelfHeight)
+        // На время изменения размера полка не должна сворачиваться от «мышь ушла».
+        ShelfController.shared.isDragging = true
+    }
+
+    override func mouseDragged(with event: NSEvent) {
+        let (w, h) = resizedSize(for: NSEvent.mouseLocation)
+        ShelfController.shared.applySize(width: w, height: h, live: true)
+    }
+
+    override func mouseUp(with event: NSEvent) {
+        let (w, h) = resizedSize(for: NSEvent.mouseLocation)
+        let roundedWidth = w.rounded()
+        let roundedHeight = h.rounded()
+        AppSettings.shared.shelfWidth = Double(roundedWidth)
+        AppSettings.shared.shelfHeight = Double(roundedHeight)
+        ShelfController.shared.applySize(width: roundedWidth, height: roundedHeight, live: false)
+        ShelfController.shared.isDragging = false
+    }
+
+    /// Новая ширина/высота для текущего положения мыши, зажатая в границах ShelfSizeLimits.
+    private func resizedSize(for mouseLocation: NSPoint) -> (CGFloat, CGFloat) {
+        let dx = mouseLocation.x - startMouseLocation.x
+        let dy = mouseLocation.y - startMouseLocation.y
+
+        var width = startWidth
+        var height = startHeight
+        switch edge {
+        case .right:
+            width = startWidth + dx * 2
+        case .left:
+            width = startWidth - dx * 2
+        case .bottom:
+            // Экранные координаты растут вверх — движение мыши вниз (dy < 0) должно
+            // УВЕЛИЧИВАТЬ высоту.
+            height = startHeight - dy
+        }
+
+        width = min(max(width, CGFloat(ShelfSizeLimits.minWidth)), CGFloat(ShelfSizeLimits.maxWidth))
+        height = min(max(height, CGFloat(ShelfSizeLimits.minHeight)), CGFloat(ShelfSizeLimits.maxHeight))
+        return (width, height)
+    }
+
+    override func resetCursorRects() {
+        super.resetCursorRects()
+        let cursor: NSCursor = (edge == .bottom) ? .resizeUpDown : .resizeLeftRight
+        addCursorRect(bounds, cursor: cursor)
+    }
+
+    override func viewDidMoveToWindow() {
+        super.viewDidMoveToWindow()
+        window?.invalidateCursorRects(for: self)
     }
 }
 

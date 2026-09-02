@@ -1,0 +1,53 @@
+name: ShelfTop
+options:
+  bundleIdPrefix: by.maru
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    SWIFT_VERSION: "5.0"
+    DEVELOPMENT_TEAM: U5BAN54DL2
+    CODE_SIGN_STYLE: Automatic
+    ENABLE_HARDENED_RUNTIME: NO
+    ENABLE_APP_SANDBOX: NO
+    ENABLE_USER_SCRIPT_SANDBOXING: NO
+targets:
+  ShelfTop:
+    type: application
+    platform: macOS
+    sources:
+      - path: Sources
+      # Адаптер системного «сейчас играет» (MediaRemote): бандлится как ресурс,
+      # но НЕ линкуется — фреймворк грузит /usr/bin/perl, не наше приложение.
+      - path: Vendor/mediaremote-adapter
+        type: folder
+        buildPhase: resources
+    info:
+      path: Sources/Info.plist
+      properties:
+        CFBundleName: ShelfTop
+        CFBundleDisplayName: ShelfTop
+        CFBundleIdentifier: by.maru.ShelfTop
+        LSUIElement: true
+        LSMinimumSystemVersion: "14.0"
+        NSHumanReadableCopyright: "MARU Systems"
+        NSDesktopFolderUsageDescription: "ShelfTop убирает свежие скриншоты и записи экрана с Рабочего стола в свою полку."
+        NSDocumentsFolderUsageDescription: "ShelfTop показывает добавленные файлы в полке."
+        NSDownloadsFolderUsageDescription: "ShelfTop показывает добавленные файлы в полке."
+        NSAppleEventsUsageDescription: "Открытие файлов из полки."
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: by.maru.ShelfTop
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_LSUIElement: YES
+        COMBINE_HIDPI_IMAGES: YES
+schemes:
+  ShelfTop:
+    build:
+      targets:
+        ShelfTop: all
+    run:
+      config: Release

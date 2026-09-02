@@ -341,10 +341,6 @@ struct ShelfView: View {
                     .onTapGesture { NSWorkspace.shared.open(Library.root) }
 
                 // Часто используемые.
-                HoverIconButton(system: "square.and.arrow.up", help: String(localized: "action.share.help")) {
-                    ensureSelectionForToolbar()
-                    presentSharePicker(urls: toolbarTargets.map { $0.url }, anchor: shareAnchorView)
-                }
                 GoogleDriveButton(state: uploadState,
                                   errorMessage: uploadError,
                                   disabled: !GoogleDrive.isAvailable,
@@ -664,13 +660,6 @@ struct ShelfView: View {
         if !selection.isEmpty { return library.items.filter { selection.contains($0.id) } }
         if let first = library.items.first { return [first] }
         return []
-    }
-
-    /// Действия из правого столбика работают с выделением. Если ничего не выделено,
-    /// берём самый свежий файл и подсвечиваем его, чтобы было видно, с чем работаем.
-    private func ensureSelectionForToolbar() {
-        guard selection.isEmpty, let first = library.items.first else { return }
-        selection = [first.id]
     }
 
     // MARK: Google Диск

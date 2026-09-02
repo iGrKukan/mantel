@@ -98,7 +98,7 @@ enum GoogleDrive {
 
     private static var notFoundError: NSError {
         NSError(
-            domain: "by.maru.shelftop.googledrive", code: 1,
+            domain: "by.maru.mantel.googledrive", code: 1,
             userInfo: [NSLocalizedDescriptionKey: "Google Диск не найден: установи Google Drive for desktop и войди в аккаунт"])
     }
 
@@ -126,7 +126,7 @@ enum GoogleDrive {
                     try fm.copyItem(at: url, to: dest)
                     copied += 1
                 } catch {
-                    NSLog("ShelfTop: не смог скопировать на Google Диск %@: %@", url.lastPathComponent, error.localizedDescription)
+                    NSLog("Mantel: не смог скопировать на Google Диск %@: %@", url.lastPathComponent, error.localizedDescription)
                 }
             }
             DispatchQueue.main.async { completion(.success(copied)) }

@@ -817,7 +817,7 @@ private struct GoogleDriveButton: View {
             } else {
                 DestinationRow(
                     icon: "folder.fill",
-                    name: GoogleDrive.destinationURL?.lastPathComponent ?? "ShelfTop",
+                    name: GoogleDrive.destinationURL?.lastPathComponent ?? "Mantel",
                     subtitle: GoogleDrive.destinationURL.map { ($0.path as NSString).abbreviatingWithTildeInPath },
                     onDropURLs: { onDropURLs($0) }
                 )

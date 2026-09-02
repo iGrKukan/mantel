@@ -7,19 +7,19 @@ cd "$(dirname "$0")/.."
 # готовый .xcodeproj, который приезжает вместе с исходниками.
 if command -v xcodegen >/dev/null 2>&1; then
     xcodegen generate
-elif [ -d "ShelfTop.xcodeproj" ]; then
-    echo "xcodegen не найден, использую готовый ShelfTop.xcodeproj"
+elif [ -d "Mantel.xcodeproj" ]; then
+    echo "xcodegen не найден, использую готовый Mantel.xcodeproj"
 else
-    echo "Ошибка: xcodegen не найден и ShelfTop.xcodeproj отсутствует" >&2
+    echo "Ошибка: xcodegen не найден и Mantel.xcodeproj отсутствует" >&2
     exit 1
 fi
 
 # Сборка без подписи — подпишем отдельно настоящим сертификатом ниже,
 # т.к. по ssh keychain недоступен напрямую.
-xcodebuild -project ShelfTop.xcodeproj -scheme ShelfTop -configuration Release \
+xcodebuild -project Mantel.xcodeproj -scheme Mantel -configuration Release \
     -derivedDataPath ./build CODE_SIGNING_ALLOWED=NO build
 
-APP="./build/Build/Products/Release/ShelfTop.app"
+APP="./build/Build/Products/Release/Mantel.app"
 IDENTITY="Apple Development: Ihar Shkredau (ZVYKY9TF2X)"
 UID_GUI=$(id -u)
 

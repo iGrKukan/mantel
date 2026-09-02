@@ -3,7 +3,7 @@ import ServiceManagement
 
 extension Notification.Name {
     /// Список отслеживаемых папок изменился — CaptureWatcher нужно перезапустить.
-    static let shelfSettingsChanged = Notification.Name("by.maru.shelftop.settingsChanged")
+    static let shelfSettingsChanged = Notification.Name("by.maru.mantel.settingsChanged")
 }
 
 /// Настройки приложения. Хранятся в UserDefaults, читаются при старте (с дефолтами
@@ -90,6 +90,21 @@ final class AppSettings: ObservableObject {
         set { UserDefaults.standard.set(newValue, forKey: Keys.folderBookmarks) }
     }
 
+    /// Настройки жили в домене by.maru.ShelfTop — переносим один раз.
+    private static func migrateOldDomain() {
+        let d = UserDefaults.standard
+        guard d.object(forKey: "migratedFromShelfTop") == nil else { return }
+        if let old = UserDefaults(suiteName: "by.maru.ShelfTop")?.dictionaryRepresentation() {
+            for key in [Keys.watchDesktop, Keys.watchScreenshotsFolder, Keys.extraFolders,
+                        Keys.hotZoneEnabled, Keys.shelfWidth, Keys.autoPruneDays,
+                        Keys.launchAtLogin, Keys.googleDriveSubfolder, Keys.googleDriveDestination,
+                        Keys.mirrorFolders, Keys.mirrorMovesFiles] {
+                if let value = old[key], d.object(forKey: key) == nil { d.set(value, forKey: key) }
+            }
+        }
+        d.set(true, forKey: "migratedFromShelfTop")
+    }
+
     /// Итоговый список папок для наблюдения: флаги + свои пути, с раскрытым `~`.
     var watchedFolders: [URL] {
         var paths: [String] = []
@@ -105,6 +120,7 @@ final class AppSettings: ObservableObject {
     }
 
     private init() {
+        AppSettings.migrateOldDomain()
         UserDefaults.standard.register(defaults: [
             Keys.watchDesktop: true,
             Keys.watchScreenshotsFolder: true,
@@ -113,7 +129,7 @@ final class AppSettings: ObservableObject {
             Keys.shelfWidth: 720.0,
             Keys.autoPruneDays: 0,
             Keys.launchAtLogin: false,
-            Keys.googleDriveSubfolder: "ShelfTop",
+            Keys.googleDriveSubfolder: "Mantel",
             Keys.mirrorFolders: [String](),
             Keys.mirrorMovesFiles: false,
             Keys.googleDriveDestination: "",
@@ -127,7 +143,7 @@ final class AppSettings: ObservableObject {
         shelfWidth = d.double(forKey: Keys.shelfWidth)
         autoPruneDays = d.integer(forKey: Keys.autoPruneDays)
         launchAtLogin = d.bool(forKey: Keys.launchAtLogin)
-        googleDriveSubfolder = d.string(forKey: Keys.googleDriveSubfolder) ?? "ShelfTop"
+        googleDriveSubfolder = d.string(forKey: Keys.googleDriveSubfolder) ?? "Mantel"
         mirrorFolders = d.stringArray(forKey: Keys.mirrorFolders) ?? []
         mirrorMovesFiles = d.bool(forKey: Keys.mirrorMovesFiles)
         googleDriveDestination = d.string(forKey: Keys.googleDriveDestination) ?? ""
@@ -142,7 +158,7 @@ final class AppSettings: ObservableObject {
     /// вызывающая сторона через FolderAccess.store до вызова этого метода (см. SettingsWindow).
     func addMirrorFolder(_ path: String) {
         guard (try? FileManager.default.contentsOfDirectory(atPath: path)) != nil else {
-            NSLog("ShelfTop: папка-источник не читается, не добавляю: %@", path)
+            NSLog("Mantel: папка-источник не читается, не добавляю: %@", path)
             return
         }
         guard !mirrorFolders.contains(path) else { return }
@@ -169,7 +185,7 @@ final class AppSettings: ObservableObject {
                 try SMAppService.mainApp.unregister()
             }
         } catch {
-            NSLog("ShelfTop: не смог изменить запуск при входе: %@", error.localizedDescription)
+            NSLog("Mantel: не смог изменить запуск при входе: %@", error.localizedDescription)
         }
     }
 }

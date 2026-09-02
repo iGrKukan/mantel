@@ -78,14 +78,14 @@ final class NowPlayingModel: ObservableObject {
         guard let script = Self.scriptURL, let framework = Self.frameworkURL,
               FileManager.default.fileExists(atPath: script.path),
               FileManager.default.fileExists(atPath: framework.path) else {
-            NSLog("ShelfTop: адаптер сейчас-играет не найден в Resources — переключаюсь на AppleScript")
+            NSLog("Mantel: адаптер сейчас-играет не найден в Resources — переключаюсь на AppleScript")
             source = .appleScript
             startAppleScriptPolling()
             return
         }
 
         guard selfTest(script: script, framework: framework) else {
-            NSLog("ShelfTop: self-test адаптера сейчас-играет провалился — переключаюсь на AppleScript")
+            NSLog("Mantel: self-test адаптера сейчас-играет провалился — переключаюсь на AppleScript")
             source = .appleScript
             startAppleScriptPolling()
             return
@@ -111,7 +111,7 @@ final class NowPlayingModel: ObservableObject {
             p.waitUntilExit()
             return p.terminationStatus == 0
         } catch {
-            NSLog("ShelfTop: не смог запустить self-test адаптера: %@", error.localizedDescription)
+            NSLog("Mantel: не смог запустить self-test адаптера: %@", error.localizedDescription)
             return false
         }
     }
@@ -138,7 +138,7 @@ final class NowPlayingModel: ObservableObject {
             streamProcess = p
             stdoutPipe = pipe
         } catch {
-            NSLog("ShelfTop: не смог запустить поток адаптера: %@", error.localizedDescription)
+            NSLog("Mantel: не смог запустить поток адаптера: %@", error.localizedDescription)
         }
     }
 
@@ -297,7 +297,7 @@ final class NowPlayingModel: ObservableObject {
                 self.artworkLoadKey = nil
                 guard let data, let image = NSImage(data: data) else {
                     if let error {
-                        NSLog("ShelfTop: не смог загрузить обложку Spotify: %@", error.localizedDescription)
+                        NSLog("Mantel: не смог загрузить обложку Spotify: %@", error.localizedDescription)
                     }
                     return
                 }
@@ -339,7 +339,7 @@ final class NowPlayingModel: ObservableObject {
                 try p.run()
                 p.waitUntilExit()
             } catch {
-                NSLog("ShelfTop: команда сейчас-играет (%d) не выполнена: %@", id, error.localizedDescription)
+                NSLog("Mantel: команда сейчас-играет (%d) не выполнена: %@", id, error.localizedDescription)
             }
         }
     }

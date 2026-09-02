@@ -42,7 +42,7 @@ final class Library: ObservableObject {
 
     static let root: URL = {
         let base = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
-        return base.appendingPathComponent("ShelfTop", isDirectory: true)
+        return base.appendingPathComponent("Mantel", isDirectory: true)
     }()
     static let capturesDir = root.appendingPathComponent("Captures", isDirectory: true)
     static let thumbsDir   = root.appendingPathComponent("Thumbnails", isDirectory: true)
@@ -53,10 +53,25 @@ final class Library: ObservableObject {
 
 
     private init() {
+        Library.migrateFromOldName()
         for dir in [Library.root, Library.capturesDir, Library.thumbsDir] {
             try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)
         }
         load()
+    }
+
+    /// Приложение раньше называлось ShelfTop — переносим накопленное один раз.
+    private static func migrateFromOldName() {
+        let fm = FileManager.default
+        let base = fm.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0]
+        let old = base.appendingPathComponent("ShelfTop", isDirectory: true)
+        guard fm.fileExists(atPath: old.path), !fm.fileExists(atPath: root.path) else { return }
+        do {
+            try fm.moveItem(at: old, to: root)
+            NSLog("Mantel: библиотека перенесена из ShelfTop")
+        } catch {
+            NSLog("Mantel: не смог перенести библиотеку: %@", error.localizedDescription)
+        }
     }
 
     // MARK: индекс
@@ -67,7 +82,7 @@ final class Library: ObservableObject {
         guard let data = try? Data(contentsOf: Library.indexURL) else { return }
         let decoded: [ShelfItem]
         do { decoded = try dec.decode([ShelfItem].self, from: data) }
-        catch { NSLog("ShelfTop: индекс не прочитан: %@", String(describing: error)); return }
+        catch { NSLog("Mantel: индекс не прочитан: %@", String(describing: error)); return }
         // выбрасываем записи, чей файл исчез
         let alive = decoded.filter { FileManager.default.fileExists(atPath: $0.url.path) }
         items = alive.sorted { $0.addedAt > $1.addedAt }
@@ -107,7 +122,7 @@ final class Library: ObservableObject {
             if move { try fm.moveItem(at: source, to: dest) }
             else { try fm.copyItem(at: source, to: dest) }
         } catch {
-            NSLog("ShelfTop: не смог принять %@: %@", source.path, error.localizedDescription)
+            NSLog("Mantel: не смог принять %@: %@", source.path, error.localizedDescription)
             return nil
         }
 
@@ -141,7 +156,7 @@ final class Library: ObservableObject {
     // MARK: удаление
 
     func remove(_ item: ShelfItem, deleteFile: Bool = true) {
-        NSLog("ShelfTop: удаление в Корзину — %@", item.fileName)
+        NSLog("Mantel: удаление в Корзину — %@", item.fileName)
         if deleteFile { try? FileManager.default.trashItem(at: item.url, resultingItemURL: nil) }
         try? FileManager.default.removeItem(at: item.thumbnailURL)
         items.removeAll { $0.id == item.id }
@@ -149,7 +164,7 @@ final class Library: ObservableObject {
     }
 
     func clear() {
-        NSLog("ShelfTop: очистка полки, элементов: %d", items.count)
+        NSLog("Mantel: очистка полки, элементов: %d", items.count)
         for item in items {
             try? FileManager.default.trashItem(at: item.url, resultingItemURL: nil)
             try? FileManager.default.removeItem(at: item.thumbnailURL)
@@ -161,7 +176,7 @@ final class Library: ObservableObject {
     /// Автоочистка: удалить всё старше N дней (0 — выключено).
     func pruneOlderThan(days: Int) {
         guard days > 0 else { return }
-        NSLog("ShelfTop: автоочистка старше %d дн.", days)
+        NSLog("Mantel: автоочистка старше %d дн.", days)
         let cutoff = Date().addingTimeInterval(-Double(days) * 86400)
         for item in items where item.addedAt < cutoff { remove(item) }
     }
@@ -172,5 +187,5 @@ final class Library: ObservableObject {
 }
 
 extension Notification.Name {
-    static let shelfDidAddItem = Notification.Name("by.maru.shelftop.didAddItem")
+    static let shelfDidAddItem = Notification.Name("by.maru.mantel.didAddItem")
 }

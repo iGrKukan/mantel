@@ -114,7 +114,7 @@ final class AudioPlayerModel: NSObject, ObservableObject {
             startTimer()
             loadMetadata(for: item)
         } catch {
-            NSLog("ShelfTop: не смог воспроизвести %@: %@", item.fileName, error.localizedDescription)
+            NSLog("Mantel: не смог воспроизвести %@: %@", item.fileName, error.localizedDescription)
         }
     }
 

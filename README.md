@@ -1,4 +1,4 @@
-# ShelfTop
+# Mantel
 
 Нативная полка для macOS у верхнего края экрана: убирает с Рабочего стола свежие
 снимки и записи экрана, показывает их миниатюрами и отдаёт перетаскиванием в любое
@@ -31,7 +31,7 @@ macOS 14 и новее. Apple Silicon и Intel.
 ```
 brew install xcodegen
 xcodegen generate
-xcodebuild -project ShelfTop.xcodeproj -scheme ShelfTop -configuration Release build
+xcodebuild -project Mantel.xcodeproj -scheme Mantel -configuration Release build
 ```
 
 Или одной командой на удалённую машину: `bash scripts/deploy.sh`.

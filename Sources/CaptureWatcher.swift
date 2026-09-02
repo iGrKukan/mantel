@@ -35,7 +35,7 @@ final class CaptureWatcher {
     private static let maxMirrorFiles = 500
 
     /// Своя serial-очередь: на ней и события FSEvents, и поллинг дописи файла.
-    private let queue = DispatchQueue(label: "by.maru.shelftop.capturewatcher")
+    private let queue = DispatchQueue(label: "by.maru.mantel.capturewatcher")
     private var streamRef: FSEventStreamRef?
 
     private var captureFolders: [URL] = []
@@ -112,7 +112,7 @@ final class CaptureWatcher {
             let path = folder.standardizedFileURL.path
             if forbidden.contains(path) {
                 let msg = "Папка «\(path)» не подходит для зеркалирования — это системная папка целиком, выберите подпапку."
-                NSLog("ShelfTop: %@", msg)
+                NSLog("Mantel: %@", msg)
                 warnings.append(msg)
                 continue
             }
@@ -121,7 +121,7 @@ final class CaptureWatcher {
                 skipBulk.insert(path)
                 let name = (path as NSString).lastPathComponent
                 let msg = "Папка «\(name)»: старое содержимое (\(count) файлов) не переносится — в полку попадут только новые файлы."
-                NSLog("ShelfTop: %@", msg)
+                NSLog("Mantel: %@", msg)
                 warnings.append(msg)
             }
             accepted.append(folder)
@@ -145,7 +145,7 @@ final class CaptureWatcher {
             } else {
                 let name = (folder.path as NSString).lastPathComponent
                 let msg = "Папка «\(name)»: доступ не выдан — разреши её в настройках."
-                NSLog("ShelfTop: %@", msg)
+                NSLog("Mantel: %@", msg)
                 warnings.append(msg)
             }
         }
@@ -188,7 +188,7 @@ final class CaptureWatcher {
             0.3,
             flags
         ) else {
-            NSLog("ShelfTop: не смог создать FSEventStream")
+            NSLog("Mantel: не смог создать FSEventStream")
             return
         }
 
@@ -336,7 +336,7 @@ final class CaptureWatcher {
             self.inFlightLock.unlock()
 
             guard let stableURL = stableURL else {
-                NSLog("ShelfTop: файл не дописался за отведённое время: %@", (path as NSString).lastPathComponent)
+                NSLog("Mantel: файл не дописался за отведённое время: %@", (path as NSString).lastPathComponent)
                 return
             }
 

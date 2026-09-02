@@ -73,7 +73,7 @@ enum Thumbnailer {
                                                      representationTypes: .thumbnail)
         QLThumbnailGenerator.shared.generateBestRepresentation(for: request) { thumbnail, error in
             guard let thumbnail = thumbnail else {
-                NSLog("ShelfTop: QuickLook не смог сделать миниатюру для %@: %@",
+                NSLog("Mantel: QuickLook не смог сделать миниатюру для %@: %@",
                       item.fileName, error?.localizedDescription ?? "-")
                 // запасной вариант — крупная системная иконка типа файла
                 DispatchQueue.main.async {
@@ -103,7 +103,7 @@ enum Thumbnailer {
         // сперва пробуем 0.5с, если кадр не достаётся — самое начало ролика
         let preferred = CMTime(seconds: 0.5, preferredTimescale: 600)
         guard let cgImage = frame(at: preferred) ?? frame(at: .zero) else {
-            NSLog("ShelfTop: не смог извлечь кадр из %@", item.fileName)
+            NSLog("Mantel: не смог извлечь кадр из %@", item.fileName)
             return
         }
         let image = NSImage(cgImage: cgImage, size: NSSize(width: cgImage.width, height: cgImage.height))
@@ -136,7 +136,7 @@ enum Thumbnailer {
             try png.write(to: url, options: .atomic)
             return true
         } catch {
-            NSLog("ShelfTop: не смог записать миниатюру %@: %@", url.path, error.localizedDescription)
+            NSLog("Mantel: не смог записать миниатюру %@: %@", url.path, error.localizedDescription)
             return false
         }
     }
@@ -149,5 +149,5 @@ enum Thumbnailer {
 }
 
 extension Notification.Name {
-    static let shelfThumbnailReady = Notification.Name("by.maru.shelftop.thumbReady")
+    static let shelfThumbnailReady = Notification.Name("by.maru.mantel.thumbReady")
 }

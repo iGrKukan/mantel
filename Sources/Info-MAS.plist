@@ -5,15 +5,15 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>ShelfTop</string>
+	<string>Mantel</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
-	<string>by.maru.ShelfTop</string>
+	<string>by.maru.Mantel</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>ShelfTop</string>
+	<string>Mantel</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -25,13 +25,13 @@
 	<key>LSUIElement</key>
 	<true/>
 	<key>NSAppleEventsUsageDescription</key>
-	<string>Чтобы показать «сейчас играет», ShelfTop через Автоматизацию обращается к приложениям «Музыка» и Spotify.</string>
+	<string>Чтобы показать «сейчас играет», Mantel через Автоматизацию обращается к приложениям «Музыка» и Spotify.</string>
 	<key>NSDesktopFolderUsageDescription</key>
-	<string>ShelfTop убирает свежие скриншоты и записи экрана с Рабочего стола в свою полку.</string>
+	<string>Mantel убирает свежие скриншоты и записи экрана с Рабочего стола в свою полку.</string>
 	<key>NSDocumentsFolderUsageDescription</key>
-	<string>ShelfTop показывает добавленные файлы в полке.</string>
+	<string>Mantel показывает добавленные файлы в полке.</string>
 	<key>NSDownloadsFolderUsageDescription</key>
-	<string>ShelfTop показывает добавленные файлы в полке.</string>
+	<string>Mantel показывает добавленные файлы в полке.</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>MARU Systems</string>
 </dict>

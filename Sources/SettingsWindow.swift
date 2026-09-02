@@ -1,14 +1,14 @@
 import SwiftUI
 import AppKit
 
-/// Окно настроек ShelfTop.
+/// Окно настроек Mantel.
 struct SettingsView: View {
     @ObservedObject var settings = AppSettings.shared
 
     var body: some View {
         Form {
 #if APPSTORE
-            // В песочнице ShelfTop не может сам взять ~/Desktop и ~/Screenshots — доступ
+            // В песочнице Mantel не может сам взять ~/Desktop и ~/Screenshots — доступ
             // должен явно выдать пользователь через NSOpenPanel (см. FolderAccess).
             Section("Слежение") {
                 trackedFolderRow(title: "Рабочий стол", path: desktopPath, isOn: $settings.watchDesktop)
@@ -133,7 +133,7 @@ struct SettingsView: View {
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = false
         panel.directoryURL = URL(fileURLWithPath: path)
-        panel.message = "Выбери папку «\((path as NSString).lastPathComponent)», чтобы ShelfTop мог за ней следить."
+        panel.message = "Выбери папку «\((path as NSString).lastPathComponent)», чтобы Mantel мог за ней следить."
         guard panel.runModal() == .OK, let url = panel.urls.first else { return }
         FolderAccess.store(url)
         // Закладка появилась — перезапускаем наблюдатель и обновляем это окно.
@@ -214,7 +214,7 @@ final class SettingsWindowController {
                 contentRect: NSRect(x: 0, y: 0, width: 460, height: 700),
                 styleMask: [.titled, .closable, .miniaturizable],
                 backing: .buffered, defer: false)
-            w.title = "Настройки ShelfTop"
+            w.title = "Настройки Mantel"
             w.contentView = hosting
             w.isReleasedWhenClosed = false
             w.center()

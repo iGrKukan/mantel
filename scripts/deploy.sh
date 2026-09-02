@@ -3,7 +3,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 REMOTE=${REMOTE:-macstudio}
-DEST=${DEST:-'~/Projects/ShelfTop'}
+DEST=${DEST:-'~/Projects/Mantel'}
 
 echo "==> генерирую .xcodeproj локально"
 xcodegen generate

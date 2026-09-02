@@ -145,13 +145,13 @@ final class ShelfController {
 
     /// Служебное: отрисовать текущее содержимое панели в PNG (без снимка экрана).
     func writeSnapshot(to url: URL) {
-        guard let view = panel?.contentView else { NSLog("ShelfTop: нет contentView"); return }
+        guard let view = panel?.contentView else { NSLog("Mantel: нет contentView"); return }
         view.layoutSubtreeIfNeeded()
         guard let rep = view.bitmapImageRepForCachingDisplay(in: view.bounds) else { return }
         view.cacheDisplay(in: view.bounds, to: rep)
         guard let png = rep.representation(using: .png, properties: [:]) else { return }
-        do { try png.write(to: url); NSLog("ShelfTop: снимок панели -> %@", url.path) }
-        catch { NSLog("ShelfTop: снимок не записан: %@", error.localizedDescription) }
+        do { try png.write(to: url); NSLog("Mantel: снимок панели -> %@", url.path) }
+        catch { NSLog("Mantel: снимок не записан: %@", error.localizedDescription) }
     }
 
     func toggle() {

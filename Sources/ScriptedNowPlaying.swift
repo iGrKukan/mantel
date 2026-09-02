@@ -30,7 +30,7 @@ enum ScriptedNowPlaying {
     private static let musicBundleID = "com.apple.Music"
 
     // NSAppleScript не потокобезопасен — все вызовы идут через одну последовательную очередь.
-    private static let queue = DispatchQueue(label: "by.maru.ShelfTop.applescript")
+    private static let queue = DispatchQueue(label: "by.maru.Mantel.applescript")
 
     // Скрипты компилируются один раз и переиспользуются (компиляция NSAppleScript дорогая).
     private static var spotifySnapshotScript: NSAppleScript?
@@ -202,12 +202,12 @@ enum ScriptedNowPlaying {
 
     private static func compile(_ source: String, bundleID: String) -> NSAppleScript? {
         guard let script = NSAppleScript(source: source) else {
-            NSLog("ShelfTop: не удалось создать AppleScript для %@", bundleID)
+            NSLog("Mantel: не удалось создать AppleScript для %@", bundleID)
             return nil
         }
         var errorInfo: NSDictionary?
         guard script.compileAndReturnError(&errorInfo) else {
-            NSLog("ShelfTop: ошибка компиляции AppleScript для %@: %@", bundleID, String(describing: errorInfo))
+            NSLog("Mantel: ошибка компиляции AppleScript для %@: %@", bundleID, String(describing: errorInfo))
             return nil
         }
         return script
@@ -222,11 +222,11 @@ enum ScriptedNowPlaying {
             let code = errorInfo[NSAppleScript.errorNumber] as? Int
             if code == -1743 {
                 if !deniedBundleIDs.contains(bundleID) {
-                    NSLog("ShelfTop: пользователь запретил автоматизацию для %@ — больше не опрашиваем в этом сеансе", bundleID)
+                    NSLog("Mantel: пользователь запретил автоматизацию для %@ — больше не опрашиваем в этом сеансе", bundleID)
                     deniedBundleIDs.insert(bundleID)
                 }
             } else {
-                NSLog("ShelfTop: ошибка AppleScript (%@): %@", bundleID, String(describing: errorInfo))
+                NSLog("Mantel: ошибка AppleScript (%@): %@", bundleID, String(describing: errorInfo))
             }
             return nil
         }

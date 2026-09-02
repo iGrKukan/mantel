@@ -30,7 +30,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         setupStatusItem()
 
-        // ShelfTop --add <файл> [...] — добавить файлы в полку копией (для скриптов и проверки).
+        // Mantel --add <файл> [...] — добавить файлы в полку копией (для скриптов и проверки).
         if let idx = CommandLine.arguments.firstIndex(of: "--add") {
             for path in CommandLine.arguments.dropFirst(idx + 1) {
                 if path.hasPrefix("--") { break }
@@ -45,7 +45,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
-        // ShelfTop --snapshot-settings <файл.png> — отрисовать окно настроек и выйти.
+        // Mantel --snapshot-settings <файл.png> — отрисовать окно настроек и выйти.
         if let idx = CommandLine.arguments.firstIndex(of: "--snapshot-settings"),
            idx + 1 < CommandLine.arguments.count {
             let out = URL(fileURLWithPath: CommandLine.arguments[idx + 1])
@@ -60,7 +60,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
                             view.cacheDisplay(in: view.bounds, to: rep)
                             if let png = rep.representation(using: .png, properties: [:]) {
                                 try? png.write(to: out)
-                                NSLog("ShelfTop: снимок настроек -> %@", out.path)
+                                NSLog("Mantel: снимок настроек -> %@", out.path)
                             }
                         }
                     }
@@ -69,7 +69,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
 
-        // Служебный режим: ShelfTop --snapshot <файл.png> — отрисовать развёрнутую полку
+        // Служебный режим: Mantel --snapshot <файл.png> — отрисовать развёрнутую полку
         // в PNG и выйти. Нужен для проверки вёрстки, когда снимок экрана недоступен.
         if let idx = CommandLine.arguments.firstIndex(of: "--snapshot"),
            idx + 1 < CommandLine.arguments.count {
@@ -103,7 +103,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func setupStatusItem() {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
         if let button = item.button {
-            let image = NSImage(systemSymbolName: "tray.full", accessibilityDescription: "ShelfTop")
+            let image = NSImage(systemSymbolName: "tray.full", accessibilityDescription: "Mantel")
             image?.isTemplate = true
             button.image = image
         }

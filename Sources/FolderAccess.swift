@@ -19,7 +19,7 @@ enum FolderAccess {
         guard let data = try? url.bookmarkData(
             options: .withSecurityScope, includingResourceValuesForKeys: nil, relativeTo: nil)
         else {
-            NSLog("ShelfTop: не смог создать security-scoped bookmark для %@", url.path)
+            NSLog("Mantel: не смог создать security-scoped bookmark для %@", url.path)
             return
         }
         var bookmarks = AppSettings.shared.folderBookmarks
@@ -64,7 +64,7 @@ enum FolderAccess {
 
         guard let url = resolvedURL(for: path) else { return nil }
         guard url.startAccessingSecurityScopedResource() else {
-            NSLog("ShelfTop: не смог начать доступ к %@", path)
+            NSLog("Mantel: не смог начать доступ к %@", path)
             return nil
         }
         lock.lock()

@@ -64,8 +64,9 @@ enum GoogleDrive {
     /// для панели «Куда положить» при перетаскивании на иконку Диска.
     static func subfolders(limit: Int = 6) -> [URL] {
         guard let dest = destinationURL,
+              let accessibleDest = FolderAccess.beginAccess(dest.path),
               let entries = try? FileManager.default.contentsOfDirectory(
-                at: dest, includingPropertiesForKeys: [.isDirectoryKey], options: [.skipsHiddenFiles])
+                at: accessibleDest, includingPropertiesForKeys: [.isDirectoryKey], options: [.skipsHiddenFiles])
         else { return [] }
         let dirs = entries.filter { (try? $0.resourceValues(forKeys: [.isDirectoryKey]))?.isDirectory == true }
         return dirs
@@ -102,10 +103,17 @@ enum GoogleDrive {
     }
 
     private static func performUpload(urls: [URL], to destDir: URL, completion: @escaping (Result<Int, Error>) -> Void) {
+        // В песочнице сюда мог прийти путь без открытого доступа (например, подпапка,
+        // выбранная напрямую) — открываем его здесь же, а не полагаемся на то, что
+        // кто-то уже открыл доступ к родителю.
+        guard let accessibleDest = FolderAccess.beginAccess(destDir.path) else {
+            DispatchQueue.main.async { completion(.failure(notFoundError)) }
+            return
+        }
         DispatchQueue.global(qos: .utility).async {
             let fm = FileManager.default
             do {
-                try fm.createDirectory(at: destDir, withIntermediateDirectories: true)
+                try fm.createDirectory(at: accessibleDest, withIntermediateDirectories: true)
             } catch {
                 DispatchQueue.main.async { completion(.failure(error)) }
                 return
@@ -113,7 +121,7 @@ enum GoogleDrive {
 
             var copied = 0
             for url in urls {
-                let dest = uniqueDestination(in: destDir, for: url.lastPathComponent)
+                let dest = uniqueDestination(in: accessibleDest, for: url.lastPathComponent)
                 do {
                     try fm.copyItem(at: url, to: dest)
                     copied += 1
@@ -127,9 +135,9 @@ enum GoogleDrive {
 
     /// Открывает папку назначения в Finder (создаёт при отсутствии).
     static func openFolder() {
-        guard let dest = destinationURL else { return }
-        try? FileManager.default.createDirectory(at: dest, withIntermediateDirectories: true)
-        NSWorkspace.shared.open(dest)
+        guard let dest = destinationURL, let accessibleDest = FolderAccess.beginAccess(dest.path) else { return }
+        try? FileManager.default.createDirectory(at: accessibleDest, withIntermediateDirectories: true)
+        NSWorkspace.shared.open(accessibleDest)
     }
 
     private static func uniqueDestination(in dir: URL, for name: String) -> URL {

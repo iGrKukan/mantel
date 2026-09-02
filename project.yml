@@ -19,7 +19,11 @@ targets:
     type: application
     platform: macOS
     sources:
+      # Info-MAS.plist — чужой Info.plist (см. цель ShelfTop-MAS): исключаем из ресурсов,
+      # иначе он просто ляжет в бандл лишним файлом.
       - path: Sources
+        excludes:
+          - Info-MAS.plist
       # Адаптер системного «сейчас играет» (MediaRemote): бандлится как ресурс,
       # но НЕ линкуется — фреймворк грузит /usr/bin/perl, не наше приложение.
       - path: Vendor/mediaremote-adapter
@@ -44,10 +48,58 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         INFOPLIST_KEY_LSUIElement: YES
         COMBINE_HIDPI_IMAGES: YES
+
+  # Вторая цель — для Mac App Store: песочница + hardened runtime, без адаптера
+  # MediaRemote (приватный API — Vendor/mediaremote-adapter сюда не включаем).
+  # Тот же бандл-идентификатор, что у обычной цели — каналы распространения разные,
+  # это нормально. #if APPSTORE в исходниках переключает системный плеер на AppleScript.
+  ShelfTop-MAS:
+    type: application
+    platform: macOS
+    sources:
+      # Sources/Info.plist — Info.plist обычной цели, у MAS свой (Info-MAS.plist,
+      # см. info.path ниже) — исключаем, иначе оба лягут в бандл, а xcodegen ещё и
+      # перезаписывает физический файл при генерации: держать общий Info.plist
+      # на две цели с разными properties нельзя.
+      - path: Sources
+        excludes:
+          - Info.plist
+    info:
+      path: Sources/Info-MAS.plist
+      properties:
+        CFBundleName: ShelfTop
+        CFBundleDisplayName: ShelfTop
+        CFBundleIdentifier: by.maru.ShelfTop
+        LSUIElement: true
+        LSMinimumSystemVersion: "14.0"
+        NSHumanReadableCopyright: "MARU Systems"
+        NSDesktopFolderUsageDescription: "ShelfTop убирает свежие скриншоты и записи экрана с Рабочего стола в свою полку."
+        NSDocumentsFolderUsageDescription: "ShelfTop показывает добавленные файлы в полке."
+        NSDownloadsFolderUsageDescription: "ShelfTop показывает добавленные файлы в полке."
+        NSAppleEventsUsageDescription: "Чтобы показать «сейчас играет», ShelfTop через Автоматизацию обращается к приложениям «Музыка» и Spotify."
+    settings:
+      base:
+        PRODUCT_NAME: ShelfTop
+        PRODUCT_BUNDLE_IDENTIFIER: by.maru.ShelfTop
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_KEY_LSUIElement: YES
+        COMBINE_HIDPI_IMAGES: YES
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS: APPSTORE
+        ENABLE_APP_SANDBOX: YES
+        ENABLE_HARDENED_RUNTIME: YES
+        CODE_SIGN_ENTITLEMENTS: Sources/ShelfTop-MAS.entitlements
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: U5BAN54DL2
 schemes:
   ShelfTop:
     build:
       targets:
         ShelfTop: all
+    run:
+      config: Release
+  ShelfTop-MAS:
+    build:
+      targets:
+        ShelfTop-MAS: all
     run:
       config: Release

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>ShelfTop</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIdentifier</key>
+	<string>by.maru.ShelfTop</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>ShelfTop</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>LSUIElement</key>
+	<true/>
+	<key>NSAppleEventsUsageDescription</key>
+	<string>Чтобы показать «сейчас играет», ShelfTop через Автоматизацию обращается к приложениям «Музыка» и Spotify.</string>
+	<key>NSDesktopFolderUsageDescription</key>
+	<string>ShelfTop убирает свежие скриншоты и записи экрана с Рабочего стола в свою полку.</string>
+	<key>NSDocumentsFolderUsageDescription</key>
+	<string>ShelfTop показывает добавленные файлы в полке.</string>
+	<key>NSDownloadsFolderUsageDescription</key>
+	<string>ShelfTop показывает добавленные файлы в полке.</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>MARU Systems</string>
+</dict>
+</plist>

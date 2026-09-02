@@ -23,6 +23,7 @@ final class AppSettings: ObservableObject {
         static let mirrorFolders = "mirrorFolders"
         static let mirrorMovesFiles = "mirrorMovesFiles"
         static let googleDriveDestination = "googleDriveDestination"
+        static let folderBookmarks = "folderBookmarks"
     }
 
     @Published var watchDesktop: Bool {
@@ -80,6 +81,15 @@ final class AppSettings: ObservableObject {
     /// Предупреждение об отклонённой папке-источнике (пустая строка — предупреждений нет).
     @Published var lastMirrorWarning: String = ""
 
+    /// Security-scoped bookmarks для доступа к папкам в песочнице (сборка APPSTORE):
+    /// путь папки → bookmarkData(.withSecurityScope). Читает и пишет FolderAccess.
+    /// Вне песочницы не используется, но хранится безусловно — при переключении
+    /// сборки (APPSTORE/обычная) старые записи просто не мешают.
+    var folderBookmarks: [String: Data] {
+        get { UserDefaults.standard.dictionary(forKey: Keys.folderBookmarks) as? [String: Data] ?? [:] }
+        set { UserDefaults.standard.set(newValue, forKey: Keys.folderBookmarks) }
+    }
+
     /// Итоговый список папок для наблюдения: флаги + свои пути, с раскрытым `~`.
     var watchedFolders: [URL] {
         var paths: [String] = []
@@ -128,7 +138,8 @@ final class AppSettings: ObservableObject {
     }
 
     /// Добавляет папку-источник, если она реально читается и ещё не добавлена.
-    /// Приложение не в песочнице — security-scoped bookmarks не нужны, храним обычный путь.
+    /// Сам путь тут — обычная строка; закладку для песочницы (сборка APPSTORE) сохраняет
+    /// вызывающая сторона через FolderAccess.store до вызова этого метода (см. SettingsWindow).
     func addMirrorFolder(_ path: String) {
         guard (try? FileManager.default.contentsOfDirectory(atPath: path)) != nil else {
             NSLog("ShelfTop: папка-источник не читается, не добавляю: %@", path)

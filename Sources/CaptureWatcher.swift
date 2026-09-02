@@ -56,10 +56,20 @@ final class CaptureWatcher {
     /// отдельно из AppSettings — сигнатуру, которую зовёт AppDelegate, не трогаем.
     func start(folders: [URL]) {
         stop()
-        captureFolders = folders
-        mirrorFolders = validateMirrorFolders(AppSettings.shared.mirrorFolderURLs)
+        // Доступ открываем ДО validateMirrorFolders — ей нужно читать содержимое папки
+        // (посчитать файлы), а в песочнице contentsOfDirectory работает только внутри
+        // уже открытого startAccessingSecurityScopedResource.
+        let (capture, captureAccessWarnings) = resolveAccessibleFolders(folders)
+        let (accessibleMirror, mirrorAccessWarnings) = resolveAccessibleFolders(AppSettings.shared.mirrorFolderURLs)
+        let (mirror, mirrorValidationWarnings) = validateMirrorFolders(accessibleMirror)
+
+        captureFolders = capture
+        mirrorFolders = mirror
         captureFolderPaths = Set(captureFolders.map { $0.path })
         mirrorFolderPaths = Set(mirrorFolders.map { $0.path })
+
+        let warnings = captureAccessWarnings + mirrorAccessWarnings + mirrorValidationWarnings
+        DispatchQueue.main.async { AppSettings.shared.lastMirrorWarning = warnings.joined(separator: "\n") }
 
         let allFolders = captureFolders + mirrorFolders
         guard !allFolders.isEmpty else { return }
@@ -82,7 +92,7 @@ final class CaptureWatcher {
     /// Папки-источники, из которых при старте берём только свежие файлы (не всё подряд).
     private var mirrorSkipBulkPaths: Set<String> = []
 
-    private func validateMirrorFolders(_ folders: [URL]) -> [URL] {
+    private func validateMirrorFolders(_ folders: [URL]) -> (accepted: [URL], warnings: [String]) {
         let fm = FileManager.default
         let home = fm.homeDirectoryForCurrentUser.standardizedFileURL.path
         // Запрещаем только то, что заведомо утащит всё подряд.
@@ -117,10 +127,29 @@ final class CaptureWatcher {
             accepted.append(folder)
         }
 
-        let warningText = warnings.joined(separator: "\n")
         mirrorSkipBulkPaths = skipBulk
-        DispatchQueue.main.async { AppSettings.shared.lastMirrorWarning = warningText }
-        return accepted
+        return (accepted, warnings)
+    }
+
+    // MARK: - Доступ к папкам (security-scoped bookmarks в песочнице)
+
+    /// Открывает доступ (см. FolderAccess) к каждой папке; недоступные пропускает вместо
+    /// падения. Вне песочницы (`#if !APPSTORE`) FolderAccess.beginAccess — no-op, доступ
+    /// есть всегда, warnings всегда пуст.
+    private func resolveAccessibleFolders(_ folders: [URL]) -> (accessible: [URL], warnings: [String]) {
+        var accessible: [URL] = []
+        var warnings: [String] = []
+        for folder in folders {
+            if let url = FolderAccess.beginAccess(folder.path) {
+                accessible.append(url)
+            } else {
+                let name = (folder.path as NSString).lastPathComponent
+                let msg = "Папка «\(name)»: доступ не выдан — разреши её в настройках."
+                NSLog("ShelfTop: %@", msg)
+                warnings.append(msg)
+            }
+        }
+        return (accessible, warnings)
     }
 
     // MARK: - FSEvents

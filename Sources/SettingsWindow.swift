@@ -7,11 +7,21 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
+#if APPSTORE
+            // В песочнице ShelfTop не может сам взять ~/Desktop и ~/Screenshots — доступ
+            // должен явно выдать пользователь через NSOpenPanel (см. FolderAccess).
+            Section("Слежение") {
+                trackedFolderRow(title: "Рабочий стол", path: desktopPath, isOn: $settings.watchDesktop)
+                trackedFolderRow(title: "~/Screenshots", path: screenshotsPath, isOn: $settings.watchScreenshotsFolder)
+                Toggle("Раскрывать по наведению", isOn: $settings.hotZoneEnabled)
+            }
+#else
             Section("Слежение") {
                 Toggle("Следить за Рабочим столом", isOn: $settings.watchDesktop)
                 Toggle("Следить за ~/Screenshots", isOn: $settings.watchScreenshotsFolder)
                 Toggle("Раскрывать по наведению", isOn: $settings.hotZoneEnabled)
             }
+#endif
             Section("Папки-источники") {
                 Text("Из этих папок в полку попадает любой файл, а не только снимки экрана.")
                     .font(.caption)
@@ -96,6 +106,42 @@ struct SettingsView: View {
         .frame(width: 460, height: 700)
     }
 
+#if APPSTORE
+    private var desktopPath: String { ("~/Desktop" as NSString).expandingTildeInPath }
+    private var screenshotsPath: String { ("~/Screenshots" as NSString).expandingTildeInPath }
+
+    /// Строка «папка захвата» в режиме App Store: пока доступа нет — кнопка «Разрешить…»
+    /// вместо переключателя (в песочнице сами эти папки взять нельзя).
+    @ViewBuilder
+    private func trackedFolderRow(title: String, path: String, isOn: Binding<Bool>) -> some View {
+        if FolderAccess.resolvedURL(for: path) != nil {
+            Toggle(title, isOn: isOn)
+        } else {
+            HStack {
+                Text("\(title) — доступ не выдан")
+                    .foregroundStyle(.secondary)
+                Spacer()
+                Button("Разрешить…") { grantAccess(to: path) }
+            }
+        }
+    }
+
+    private func grantAccess(to path: String) {
+        NSApp.activate(ignoringOtherApps: true)
+        let panel = NSOpenPanel()
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.allowsMultipleSelection = false
+        panel.directoryURL = URL(fileURLWithPath: path)
+        panel.message = "Выбери папку «\((path as NSString).lastPathComponent)», чтобы ShelfTop мог за ней следить."
+        guard panel.runModal() == .OK, let url = panel.urls.first else { return }
+        FolderAccess.store(url)
+        // Закладка появилась — перезапускаем наблюдатель и обновляем это окно.
+        NotificationCenter.default.post(name: .shelfSettingsChanged, object: nil)
+        settings.objectWillChange.send()
+    }
+#endif
+
     private var autoPruneLabel: String {
         settings.autoPruneDays == 0
             ? "Автоочистка выключена — полка хранит файлы, пока не удалишь вручную."
@@ -134,6 +180,7 @@ struct SettingsView: View {
             panel.directoryURL = root
         }
         guard panel.runModal() == .OK, let url = panel.urls.first else { return }
+        FolderAccess.store(url)
         settings.googleDriveDestination = url.path
     }
 
@@ -146,6 +193,7 @@ struct SettingsView: View {
         panel.prompt = "Добавить"
         guard panel.runModal() == .OK else { return }
         for url in panel.urls {
+            FolderAccess.store(url)
             settings.addMirrorFolder(url.path)
         }
     }

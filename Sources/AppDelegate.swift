@@ -88,6 +88,12 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
+    func applicationWillTerminate(_ notification: Notification) {
+        // Закрываем весь security-scoped доступ, открытый FolderAccess.beginAccess
+        // (в обычной сборке — no-op, там его и не было).
+        FolderAccess.endAllAccess()
+    }
+
     @objc private func settingsChanged() {
         // Список папок мог измениться — перезапускаем наблюдатель с актуальным списком.
         CaptureWatcher.shared.stop()

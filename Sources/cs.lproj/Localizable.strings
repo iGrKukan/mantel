@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — přístup není udělen";
 "settings.watching.grantButton" = "Udělit přístup…";
 "settings.watching.grantMessage" = "Vyberte složku „%@“, aby ji Mantel mohl sledovat.";
+"settings.watching.accessFailed" = "Nepodařilo se získat přístup ke složce. Zkuste ji vybrat znovu.";
 
 /* Sekce „Zdrojové složky“ */
 "settings.folders.title" = "Zdrojové složky";

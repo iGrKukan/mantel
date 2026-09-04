@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — acceso no concedido";
 "settings.watching.grantButton" = "Conceder acceso…";
 "settings.watching.grantMessage" = "Elige la carpeta “%@” para que Mantel pueda vigilarla.";
+"settings.watching.accessFailed" = "No se pudo obtener acceso a la carpeta. Inténtalo eligiéndola de nuevo.";
 
 /* "Source Folders" section */
 "settings.folders.title" = "Carpetas de origen";

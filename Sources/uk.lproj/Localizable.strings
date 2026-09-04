@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — доступ не надано";
 "settings.watching.grantButton" = "Надати доступ…";
 "settings.watching.grantMessage" = "Виберіть папку «%@», щоб Mantel міг за нею стежити.";
+"settings.watching.accessFailed" = "Не вдалося отримати доступ до папки. Спробуйте вибрати її ще раз.";
 
 /* Розділ «Папки-джерела» */
 "settings.folders.title" = "Папки-джерела";

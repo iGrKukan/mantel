@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — δεν έχει παραχωρηθεί πρόσβαση";
 "settings.watching.grantButton" = "Παραχώρηση πρόσβασης…";
 "settings.watching.grantMessage" = "Επίλεξε τον φάκελο «%@» ώστε το Mantel να μπορεί να τον παρακολουθεί.";
+"settings.watching.accessFailed" = "Δεν ήταν δυνατή η πρόσβαση στον φάκελο. Δοκιμάστε να τον επιλέξετε ξανά.";
 
 /* Ενότητα «Φάκελοι προέλευσης» */
 "settings.folders.title" = "Φάκελοι προέλευσης";

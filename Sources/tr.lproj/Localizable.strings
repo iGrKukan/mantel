@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — erişim verilmedi";
 "settings.watching.grantButton" = "Erişim Ver…";
 "settings.watching.grantMessage" = "Mantel’in izleyebilmesi için “%@” klasörünü seçin.";
+"settings.watching.accessFailed" = "Klasöre erişim sağlanamadı. Tekrar seçmeyi deneyin.";
 
 /* "Kaynak Klasörler" bölümü */
 "settings.folders.title" = "Kaynak Klasörler";

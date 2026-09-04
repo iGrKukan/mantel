@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — पहुंच नहीं दी गई";
 "settings.watching.grantButton" = "पहुंच दें…";
 "settings.watching.grantMessage" = "“%@” फ़ोल्डर चुनें ताकि Mantel उस पर नज़र रख सके।";
+"settings.watching.accessFailed" = "फ़ोल्डर तक पहुंच नहीं मिल पाई। इसे फिर से चुनने का प्रयास करें।";
 
 /* "स्रोत फ़ोल्डर" सेक्शन */
 "settings.folders.title" = "स्रोत फ़ोल्डर";

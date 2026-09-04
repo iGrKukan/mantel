@@ -97,8 +97,8 @@ enum FolderAccess {
     static var needsPermission: [String] {
         let settings = AppSettings.shared
         var paths: [String] = []
-        if settings.watchDesktop { paths.append(("~/Desktop" as NSString).expandingTildeInPath) }
-        if settings.watchScreenshotsFolder { paths.append(("~/Screenshots" as NSString).expandingTildeInPath) }
+        if settings.watchDesktop { paths.append(settings.resolvedDesktopPath) }
+        if settings.watchScreenshotsFolder { paths.append(settings.resolvedScreenshotsPath) }
         paths.append(contentsOf: settings.extraFolders)
         paths.append(contentsOf: settings.mirrorFolders)
         if !settings.googleDriveDestination.isEmpty { paths.append(settings.googleDriveDestination) }

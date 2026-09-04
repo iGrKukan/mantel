@@ -4,16 +4,40 @@ import AppKit
 /// Окно настроек Mantel.
 struct SettingsView: View {
     @ObservedObject var settings = AppSettings.shared
+#if APPSTORE
+    /// Ошибка последней попытки «Разрешить…» — если startAccessingSecurityScopedResource
+    /// не смог открыть доступ к выбранной папке. Живёт только в этом окне, не персистится.
+    @State private var watchingError: String = ""
+#endif
 
     var body: some View {
         Form {
 #if APPSTORE
             // В песочнице Mantel не может сам взять ~/Desktop и ~/Screenshots — доступ
-            // должен явно выдать пользователь через NSOpenPanel (см. FolderAccess).
+            // должен явно выдать пользователь через NSOpenPanel (см. FolderAccess). Следим
+            // при этом не за захардкоженным путём, а за тем, что реально выбрано и на что
+            // есть закладка (settings.resolvedDesktopPath/resolvedScreenshotsPath) — панель
+            // могла отдать другой путь (iCloud-синхронизация Рабочего стола, либо пользователь
+            // выбрал в ней другую папку).
             Section(String(localized: "settings.watching.title")) {
-                trackedFolderRow(title: String(localized: "settings.watching.desktopLabel"), path: desktopPath, isOn: $settings.watchDesktop)
-                trackedFolderRow(title: "~/Screenshots", path: screenshotsPath, isOn: $settings.watchScreenshotsFolder)
+                trackedFolderRow(
+                    title: String(localized: "settings.watching.desktopLabel"),
+                    resolvedPath: settings.resolvedDesktopPath,
+                    browsePath: desktopPath,
+                    accessPath: $settings.desktopAccessPath,
+                    isOn: $settings.watchDesktop)
+                trackedFolderRow(
+                    title: "~/Screenshots",
+                    resolvedPath: settings.resolvedScreenshotsPath,
+                    browsePath: screenshotsPath,
+                    accessPath: $settings.screenshotsAccessPath,
+                    isOn: $settings.watchScreenshotsFolder)
                 Toggle(String(localized: "settings.watching.hotZone"), isOn: $settings.hotZoneEnabled)
+                if !watchingError.isEmpty {
+                    Text(watchingError)
+                        .font(.caption)
+                        .foregroundStyle(.yellow)
+                }
             }
 #else
             Section(String(localized: "settings.watching.title")) {
@@ -118,33 +142,55 @@ struct SettingsView: View {
 
     /// Строка «папка захвата» в режиме App Store: пока доступа нет — кнопка «Разрешить…»
     /// вместо переключателя (в песочнице сами эти папки взять нельзя).
+    ///
+    /// `resolvedPath` — реально забронированный путь (или путь по умолчанию, пока доступа
+    /// нет); `browsePath` — путь по умолчанию, с которого открывается NSOpenPanel;
+    /// `accessPath` — куда записать путь, который пользователь реально выбрал в панели.
     @ViewBuilder
-    private func trackedFolderRow(title: String, path: String, isOn: Binding<Bool>) -> some View {
-        if FolderAccess.resolvedURL(for: path) != nil {
+    private func trackedFolderRow(
+        title: String, resolvedPath: String, browsePath: String,
+        accessPath: Binding<String>, isOn: Binding<Bool>
+    ) -> some View {
+        if FolderAccess.resolvedURL(for: resolvedPath) != nil {
             Toggle(title, isOn: isOn)
         } else {
             HStack {
                 Text(String(format: String(localized: "settings.watching.accessDenied"), title))
                     .foregroundStyle(.secondary)
                 Spacer()
-                Button(String(localized: "settings.watching.grantButton")) { grantAccess(to: path) }
+                Button(String(localized: "settings.watching.grantButton")) {
+                    grantAccess(browsePath: browsePath, accessPath: accessPath)
+                }
             }
         }
     }
 
-    private func grantAccess(to path: String) {
+    /// Открывает NSOpenPanel, бронирует security-scoped закладку на то, что реально
+    /// выбрал пользователь (не обязательно browsePath — см. комментарий у
+    /// AppSettings.desktopAccessPath), сразу пробует открыть доступ и, если получилось,
+    /// запоминает путь в accessPath — это перезапустит CaptureWatcher (didSet →
+    /// postFoldersChanged) и обновит эту строку на переключатель.
+    private func grantAccess(browsePath: String, accessPath: Binding<String>) {
         NSApp.activate(ignoringOtherApps: true)
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
         panel.allowsMultipleSelection = false
-        panel.directoryURL = URL(fileURLWithPath: path)
-        panel.message = String(format: String(localized: "settings.watching.grantMessage"), (path as NSString).lastPathComponent)
+        panel.directoryURL = URL(fileURLWithPath: browsePath)
+        panel.message = String(format: String(localized: "settings.watching.grantMessage"), (browsePath as NSString).lastPathComponent)
         guard panel.runModal() == .OK, let url = panel.urls.first else { return }
+
         FolderAccess.store(url)
-        // Закладка появилась — перезапускаем наблюдатель и обновляем это окно.
-        NotificationCenter.default.post(name: .shelfSettingsChanged, object: nil)
-        settings.objectWillChange.send()
+        guard FolderAccess.beginAccess(url.path) != nil else {
+            watchingError = String(localized: "settings.watching.accessFailed")
+            return
+        }
+        watchingError = ""
+        let previousPath = accessPath.wrappedValue
+        accessPath.wrappedValue = url.path
+        if !previousPath.isEmpty, previousPath != url.path {
+            FolderAccess.forget(previousPath)
+        }
     }
 #endif
 

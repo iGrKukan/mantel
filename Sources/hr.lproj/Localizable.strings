@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — pristup nije odobren";
 "settings.watching.grantButton" = "Odobri pristup…";
 "settings.watching.grantMessage" = "Odaberi mapu „%@” kako bi je Mantel mogao pratiti.";
+"settings.watching.accessFailed" = "Nije moguće dobiti pristup mapi. Pokušajte je ponovno odabrati.";
 
 /* Odjeljak „Izvorne mape” */
 "settings.folders.title" = "Izvorne mape";

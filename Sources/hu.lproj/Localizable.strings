@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — nincs hozzáférés";
 "settings.watching.grantButton" = "Hozzáférés megadása…";
 "settings.watching.grantMessage" = "Válaszd ki a(z) „%@” mappát, hogy a Mantel figyelhesse.";
+"settings.watching.accessFailed" = "Nem sikerült hozzáférést szerezni a mappához. Próbáld újra kiválasztani.";
 
 /* „Forrásmappák” szakasz */
 "settings.folders.title" = "Forrásmappák";

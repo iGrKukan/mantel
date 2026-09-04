@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — アクセスが許可されていません";
 "settings.watching.grantButton" = "アクセスを許可…";
 "settings.watching.grantMessage" = "Mantelが監視できるように、「%@」フォルダを選んでください。";
+"settings.watching.accessFailed" = "フォルダへのアクセス権を取得できませんでした。もう一度選択してください。";
 
 /* "Source Folders" section */
 "settings.folders.title" = "ソースフォルダ";

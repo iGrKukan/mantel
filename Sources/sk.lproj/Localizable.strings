@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — prístup nie je udelený";
 "settings.watching.grantButton" = "Udeliť prístup…";
 "settings.watching.grantMessage" = "Vyberte priečinok „%@“, aby ho Mantel mohol sledovať.";
+"settings.watching.accessFailed" = "Nepodarilo sa získať prístup k priečinku. Skúste ho vybrať znova.";
 
 /* Sekcia „Zdrojové priečinky“ */
 "settings.folders.title" = "Zdrojové priečinky";

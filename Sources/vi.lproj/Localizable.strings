@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — chưa được cấp quyền truy cập";
 "settings.watching.grantButton" = "Cấp Quyền Truy Cập…";
 "settings.watching.grantMessage" = "Hãy chọn thư mục “%@” để Mantel có thể theo dõi nó.";
+"settings.watching.accessFailed" = "Không thể truy cập vào thư mục. Hãy thử chọn lại.";
 
 /* "Source Folders" section */
 "settings.folders.title" = "Thư Mục Nguồn";

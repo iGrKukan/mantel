@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — acesso não concedido";
 "settings.watching.grantButton" = "Conceder Acesso…";
 "settings.watching.grantMessage" = "Escolha a pasta “%@” para que o Mantel possa monitorá-la.";
+"settings.watching.accessFailed" = "Não foi possível obter acesso à pasta. Tente escolhê-la novamente.";
 
 /* "Source Folders" section */
 "settings.folders.title" = "Pastas de Origem";

@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — הגישה לא ניתנה";
 "settings.watching.grantButton" = "הענק גישה…";
 "settings.watching.grantMessage" = "בחר את התיקייה \"%@\" כדי ש-Mantel יוכל לעקוב אחריה.";
+"settings.watching.accessFailed" = "לא ניתן היה לקבל גישה לתיקייה. נסה לבחור אותה שוב.";
 
 /* קטע "תיקיות מקור" */
 "settings.folders.title" = "תיקיות מקור";

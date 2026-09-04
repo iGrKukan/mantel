@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — لم يتم منح الإذن";
 "settings.watching.grantButton" = "منح الإذن…";
 "settings.watching.grantMessage" = "اختر مجلد \"%@\" حتى يتمكن Mantel من مراقبته.";
+"settings.watching.accessFailed" = "تعذّر الحصول على إذن الوصول إلى المجلد. حاول اختياره مرة أخرى.";
 
 /* قسم "المجلدات المصدر" */
 "settings.folders.title" = "المجلدات المصدر";

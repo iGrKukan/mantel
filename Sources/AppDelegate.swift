@@ -30,6 +30,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         setupStatusItem()
 
+#if APPSTORE
+        // Mantel --grant-test <папка> — служебный режим только для APPSTORE-сборки:
+        // прогоняет ту же цепочку, что кнопка «Разрешить…» в настройках (store → beginAccess →
+        // перезапуск CaptureWatcher → обновление доступности), но без NSOpenPanel — панель
+        // по ssh не нажать. Нужен, чтобы доказать в песочнице механику доступа на папке,
+        // к которой у приложения и так есть право (например, собственный контейнер).
+        if let idx = CommandLine.arguments.firstIndex(of: "--grant-test"), idx + 1 < CommandLine.arguments.count {
+            runGrantTest(path: CommandLine.arguments[idx + 1])
+        }
+#endif
+
         // Mantel --add <файл> [...] — добавить файлы в полку копией (для скриптов и проверки).
         if let idx = CommandLine.arguments.firstIndex(of: "--add") {
             for path in CommandLine.arguments.dropFirst(idx + 1) {
@@ -102,6 +113,42 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         CaptureWatcher.shared.stop()
         CaptureWatcher.shared.start(folders: AppSettings.shared.watchedFolders)
     }
+
+#if APPSTORE
+    /// См. --grant-test выше: та же цепочка, что вызывает кнопка «Разрешить…» в разделе
+    /// «Слежение» (SettingsWindow.grantAccess), но с готовым URL вместо результата NSOpenPanel.
+    /// Пишет в NSLog каждый шаг — этим доказываем, что store→beginAccess→watch→UI работает
+    /// внутри песочницы, не полагаясь на клик по панели (её по ssh не нажать).
+    private func runGrantTest(path: String) {
+        let url = URL(fileURLWithPath: path)
+        NSLog("Mantel: --grant-test запуск для %@", url.path)
+
+        FolderAccess.store(url)
+        let bookmarkBytes = AppSettings.shared.folderBookmarks[url.path]?.count ?? -1
+        NSLog("Mantel: --grant-test store() -> закладка под ключом \"%@\", %d байт", url.path, bookmarkBytes)
+
+        let accessURL = FolderAccess.beginAccess(url.path)
+        NSLog("Mantel: --grant-test beginAccess() -> startAccessingSecurityScopedResource = %@",
+              accessURL != nil ? "true" : "false")
+
+        // Та же цепочка, что и кнопка «Разрешить…»: кладём реально выбранный путь в «слот»
+        // Рабочего стола — didSet у desktopAccessPath перезапустит CaptureWatcher сам.
+        AppSettings.shared.watchDesktop = true
+        AppSettings.shared.desktopAccessPath = url.path
+
+        let watched = AppSettings.shared.watchedFolders
+        NSLog("Mantel: --grant-test watcher перезапущен, папок к слежению: %d (%@)",
+              watched.count, watched.map { $0.path }.joined(separator: ", "))
+
+        NSLog("Mantel: --grant-test ключ хранения = \"%@\", ключ запроса CaptureWatcher (resolvedDesktopPath) = \"%@\", совпадают: %@",
+              url.path, AppSettings.shared.resolvedDesktopPath,
+              url.path == AppSettings.shared.resolvedDesktopPath ? "true" : "false")
+
+        let pending = FolderAccess.needsPermission
+        NSLog("Mantel: --grant-test needsPermission = %@",
+              pending.isEmpty ? "пусто (доступ выдан)" : pending.joined(separator: ", "))
+    }
+#endif
 
     private func setupStatusItem() {
         let item = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)

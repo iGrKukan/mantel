@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — åtkomst inte beviljad";
 "settings.watching.grantButton" = "Bevilja åtkomst…";
 "settings.watching.grantMessage" = "Välj mappen ”%@” så att Mantel kan bevaka den.";
+"settings.watching.accessFailed" = "Det gick inte att få åtkomst till mappen. Försök att välja den igen.";
 
 /* Avsnittet ”Källmappar” */
 "settings.folders.title" = "Källmappar";

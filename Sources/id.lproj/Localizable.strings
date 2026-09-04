@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — akses belum diberikan";
 "settings.watching.grantButton" = "Berikan Akses…";
 "settings.watching.grantMessage" = "Pilih folder “%@” agar Mantel dapat memantaunya.";
+"settings.watching.accessFailed" = "Tidak dapat memperoleh akses ke folder. Coba pilih lagi.";
 
 /* "Source Folders" section */
 "settings.folders.title" = "Folder Sumber";

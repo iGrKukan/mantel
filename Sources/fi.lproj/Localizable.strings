@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — käyttöoikeutta ei myönnetty";
 "settings.watching.grantButton" = "Myönnä käyttöoikeus…";
 "settings.watching.grantMessage" = "Valitse kansio ”%@”, jotta Mantel voi seurata sitä.";
+"settings.watching.accessFailed" = "Kansioon ei saatu käyttöoikeutta. Yritä valita se uudelleen.";
 
 /* Osio "Lähdekansiot" */
 "settings.folders.title" = "Lähdekansiot";

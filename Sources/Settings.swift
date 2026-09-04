@@ -36,6 +36,8 @@ final class AppSettings: ObservableObject {
         static let mirrorMovesFiles = "mirrorMovesFiles"
         static let googleDriveDestination = "googleDriveDestination"
         static let folderBookmarks = "folderBookmarks"
+        static let desktopAccessPath = "desktopAccessPath"
+        static let screenshotsAccessPath = "screenshotsAccessPath"
     }
 
     @Published var watchDesktop: Bool {
@@ -105,6 +107,30 @@ final class AppSettings: ObservableObject {
         set { UserDefaults.standard.set(newValue, forKey: Keys.folderBookmarks) }
     }
 
+    /// Путь, на который реально выдан доступ для строки «Рабочий стол» в разделе
+    /// «Слежение» (сборка APPSTORE). Пустая строка — доступ ещё не выдавали.
+    ///
+    /// НЕ считаем, что это буквально "~/Desktop": NSOpenPanel может вернуть иной путь —
+    /// например, если у пользователя включена синхронизация Рабочего стола с iCloud,
+    /// ~/Desktop — это symlink, и панель отдаёт реальный путь внутри
+    /// ~/Library/Mobile Documents/…; либо пользователь просто выбрал в панели другую
+    /// папку. Если ключ бронирования (url.path) и ключ, по которому потом ищут закладку,
+    /// разъезжаются — доступ «есть», но найти его не получается. Поэтому храним именно
+    /// то, что реально было выбрано и забронировано, и следим за ним же (см. watchedFolders).
+    @Published var desktopAccessPath: String {
+        didSet {
+            UserDefaults.standard.set(desktopAccessPath, forKey: Keys.desktopAccessPath)
+            postFoldersChanged()
+        }
+    }
+    /// То же самое, но для строки «~/Screenshots».
+    @Published var screenshotsAccessPath: String {
+        didSet {
+            UserDefaults.standard.set(screenshotsAccessPath, forKey: Keys.screenshotsAccessPath)
+            postFoldersChanged()
+        }
+    }
+
     /// Настройки жили в домене by.maru.ShelfTop — переносим один раз.
     private static func migrateOldDomain() {
         let d = UserDefaults.standard
@@ -123,10 +149,23 @@ final class AppSettings: ObservableObject {
     /// Итоговый список папок для наблюдения: флаги + свои пути, с раскрытым `~`.
     var watchedFolders: [URL] {
         var paths: [String] = []
-        if watchDesktop { paths.append("~/Desktop") }
-        if watchScreenshotsFolder { paths.append("~/Screenshots") }
+        if watchDesktop { paths.append(resolvedDesktopPath) }
+        if watchScreenshotsFolder { paths.append(resolvedScreenshotsPath) }
         paths.append(contentsOf: extraFolders)
         return paths.map { URL(fileURLWithPath: ($0 as NSString).expandingTildeInPath) }
+    }
+
+    /// Путь, за которым реально следим на месте «Рабочий стол»: то, что было выбрано
+    /// и сохранено при выдаче доступа (desktopAccessPath), иначе — путь по умолчанию.
+    /// Всегда абсолютный (раскрытый `~`). См. комментарий у desktopAccessPath.
+    var resolvedDesktopPath: String {
+        let raw = desktopAccessPath.isEmpty ? "~/Desktop" : desktopAccessPath
+        return (raw as NSString).expandingTildeInPath
+    }
+    /// То же самое для «~/Screenshots».
+    var resolvedScreenshotsPath: String {
+        let raw = screenshotsAccessPath.isEmpty ? "~/Screenshots" : screenshotsAccessPath
+        return (raw as NSString).expandingTildeInPath
     }
 
     /// Папки-источники с раскрытым `~`.
@@ -149,6 +188,8 @@ final class AppSettings: ObservableObject {
             Keys.mirrorFolders: [String](),
             Keys.mirrorMovesFiles: false,
             Keys.googleDriveDestination: "",
+            Keys.desktopAccessPath: "",
+            Keys.screenshotsAccessPath: "",
         ])
 
         let d = UserDefaults.standard
@@ -164,6 +205,8 @@ final class AppSettings: ObservableObject {
         mirrorFolders = d.stringArray(forKey: Keys.mirrorFolders) ?? []
         mirrorMovesFiles = d.bool(forKey: Keys.mirrorMovesFiles)
         googleDriveDestination = d.string(forKey: Keys.googleDriveDestination) ?? ""
+        desktopAccessPath = d.string(forKey: Keys.desktopAccessPath) ?? ""
+        screenshotsAccessPath = d.string(forKey: Keys.screenshotsAccessPath) ?? ""
 
         // Источник истины — сохранённая настройка: если пользователь включил автозапуск,
         // а система его не видит (переустановка приложения), регистрируем при старте.

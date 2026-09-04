@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — accesso non concesso";
 "settings.watching.grantButton" = "Consenti accesso…";
 "settings.watching.grantMessage" = "Scegli la cartella “%@” in modo che Mantel possa monitorarla.";
+"settings.watching.accessFailed" = "Impossibile ottenere l’accesso alla cartella. Prova a sceglierla di nuovo.";
 
 /* "Source Folders" section */
 "settings.folders.title" = "Cartelle di origine";

@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — Zugriff nicht erteilt";
 "settings.watching.grantButton" = "Zugriff erlauben …";
 "settings.watching.grantMessage" = "Wähle den Ordner „%@“, damit Mantel ihn überwachen kann.";
+"settings.watching.accessFailed" = "Zugriff auf den Ordner konnte nicht erlangt werden. Wähle ihn erneut aus.";
 
 /* "Source Folders" section */
 "settings.folders.title" = "Quellordner";

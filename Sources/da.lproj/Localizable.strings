@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — adgang ikke givet";
 "settings.watching.grantButton" = "Giv adgang…";
 "settings.watching.grantMessage" = "Vælg mappen “%@”, så Mantel kan overvåge den.";
+"settings.watching.accessFailed" = "Kunne ikke få adgang til mappen. Prøv at vælge den igen.";
 
 /* Afsnittet "Kildemapper" */
 "settings.folders.title" = "Kildemapper";

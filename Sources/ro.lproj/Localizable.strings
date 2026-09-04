@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — acces neacordat";
 "settings.watching.grantButton" = "Acordă acces…";
 "settings.watching.grantMessage" = "Alege folderul „%@” pentru ca Mantel să îl poată monitoriza.";
+"settings.watching.accessFailed" = "Nu s-a putut obține accesul la folder. Încearcă să îl alegi din nou.";
 
 /* Secțiunea „Foldere sursă” */
 "settings.folders.title" = "Foldere sursă";

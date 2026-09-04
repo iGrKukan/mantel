@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — geen toegang verleend";
 "settings.watching.grantButton" = "Toegang verlenen…";
 "settings.watching.grantMessage" = "Kies de map „%@” zodat Mantel deze kan bewaken.";
+"settings.watching.accessFailed" = "Kon geen toegang tot de map krijgen. Probeer deze opnieuw te kiezen.";
 
 /* "Source Folders" section */
 "settings.folders.title" = "Bronmappen";

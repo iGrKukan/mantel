@@ -22,6 +22,7 @@
 "settings.watching.accessDenied" = "%@ — 尚未取得存取權限";
 "settings.watching.grantButton" = "授予存取權限…";
 "settings.watching.grantMessage" = "請選擇「%@」資料夾，讓 Mantel 可以監視它。";
+"settings.watching.accessFailed" = "無法取得該資料夾的存取權限。請重新選擇該資料夾。";
 
 /* "Source Folders" section */
 "settings.folders.title" = "來源資料夾";

@@ -36,6 +36,8 @@ targets:
         CFBundleName: Mantel
         CFBundleDisplayName: Mantel
         CFBundleIdentifier: by.maru.Mantel
+        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.0"
         CFBundleDevelopmentRegion: en
         CFBundleAllowMixedLocalizations: true
         LSUIElement: true
@@ -75,6 +77,8 @@ targets:
         CFBundleName: Mantel
         CFBundleDisplayName: Mantel
         CFBundleIdentifier: by.maru.Mantel
+        CFBundleVersion: "2"
+        CFBundleShortVersionString: "1.0"
         CFBundleDevelopmentRegion: en
         CFBundleAllowMixedLocalizations: true
         LSUIElement: true
